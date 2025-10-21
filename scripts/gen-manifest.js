@@ -108,21 +108,21 @@ function findInstallerExes() {
 // 파일명용 안전 베이스 (업로드 스크립트와 동일 규칙)
 function lastSegmentSafe(nameOrPath) {
   const s = String(nameOrPath || "").replace(/\\/g, "/").replace(/^\/+|\/+$/g, "");
-  const base = s.split("/").filter(Boolean).pop() || s || "E_SCAN";
+  const base = s.split("/").filter(Boolean).pop() || s || "QM_Defect";
   return base.replace(/[^\w.-]+/g, "_");
 }
 
-/** 설치파일 prefix는 FTP.APPNAME 우선, 없으면 FTP.APPDIR 마지막 세그먼트 → 기본 E_SCAN */
+/** 설치파일 prefix는 FTP.APPNAME 우선, 없으면 FTP.APPDIR 마지막 세그먼트 → 기본 QM_Defect */
 function readInstallerBaseFromXml() {
   try {
-    if (!exists(CONFIG_XML)) return "E_SCAN";
+    if (!exists(CONFIG_XML)) return "QM_Defect";
     const xml = fs.readFileSync(CONFIG_XML, "utf-8");
     const parsed = new XMLParser({ ignoreAttributes: false }).parse(xml);
     const S = parsed?.SETTING || {};
-    const raw = (S?.FTP?.APPNAME ?? S?.FTP?.APPDIR ?? "E_SCAN");
+    const raw = (S?.FTP?.APPNAME ?? S?.FTP?.APPDIR ?? "QM_Defect");
     return lastSegmentSafe(raw);
   } catch {
-    return "E_SCAN";
+    return "QM_Defect";
   }
 }
 

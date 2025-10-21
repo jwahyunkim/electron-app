@@ -1,0 +1,124 @@
+/* 개발환경 div 범위 가시화 전용 클래스. 실제 배포 시 제거 권장 */
+
+.dev-main {
+  background-color: #00ccff !important;
+}
+
+/* .dev-scope-header { background-color: #203764 !important; } */
+
+.dev-scope-section {
+  background-color: #e2d13bff !important;
+}
+
+.dev-scope-filter-row {
+  background-color: #00f455ff !important;
+}
+
+/* .dev-scope-tag { background-color: #3b4dff !important; } */
+
+.dev-scope-stats-row {
+  background-color: #306e46ff !important;
+}
+
+.dev-scope-stat-box {
+  background-color: #3a3aff !important;
+}
+
+.dev-scope-legend-row {
+  background-color: #2a46e0ff !important;
+}
+
+/* .dev-scope-legend-yesterday { background-color: gray !important; }
+
+.dev-scope-legend-notinput { background-color: lightgray !important; }
+
+.dev-scope-legend-inputing { background-color: white !important; }
+
+.dev-scope-legend-today-active { background-color: orange !important; }
+
+.dev-scope-legend-today-done { background-color: limegreen !important; } */
+
+.dev-scope-grid-section {
+  background-color: #ff00ee !important;
+}
+
+.dev-scope-grid2-section {
+  background-color: #e91f1f !important;
+}
+
+.dev-scope-mutibutton {
+  background-color: #ffee00 !important;
+}
+
+
+
+/* E_Scan_Defect_Main.css */
+.barcode-field {
+  width: 15vw;
+  height: 4vh;
+  /* 둘 모드 동일 고정 */
+}
+
+
+
+
+.label-colon::after {
+  content: ":";
+  margin-left: 4px;
+  color: gray;
+  font-size: 0.8em;
+  position: relative;
+  top: 2px;
+  /* px 단위로 직접 내려주기 */
+}
+
+
+
+.label-required::before {
+  content: "*";
+  color: red;
+  margin-right: 4px;
+  font-weight: bold;
+}
+
+
+.custom-scroll::-webkit-scrollbar {
+  width: 0.8vw !important;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #7b91a8 !important;
+  /* 스크롤바 손잡이 */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #ffffff !important;
+  border: 1px solid #ffffff;
+}
+
+
+
+
+/* 공통 sticky ─ 기존 것 유지 */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  /* 항상 맨 위 */
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+
+
+
+
+.my-table1 {
+  height: 37.1vh !important;
+}
+
+.my-table2 {
+  /* height: 79vh !important; */
+  height: 24.5vh !important;
+  /* height: auto !important; */
+}

@@ -1,0 +1,21 @@
+0000000000000000000000000000000000000000 cd3b88c783855535a00ac06de98d3a2e834c76d2 jwahyun.kim <largoing@gmail.com> 1757656675 +0900	commit (initial): first commit
+cd3b88c783855535a00ac06de98d3a2e834c76d2 cd3b88c783855535a00ac06de98d3a2e834c76d2 jwahyun.kim <largoing@gmail.com> 1757656675 +0900	Branch: renamed refs/heads/master to refs/heads/main
+cd3b88c783855535a00ac06de98d3a2e834c76d2 dec3f5aca9becc8f936a7f48f3874b9e3ed6a183 jwahyun.kim <largoing@gmail.com> 1757656731 +0900	commit: start
+dec3f5aca9becc8f936a7f48f3874b9e3ed6a183 ae989e3188463e78a33915a1b6ce205196727dc9 jwahyun.kim <largoing@gmail.com> 1757659994 +0900	commit: 2nd
+ae989e3188463e78a33915a1b6ce205196727dc9 4063d6f65911a3857a53841f09a6ef38d70985f1 jwahyun.kim <largoing@gmail.com> 1757899593 +0900	commit: design complete
+4063d6f65911a3857a53841f09a6ef38d70985f1 296032b206530e5e18c6fd617fa497def5166e85 jwahyun.kim <largoing@gmail.com> 1757986238 +0900	commit: replace old project with new project
+296032b206530e5e18c6fd617fa497def5166e85 d85eef95c17879c2fccd91f9bf6cadc424c791a6 jwahyun.kim <largoing@gmail.com> 1758073277 +0900	commit: API dev_Grid1,popup
+d85eef95c17879c2fccd91f9bf6cadc424c791a6 def8e15e5b26614c6b96a04d730834238b7335f6 jwahyun.kim <largoing@gmail.com> 1758493999 +0900	commit: defect type button change
+def8e15e5b26614c6b96a04d730834238b7335f6 75ad5a3db435a781d30eb01806c630e914a60681 jwahyun.kim <largoing@gmail.com> 1758839592 +0900	commit: 9/26
+75ad5a3db435a781d30eb01806c630e914a60681 b4c8c707d2558c923db14fc27e6db25902c716d9 jwahyun.kim <largoing@gmail.com> 1759104758 +0900	commit: 9/29
+b4c8c707d2558c923db14fc27e6db25902c716d9 e091cf89af949a8824650bf684912a6523182487 jwahyun.kim <largoing@gmail.com> 1759215716 +0900	commit: 디자인 1차 완성_report,toggle,div스크롤
+e091cf89af949a8824650bf684912a6523182487 827e8f963c5d7b4f9e171cb30d2c1ff3b2efe4bb jwahyun.kim <largoing@gmail.com> 1759285985 +0900	commit: Toggle Scroll 수정
+827e8f963c5d7b4f9e171cb30d2c1ff3b2efe4bb ae2d7c7107a7079f5bd504168da15fe75fa101cc jwahyun.kim <largoing@gmail.com> 1759358011 +0900	commit: report 테이블 생성
+ae2d7c7107a7079f5bd504168da15fe75fa101cc f74d394a0c4beec6ac619b33010a2e6f847e211c jwahyun.kim <largoing@gmail.com> 1759366178 +0900	commit: feat: add minChars and allowedLengths props to ScanListener
+f74d394a0c4beec6ac619b33010a2e6f847e211c 6e3cad484d506a6277541aef4a269310e9cc5bdf jwahyun.kim <largoing@gmail.com> 1760049663 +0900	commit: feat : add filter with mergedcell
+6e3cad484d506a6277541aef4a269310e9cc5bdf 338e024cb9e644f002df72782e99dc55cc7cb853 jwahyun.kim <largoing@gmail.com> 1760308509 +0900	commit: feat : add hover, totalrow to customTable,
+338e024cb9e644f002df72782e99dc55cc7cb853 d7c635964fee47b6a3ae28ee490a9350af04ee81 jwahyun.kim <largoing@gmail.com> 1760338083 +0900	commit: 1. customtable feat: total Row merge
+d7c635964fee47b6a3ae28ee490a9350af04ee81 964be7457f4bc360f730e55062c33905dc5b5d2b jwahyun.kim <largoing@gmail.com> 1760396096 +0900	commit: feat(CustomTable): apply cellStyle to dummy cells
+964be7457f4bc360f730e55062c33905dc5b5d2b 626fff6c59a10f0b70131cac51fb828e42fdcb46 jwahyun.kim <largoing@gmail.com> 1760416860 +0900	commit: feat : add fetch defect master
+626fff6c59a10f0b70131cac51fb828e42fdcb46 85fe0e1534163b8660912bb90aea8fd36dbce649 jwahyun.kim <largoing@gmail.com> 1760917902 +0900	commit: add defect code api + popup contents
+85fe0e1534163b8660912bb90aea8fd36dbce649 29d209129c72d740fd779127ea5443d079077516 jwahyun.kim <largoing@gmail.com> 1760918362 +0900	commit: update queries to use ZCF_STYLE_CD/ZCF_STYLE_NM/ZCF_SIZE_CD columns

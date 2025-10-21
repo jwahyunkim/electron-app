@@ -62,9 +62,14 @@
   </PRINT>
 
   <DBSQL>
-    <USR>sa</USR>
+    <!-- <USR>sa</USR>
     <PWD>Welcome1@init00$</PWD>
     <DATA_SOURCE>203.228.118.39</DATA_SOURCE>
+    <DB_NAME>POP_SQLDB_UP</DB_NAME> -->
+      <!-- Local Test DB -->
+    <USR>sa</USR>
+    <PWD>1234</PWD>
+    <DATA_SOURCE>DESKTOP-P5T077Q\SQLEXPRESS</DATA_SOURCE>
     <DB_NAME>POP_SQLDB_UP</DB_NAME>
   </DBSQL>
 
@@ -104,12 +109,13 @@
     <PORT>2020</PORT>
     <USER>DM_FTP</USER>
     <PASSWORD>EoTls11@25#!</PASSWORD>
-    <APPNAME>E_SCAN</APPNAME>
-    <APPDIR>E_SCAN</APPDIR>
+    <APPNAME>QM_Defect</APPNAME>
+    <APPDIR>QM_Defect</APPDIR>
   </FTP>
 
   <APP>
-    <TITLE>E-Scan_v</TITLE>
+    <!-- <TITLE>E-Scan_v</TITLE> -->
+    <TITLE>QM_Defect</TITLE>
   </APP>
 
   <!-- 예비 FTP 설정(주석) -->
@@ -119,7 +125,7 @@
     <PORT>21</PORT>
     <USER>ftpsystem</USER>
     <PASSWORD>csiftpsystem</PASSWORD>
-    <APPNAME>E_SCAN</APPNAME>
+    <APPNAME>QM_Defect</APPNAME>
     <APPDIR>DD/AA</APPDIR>
   </FTP>
   -->

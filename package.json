@@ -16,30 +16,19 @@
     "dev": "electron-vite dev",
     "build": "npm run typecheck && electron-vite build",
     "postinstall": "electron-builder install-app-deps || npx electron-builder install-app-deps || true",
-
     "clean:evc": "node -e \"const fs=require('fs'),p=process.cwd();for(const f of fs.readdirSync(p)){if(/^electron\\.vite\\.config\\..*\\.(mjs|cjs)$/.test(f)) try{fs.rmSync(f)}catch{}};console.log('cleaned electron.vite.config.*')\"",
     "clean:locks": "node scripts/kill-lockers.js",
     "clean:dist": "npm run clean:locks && node scripts/cleanup-unpacked.js && node -e \"process.env.CLEAN_ALL='1';require('./scripts/cleanup-old-dist.js')\"",
-
     "clean:dist:hard": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/force-clean-dist.ps1",
-
     "build:dir:upload": "npm run clean:dist && npm run pack:dir && npm run gen:manifest && npm run upload:ftp",
     "qdu": "npm run build:dir:upload",
-
     "write:version": "node scripts/write-public-version.js",
-
     "pack:dir": "electron-builder --config electron-builder.yml --dir",
     "pack:nsis": "electron-builder --config electron-builder.yml --win --x64 --ia32 --publish=never",
-
     "gen:manifest": "node scripts/gen-manifest.js",
-
     "preupload:ftp": "npm run gen:manifest",
     "upload:ftp": "node scripts/upload-to-ftp.js",
-
-
     "build:win": "npm run clean:evc && npm run clean:dist && npm run write:version && npm run build && npm run pack:dir && npm run gen:manifest && npm run pack:nsis && npm run upload:ftp",
-
-
     "build:unpack": "npm run build && npm run pack:dir",
     "build:asar": "npm run pack:nsis",
     "build:mac": "npm run write:version && npm run build && electron-builder --config electron-builder.yml --mac",
@@ -63,6 +52,7 @@
     "basic-ftp": "^5.0.5",
     "bwip-js": "^4.7.0",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "electron-log": "^5.4.2",
     "electron-updater": "^6.6.2",
     "express": "^5.1.0",
@@ -92,7 +82,7 @@
     "@types/semver": "^7.7.0",
     "@types/usb": "^2.0.4",
     "@vitejs/plugin-react": "^4.7.0",
-    "electron": "^37.2.3",
+    "electron": "^37.7.0",
     "electron-builder": "^25.1.8",
     "electron-vite": "^4.0.0",
     "eslint": "^9.31.0",

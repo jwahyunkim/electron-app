@@ -1,12 +1,9 @@
 // src/renderer/App.tsx
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { MyApp } from "./pages/MyApp";
-import { E_ScanOutgoing } from "./pages/E_ScanOutgoing_Haeder";
-import { E_Interface_Prod } from "./pages/E_Interface_Prod";
-import { E_Interface_Total } from "./pages/E_Interface_Total"; // ★ 신규 추가
-import { E_Interface_Base_Change } from "./pages/E_Interface_Base_Change";
-import E_ScanOutgoing_Re_Print from "./pages/E_ScanOutgoing_Re_Print";
+import { MyApp } from './pages/MyApp'
+import E_Scan_Defect_Main from './pages/E_Scan_Defect_Main'
+import E_Scan_Defect_UPC from './pages/E_Scan_Defect_UPC'
 
 import {
   initI18n,
@@ -75,11 +72,8 @@ function App() {
     <Router>
       <Routes key={langKey}>
         <Route path="/" element={<MyApp />} />
-        <Route path="/outgoing" element={<E_ScanOutgoing />} />
-        <Route path="/outgoing/reprint" element={<E_ScanOutgoing_Re_Print />} />
-        <Route path="/interface/order" element={<E_Interface_Prod />} />
-        <Route path="/interface/change" element={<E_Interface_Base_Change />} />
-        <Route path="/interface/total" element={<E_Interface_Total />} /> {/* ★ 신규 라우트 */}
+        <Route path="/defect" element={<E_Scan_Defect_Main />} />
+        <Route path="/upcdefect" element={<E_Scan_Defect_UPC />} />
       </Routes>
     </Router>
   );

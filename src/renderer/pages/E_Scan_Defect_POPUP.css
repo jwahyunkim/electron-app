@@ -1,0 +1,14 @@
+/* E_Scan_Defect_POPUP.css */
+.no-focus {
+  --sapContent_FocusWidth: 0;
+  --sapContent_FocusColor: transparent;
+  --sapContent_FocusStyle: solid;
+  --sapContent_FocusShadow: none;
+}
+
+
+ui5-dialog.fixed-x {
+  position: fixed !important;
+  top: 5vh !important;          /* y축 중앙 */
+  margin: 0 !important;         /* 기본 margin 제거 */
+}

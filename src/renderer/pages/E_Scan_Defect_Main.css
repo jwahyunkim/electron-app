@@ -1,0 +1,60 @@
+/* App.css */
+/* 스크롤바 트랙(배경) */
+
+
+/* 스크롤바 영역 */
+::-webkit-scrollbar-vertical {
+  width: 0.8vw;
+}
+
+/* 스크롤바 트랙에 테두리 */
+::-webkit-scrollbar-track {
+  background-color: #f5f6f7; /* 배경 */
+  border: 1px solid #ccc; /* 왼쪽에 테두리 */
+}
+
+/* 스크롤바 thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+}
+
+.my-table3 {
+  height: 38.1vh !important;
+}
+
+
+/* ../pages/E_Scan_Defect_Main.css */
+/* 개발환경 div 범위 가시화 전용 클래스. 실제 배포 시 제거 권장 */
+
+.dev-main { background-color: #00ccff; }
+
+/* .dev-scope-header { background-color: #203764; } */
+
+.dev-scope-section { background-color: #e2d13bff; }
+
+.dev-scope-filter-row { background-color: #00f455ff; }
+
+/* .dev-scope-tag { background-color: #3b4dff; } */
+
+.dev-scope-stats-row { background-color: #306e46ff; }
+
+.dev-scope-stat-box { background-color: #3a3aff; }
+
+.dev-scope-legend-row { background-color: #2a46e0ff; }
+
+/* .dev-scope-legend-yesterday { background-color: gray; }
+
+.dev-scope-legend-notinput { background-color: lightgray; }
+
+.dev-scope-legend-inputing { background-color: white; }
+
+.dev-scope-legend-today-active { background-color: orange; }
+
+.dev-scope-legend-today-done { background-color: limegreen; } */
+
+.dev-scope-grid-section { background-color: #ff00ee; }
+
+.dev-scope-grid2-section { background-color: #e91f1f; }
+
+.dev-scope-mutibutton { background-color: #ffee00; }

@@ -1,0 +1,100 @@
+/* SaveButton.css */
+.ui5like-btn {
+  --ui5-primary: #0a6ed1;
+  --ui5-primary-hover: #0854a0;
+  --ui5-primary-active: #06437e;
+  --ui5-text-on-primary: #ffffff;
+
+  --ui5-border: #d0d0d0;
+  --ui5-border-strong: #556b81;
+  --ui5-hover-border: #a7cfff;
+  --ui5-hover-bottom: #1473e3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 0 0.8vw;
+
+  border: 1px solid var(--ui5-border);
+  border-bottom-color: var(--ui5-border-strong);
+  border-radius: 0.2vw 0.2vw 0 0;
+  background: #ffffff;
+  color: var(--ui5-primary);
+
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+/* Standard 버튼 */
+.ui5like-btn--standard:hover {
+  border-color: var(--ui5-hover-border);
+  border-bottom-color: var(--ui5-hover-bottom);
+  background: #f5faff;
+}
+.ui5like-btn--standard:active {
+  transform: translateY(1px);
+  background: #e6f0ff;
+}
+
+/* Emphasized 버튼 */
+.ui5like-btn--emphasized {
+  background: var(--ui5-primary);
+  color: var(--ui5-text-on-primary);
+  border-color: var(--ui5-primary);
+  border-bottom-color: var(--ui5-primary-active);
+}
+.ui5like-btn--emphasized:hover {
+  background: var(--ui5-primary-hover);
+  border-color: var(--ui5-primary-hover);
+  border-bottom-color: var(--ui5-primary-active);
+}
+.ui5like-btn--emphasized:active {
+  background: var(--ui5-primary-active);
+  transform: translateY(1px);
+}
+
+/* 포커스 접근성 */
+.ui5like-btn:focus-visible {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--ui5-hover-bottom);
+}
+
+/* 비활성 */
+.ui5like-btn.is-disabled,
+.ui5like-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 로딩 상태 */
+.ui5like-btn .label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4vw;
+}
+.ui5like-btn.is-loading .label {
+  visibility: hidden;
+}
+.ui5like-btn .spinner {
+  position: absolute;
+  width: 1.1vw;
+  height: 1.1vw;
+  border: 0.16vw solid rgba(0, 0, 0, 0.1);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: ui5like-spin 0.9s linear infinite;
+}
+@keyframes ui5like-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

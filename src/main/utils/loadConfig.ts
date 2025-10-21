@@ -21,7 +21,7 @@ export function ensureLocalMirror() {
   try {
     const resPath = (process as any).resourcesPath || path.dirname(app.getPath("exe"));
     const src = path.join(resPath, "public", "Config.xml");
-    const dstDir = path.join(getBaseLocal(), "E_SCAN");
+    const dstDir = path.join(getBaseLocal(), "__DUMMY_CONFIG__");
     const dst = path.join(dstDir, "Config.xml");
     if (fs.existsSync(src)) {
       fs.mkdirSync(dstDir, { recursive: true });
@@ -49,7 +49,7 @@ function resolveCandidates(): string[] {
   const prodCandidates = [
     path.join(resources, "public"),
     resources,
-    path.join(baseLocal, "E_SCAN"),
+    path.join(baseLocal, "__DUMMY_CONFIG__"),
     userData,
   ];
 

@@ -1,7 +1,7 @@
-# electron-builder.yml — FINAL (E_SCAN 전용)
+# electron-builder.yml — FINAL (__REPLACE_ME__ 전용)
 
-appId: com.changshin.app.E_SCAN                 # ★ 앱마다 고유값으로!
-productName: E_SCAN_electron-app                # 설치 폴더/표시명
+appId: com.changshin.app.qm-defect                 # ★ 앱마다 고유값으로!
+productName: QM_defect_electron-app                # 설치 폴더/표시명
 
 directories:
   buildResources: build
@@ -64,8 +64,8 @@ win:
   target:
     - target: nsis
       arch: [x64, ia32]
-  executableName: E_SCAN_app                         # exe 파일명: E_SCAN_app.exe
-  artifactName: E_SCAN_electron-app-${version}-${arch}.${ext}
+  executableName: qm-defect_app                         # exe 파일명: __REPLACE_ME___app.exe
+  artifactName: qm-defect-app-${version}-${arch}.${ext}
 
 nsis:
   oneClick: true
@@ -73,8 +73,8 @@ nsis:
   allowToChangeInstallationDirectory: false
   createDesktopShortcut: false
   createStartMenuShortcut: true
-  shortcutName: E_SCAN_electron-app                  # 시작메뉴 이름 고유화
-  uninstallDisplayName: E_SCAN_electron-app          # 제어판 표시명 고유화
+  shortcutName: QM_Defect_electron-app                  # 시작메뉴 이름 고유화
+  uninstallDisplayName: QM_Defect_electron-app          # 제어판 표시명 고유화
   # include: build/installer.nsh                     # (선택) 커스텀 NSIS 스크립트 사용 시
 
 # (mac/linux/publish 블록은 기존 그대로 유지)
