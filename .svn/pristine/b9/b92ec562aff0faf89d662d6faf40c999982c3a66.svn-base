@@ -1,0 +1,256 @@
+"use strict";
+const electron = require("electron");
+const preload = require("@electron-toolkit/preload");
+const toBool = (v) => {
+  const s = String(v ?? "").trim().toUpperCase();
+  return ["Y", "YES", "TRUE", "T", "1"].includes(s);
+};
+const asNum = (v, d) => {
+  const n = Number(v);
+  return Number.isFinite(n) && n > 0 ? n : d;
+};
+const deepMerge = (a = {}, b = {}) => {
+  const out = Array.isArray(a) ? [...a] : { ...a };
+  for (const [k, v] of Object.entries(b)) {
+    if (v && typeof v === "object" && !Array.isArray(v) && typeof out[k] === "object" && out[k] && !Array.isArray(out[k])) {
+      out[k] = deepMerge(out[k], v);
+    } else {
+      out[k] = v;
+    }
+  }
+  return out;
+};
+function normalizeConfig(raw) {
+  const r = raw ?? {};
+  const SETTING = r.SETTING ?? r.setting ?? {
+    Common: r.Common ?? r.common ?? (typeof r.input !== "undefined" ? { INPUT: r.input } : {}),
+    PRINT: r.PRINT ?? r.Print ?? r.print ?? {},
+    DBSQL: r.DBSQL ?? r.dbsql ?? (r.db ? { USR: r.db.user, PWD: r.db.password, DATA_SOURCE: r.db.host, DB_NAME: r.db.database } : {})
+  };
+  const Common = SETTING.Common ?? {};
+  const PRINT = SETTING.PRINT ?? {};
+  const PASSCARD = PRINT.PASSCARD ?? PRINT.Passcard ?? r.PASSCARD ?? {};
+  return {
+    ...r,
+    SETTING,
+    Common,
+    PRINT: { ...PRINT, PASSCARD },
+    input: typeof r.input !== "undefined" ? r.input : Common.INPUT,
+    DBSQL: SETTING.DBSQL ?? r.DBSQL ?? {}
+  };
+}
+async function fetchMergedConfig() {
+  let client = null;
+  let main = null;
+  try {
+    const mod = await Promise.resolve().then(() => require("./loadConfigClient-CtVd5Gxz.js"));
+    const cfgClient = await mod.loadConfigClient();
+    client = normalizeConfig(cfgClient);
+  } catch {
+    client = null;
+  }
+  let mainRaw = null;
+  try {
+    mainRaw = (await electron.ipcRenderer.invoke("print:config-info"))?.cfg ?? null;
+  } catch {
+  }
+  if (!mainRaw) {
+    try {
+      mainRaw = await electron.ipcRenderer.invoke("config:get");
+    } catch {
+    }
+  }
+  main = normalizeConfig(mainRaw);
+  const cfg = deepMerge(client ?? {}, main ?? {});
+  const source = (mainRaw ? "main(xml)" : "") + (client ? mainRaw ? "+client" : "client" : "") || "none";
+  return { cfg, source };
+}
+let previewOverride;
+let previewCountAsPrintOverride;
+async function getPasscardOptions() {
+  const { cfg, source } = await fetchMergedConfig();
+  const pass = cfg?.SETTING?.PRINT?.PASSCARD ?? cfg?.PRINT?.PASSCARD ?? cfg?.Print?.PASSCARD ?? cfg?.PRINT?.Passcard ?? cfg?.Passcard ?? cfg?.PASSCARD ?? {};
+  const rawPreview = pass.PREVIEW ?? pass.preview ?? cfg?.SETTING?.PRINT?.PREVIEW ?? cfg?.PRINT?.PREVIEW ?? cfg?.preview ?? "";
+  const rawCount = pass.PREVIEW_COUNT_AS_PRINT ?? pass.preview_count_as_print ?? pass.previewCountAsPrint ?? cfg?.previewCountAsPrint ?? cfg?.PREVIEW_COUNT_AS_PRINT ?? "";
+  const deviceNameRaw = pass.DEVICE_NAME ?? pass.deviceName ?? cfg?.deviceName;
+  const deviceName = deviceNameRaw != null && String(deviceNameRaw).trim() !== "" ? String(deviceNameRaw).trim() : void 0;
+  const widthMm = asNum(pass.WIDTH_MM ?? pass.width_mm ?? pass.widthMm ?? cfg?.widthMM ?? cfg?.WIDTH_MM, 79);
+  const heightMm = asNum(pass.HEIGHT_MM ?? pass.height_mm ?? pass.heightMm ?? cfg?.heightMM ?? cfg?.HEIGHT_MM, 54);
+  const preview = typeof previewOverride === "boolean" ? previewOverride : toBool(rawPreview);
+  const previewCountAsPrint = typeof previewCountAsPrintOverride === "boolean" ? previewCountAsPrintOverride : toBool(rawCount);
+  const out = {
+    deviceName,
+    preview,
+    widthMicrons: Math.round(widthMm * 1e3),
+    heightMicrons: Math.round(heightMm * 1e3),
+    previewCountAsPrint
+  };
+  console.log("[PASSCARD] config source =", source);
+  console.log("[PASSCARD] options =", out);
+  return out;
+}
+async function mergePasscardOptions(opts) {
+  const base = await getPasscardOptions();
+  const merged = { ...base, ...opts };
+  if (typeof merged.deviceName === "string" && merged.deviceName.trim() === "") {
+    delete merged.deviceName;
+  }
+  return merged;
+}
+function setPreviewOverride(v) {
+  previewOverride = v;
+  console.log("[PASSCARD] preview override =", previewOverride);
+}
+function setPreviewCountAsPrintOverride(v) {
+  previewCountAsPrintOverride = v;
+  console.log("[PASSCARD] previewCountAsPrint override =", previewCountAsPrintOverride);
+}
+const api = {
+  getConfig: async () => {
+    try {
+      const { cfg } = await fetchMergedConfig();
+      return cfg;
+    } catch (err) {
+      console.error("❌ preload에서 config 로드 실패:", err);
+      return null;
+    }
+  },
+  getLocalApiPort: () => electron.ipcRenderer.invoke("getLocalApiPort")
+};
+const i18n = {
+  getLang: () => electron.ipcRenderer.invoke("settings:getLang"),
+  setLang: (lang) => electron.ipcRenderer.invoke("settings:setLang", lang),
+  getBundle: () => electron.ipcRenderer.invoke("i18n:getBundle")
+};
+const langEvents = {
+  onChanged: (cb) => {
+    const handler = (_, code) => {
+      try {
+        cb(code);
+      } catch (e) {
+        console.warn("langEvents cb error:", e);
+      }
+    };
+    electron.ipcRenderer.on("lang:changed", handler);
+    return () => electron.ipcRenderer.removeListener("lang:changed", handler);
+  }
+};
+const print = {
+  passcards: async (jobs, options) => {
+    const merged = await mergePasscardOptions(options);
+    const payload = { batchId: merged.batchId, jobs, options: merged };
+    return electron.ipcRenderer.invoke("print:passcards", payload);
+  }
+};
+const printer = {
+  printPasscard: async (opts) => {
+    const merged = await mergePasscardOptions({
+      deviceName: opts?.deviceName,
+      preview: opts?.preview,
+      widthMicrons: opts?.pageSize ? Math.round(opts.pageSize.widthMM * 1e3) : void 0,
+      heightMicrons: opts?.pageSize ? Math.round(opts.pageSize.heightMM * 1e3) : void 0
+    });
+    return electron.ipcRenderer.invoke("epcard:print", {
+      deviceName: merged.deviceName,
+      preview: merged.preview,
+      pageSize: opts?.pageSize ? opts.pageSize : merged.widthMicrons && merged.heightMicrons ? { widthMM: merged.widthMicrons / 1e3, heightMM: merged.heightMicrons / 1e3 } : void 0,
+      url: opts?.url
+    });
+  },
+  list: () => electron.ipcRenderer.invoke("print:list")
+};
+async function getMainConfigInfo() {
+  return electron.ipcRenderer.invoke("print:config-info");
+}
+async function reloadMainConfig() {
+  return electron.ipcRenderer.invoke("print:config-reload");
+}
+function onPasscardLog(cb) {
+  const handler = (_, msg) => {
+    try {
+      const label = `[PASSCARD][MAIN→RDR][${msg.tag}]`;
+      if (msg.level === "error") console.error(label, msg.payload);
+      else if (msg.level === "warn") console.warn(label, msg.payload);
+      else console.info(label, msg.payload);
+      queueMicrotask(() => {
+        try {
+          cb?.(msg);
+        } catch (e) {
+          console.warn("onPasscardLog cb error(microtask):", e);
+        }
+      });
+    } catch (e) {
+      console.warn("onPasscardLog handler error:", e);
+    }
+  };
+  electron.ipcRenderer.on("passcard:log", handler);
+  return () => electron.ipcRenderer.removeListener("passcard:log", handler);
+}
+const timeBridge = {
+  getContext: () => electron.ipcRenderer.invoke("time:getContext"),
+  getSource: () => electron.ipcRenderer.invoke("time:getSource"),
+  refresh: () => electron.ipcRenderer.invoke("time:refreshPlantTime"),
+  onReadyOnce: (cb) => {
+    const handler = (_, data) => {
+      try {
+        cb(data);
+      } catch (e) {
+        console.warn("timeBridge.onReadyOnce cb error:", e);
+      }
+    };
+    electron.ipcRenderer.once("plant-time:ready", handler);
+    return () => electron.ipcRenderer.removeListener("plant-time:ready", handler);
+  }
+};
+const EXPOSE_FLAG = Symbol.for("__preload_exposed__");
+const g = globalThis;
+const configBridge = {
+  get: api.getConfig,
+  getXml: () => electron.ipcRenderer.invoke("config:getXml"),
+  getPasscardOptions,
+  setPreviewOverride,
+  setPreviewCountAsPrintOverride,
+  setPasscardPreviewOverride: (v) => setPreviewOverride(!!v),
+  setPasscardPreviewCountAsPrintOverride: (v) => setPreviewCountAsPrintOverride(!!v),
+  getMainConfigInfo,
+  reloadMainConfig,
+  listPrinters: () => electron.ipcRenderer.invoke("print:list")
+};
+const logsBridge = { onPasscardLog };
+const electronBridge = { ...preload.electronAPI, invoke: (channel, ...args) => electron.ipcRenderer.invoke(channel, ...args) };
+if (process.contextIsolated) {
+  try {
+    if (!g[EXPOSE_FLAG]) {
+      electron.contextBridge.exposeInMainWorld("electron", electronBridge);
+      electron.contextBridge.exposeInMainWorld("ipc", { invoke: (channel, ...args) => electron.ipcRenderer.invoke(channel, ...args) });
+      electron.contextBridge.exposeInMainWorld("api", api);
+      electron.contextBridge.exposeInMainWorld("config", configBridge);
+      electron.contextBridge.exposeInMainWorld("i18n", i18n);
+      electron.contextBridge.exposeInMainWorld("langEvents", langEvents);
+      electron.contextBridge.exposeInMainWorld("printBridge", print);
+      electron.contextBridge.exposeInMainWorld("passcard", print);
+      electron.contextBridge.exposeInMainWorld("printer", printer);
+      electron.contextBridge.exposeInMainWorld("logs", logsBridge);
+      electron.contextBridge.exposeInMainWorld("time", timeBridge);
+      electron.contextBridge.exposeInMainWorld("__preloadReady", true);
+      g[EXPOSE_FLAG] = true;
+      console.log("[preload] exposed: electron.invoke / config.getXml / printBridge / printer / logs / time / __preloadReady=true");
+    }
+  } catch (e) {
+    console.error("❌ contextBridge expose 실패:", e);
+  }
+} else {
+  window.electron = electronBridge;
+  window.ipc = { invoke: (channel, ...args) => electron.ipcRenderer.invoke(channel, ...args) };
+  window.api = api;
+  window.config = configBridge;
+  window.i18n = i18n;
+  window.langEvents = langEvents;
+  window.printBridge = print;
+  window.passcard = print;
+  window.printer = printer;
+  window.logs = logsBridge;
+  window.time = timeBridge;
+  window.__preloadReady = true;
+  console.log("[preload] exposed (non-isolated): electron.invoke / config.getXml / printBridge / printer / logs / time / __preloadReady=true");
+}

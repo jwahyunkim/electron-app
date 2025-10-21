@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noEmit": true,
+    "noEmitOnError": true,
+    "baseUrl": "src",
+    "rootDir": "src",
+    "outDir": "dist",
+    "paths": {
+      "@main/*": ["main/*"],
+      "@renderer/*": ["renderer/*"],
+      "@shared/*": ["shared/*"],
+      "@pages/*": ["renderer/pages/*"],
+      "@utils/*": ["renderer/utils/*"],
+      "@common/*": ["common/*"]
+    },
+    "moduleResolution": "Node"
+  },
+  "include": ["src/**/*", "src/global.d.ts"],
+  "exclude": ["node_modules", "dist", "out"]
+}

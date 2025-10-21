@@ -1,0 +1,201 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--sapBackgroundColor);
+  font-family: var(--sapFontFamily);
+}
+* {
+  --sapTile_TitleTextColor: limegreen;
+}
+.custom-icon-button .sapMBtnIcon {
+  font-size: 3rem !important; /* 아이콘 크기 증가 */
+}
+
+/* index.css */
+
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: #f5f5f5;
+  z-index: 10;
+  font-weight: bold;
+}
+.sticky-col {
+ position: sticky;
+  background: #666;
+  color: white;
+  z-index: 21;
+}
+
+.sticky-col-1 { left: 0px;  z-index: 11; }
+.sticky-col-2 { left: 60px; z-index: 11; }
+.sticky-col-3 { left: 140px; z-index: 11; }
+.sticky-col-4 { left: 240px; z-index: 11; }
+.sticky-col-5 { left: 340px; z-index: 11; }
+.sticky-col-6 { left: 420px; z-index: 11; }
+
+
+.grid-table {
+  border-collapse: collapse;
+  font-family: "Malgun Gothic", sans-serif;
+  font-size: 0.9rem;          /* ✅ 폰트 약간 키움 */
+  table-layout: fixed;
+  width: max-content;
+  white-space: nowrap;
+  min-width: 100%;
+}
+
+
+
+/* ✅ 셀 공통 스타일 */
+.grid-table th,
+.grid-table td {
+  padding: 4px 6px;          /* 📌 셀 내부 간격 조정 */
+  height: 30px;              /* 📌 행 높이 고정 */
+  border: 1px solid black;
+  line-height: 1.4;          /* 📌 텍스트 간격 */
+  vertical-align: middle;
+  text-align: center;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ✅ 상단 첫줄 날짜 (YYYY-MM-DD) 고정 */
+.sticky-header-1 {
+  position: sticky;
+  top: 0px;
+  z-index: 20;
+  background-color: #666; /* 회색 배경: 기존과 동일하게 */
+  color: white;
+  height: 34px; /* 또는 고정 높이 */
+}
+
+/* ✅ 상단 둘째줄 D-Day 라벨 고정 */
+.sticky-header-2 {
+  position: sticky;
+  top: 34px; /* 첫 줄 높이만큼 정확하게 맞춰야 겹치지 않음 */
+  z-index: 19;
+  background-color: #fdfdfd; /* 칼럼색과 맞춰야 함 */
+  height: 34px;
+}
+
+.fixed-day-col {
+  width: 120px;             /* 🔧 너비 고정 */
+  min-width: 120px;
+  max-width: 120px;
+  text-align: center;
+  white-space: nowrap;      /* 줄바꿈 방지 */
+}
+
+/* 헤더 셀 스타일 */
+.resizable {
+  overflow: visible;
+  min-width: 60px; /* 최소 크기 설정 */
+}
+
+/* 리사이저 핸들 */
+.resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;               /* 커서 인식 영역 넓히기 */
+  height: 100%;
+  cursor: col-resize;        /* ↔️ 화살표 커서 */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23000'><path d='M370.06 380c-7 0-15-2-20-7-11-11-11-29 0-40l92-93-92-93c-11-11-11-28 0-39 6-6 13-9 20-9s15 3 20 9l112 112c11 11 10 28 0 40l-112 113c-5 5-13 7-20 7zm-224 0c-7 0-14-1-20-7l-112-113c-10-12-12-29 0-40l112-112c6-6 13-9 20-9 8 0 15 3 20 9 11 11 11 28 0 39l-93 93 93 93c11 11 11 29 0 40-5 5-13 7-20 7zm172-133c0-17 10-29 26-29 17 0 28 12 28 29 0 16-11 28-28 28-16 0-26-12-26-28zm-85 0c0-17 11-29 29-29 16 0 27 12 27 29 0 16-11 28-27 28-18 0-29-12-29-28zm-85 0c0-17 11-29 29-29 16 0 27 12 27 29 0 16-11 28-27 28-18 0-29-12-29-28z'/></svg>") 12 12, col-resize;
+  z-index: 99;
+  background-color: transparent;  /* 또는 rgba(0,0,0,0.1) */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* 브라우저 전체 스크롤 차단 */
+}
+
+
+.common-label {
+  background-color: #3A3AFF;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  margin: 0.4rem 0.8rem;
+  font-weight: bold;
+  height: 1.6rem;
+  display: inline-block;
+  width: 2.8rem;;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.common-button {
+  background-color: gray;
+  font-size: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  font-weight: bold;
+  height: 2.5rem;
+  display: inline-block;
+  margin-top: 0.3rem;
+  min-width: 40px;
+  text-align: center;
+  
+  border-radius: 4px;
+}
+
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.loading-animation {
+  display: inline-block;
+  background-color: #004085;
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 6px;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes move-dot {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 180px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+/* ✅ 공통 버튼 스타일 */
+.detail-button {
+  width: 140px;
+  height: 100px;
+  background-color: #202020;
+  color: rgba(0, 225, 255, 0.89);
+  font-weight: bold;
+  font-size: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+  border: 1px solid #666;
+  transition: all 0.2s ease;
+  margin-top: 00px; /* 원하는 만큼 조절 */
+  margin-bottom: -10px;
+}
+
+/* ✅ Close 버튼 전용 (빨간 테두리 강조) */
+.detail-button-danger {
+  color:red
+  /* background-color: #330000; */
+  /* border: 1px solid red; */
+  /* box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); */
+}
+

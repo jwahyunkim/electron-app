@@ -1,0 +1,142 @@
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const axios = require("axios");
+const fastXmlParser = require("fast-xml-parser");
+function isDev() {
+  try {
+    return typeof window !== "undefined" && window.location?.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+function parseSettingFromXml(xmlText) {
+  const clean = (xmlText || "").replace(/^\uFEFF/, "").trim();
+  if (!clean) return null;
+  const parser = new fastXmlParser.XMLParser({
+    ignoreAttributes: false,
+    attributeNamePrefix: "",
+    trimValues: true,
+    parseTagValue: true
+  });
+  const parsed = parser.parse(clean);
+  return parsed?.SETTING ?? parsed?.setting ?? null;
+}
+async function readConfigXmlTextDev() {
+  const res = await axios.get(`/Config.xml?t=${Date.now()}`, {
+    responseType: "text"
+  });
+  return res.data;
+}
+async function readSettingProd() {
+  const w = window;
+  try {
+    const maybeGetXml = w?.config?.getXml;
+    if (typeof maybeGetXml === "function") {
+      const xmlText = await maybeGetXml();
+      const setting = parseSettingFromXml(xmlText);
+      if (setting) return setting;
+    }
+  } catch (e) {
+    console.warn("[Config] preload window.config.getXml 실패:", e);
+  }
+  try {
+    const inv = w?.electron?.invoke;
+    if (typeof inv === "function") {
+      const xmlText = await inv("config:getXml");
+      if (typeof xmlText === "string" && xmlText.length > 0) {
+        const setting = parseSettingFromXml(xmlText);
+        if (setting) return setting;
+      }
+    }
+  } catch (e) {
+    console.warn("[Config] electron.invoke('config:getXml') 실패:", e);
+  }
+  try {
+    const maybeGet = w?.config?.get;
+    if (typeof maybeGet === "function") {
+      const cfgObj = await maybeGet();
+      const setting = cfgObj?.SETTING ?? cfgObj?.setting ?? cfgObj;
+      if (setting) return setting;
+    }
+  } catch (e) {
+    console.warn("[Config] preload window.config.get 실패:", e);
+  }
+  throw new Error("[Config] prod에서 Config.xml을 읽을 브리지가 없습니다.");
+}
+async function getSetting() {
+  if (isDev()) {
+    const xmlText = await readConfigXmlTextDev();
+    return parseSettingFromXml(xmlText);
+  }
+  return await readSettingProd();
+}
+async function loadConfigClient() {
+  try {
+    const setting = await getSetting();
+    if (!setting) {
+      console.warn("[Config] SETTING 노드 없음");
+      return null;
+    }
+    const input = String(setting?.Common?.INPUT ?? "N").toUpperCase();
+    const dbsql = setting.DBSQL ?? {};
+    const host = setting.HOST ?? {};
+    const commRoot = setting.Comm ?? setting.COMM ?? {};
+    const passwordValue = setting.PASSWORD?.PASS ?? "";
+    const commPorts = [
+      { settings: String(commRoot.SETTINGS ?? ""), port: String(commRoot.COMMPORT ?? "") },
+      { settings: String(commRoot.SETTINGS1 ?? ""), port: String(commRoot.COMMPORT1 ?? "") },
+      { settings: String(commRoot.SETTINGS2 ?? ""), port: String(commRoot.COMMPORT2 ?? "") }
+    ].filter((p) => p.settings || p.port);
+    const pass = setting?.PRINT?.PASSCARD ?? {};
+    const previewYN = String(pass?.PREVIEW ?? "N").toUpperCase() === "Y" ? "Y" : "N";
+    const passcard = {
+      deviceName: String(pass?.DEVICE_NAME ?? ""),
+      preview: previewYN,
+      widthMM: Number(pass?.WIDTH_MM ?? 79),
+      heightMM: Number(pass?.HEIGHT_MM ?? 60)
+    };
+    const config = {
+      input,
+      db: {
+        user: String(dbsql.USR ?? ""),
+        password: String(dbsql.PWD ?? ""),
+        dataSource: String(dbsql.DATA_SOURCE ?? ""),
+        dbName: String(dbsql.DB_NAME ?? "")
+      },
+      host: {
+        mainHost: String(host.HOST ?? ""),
+        mainPort: String(host.PORT ?? ""),
+        subHost: String(host.HOST1 ?? ""),
+        subPort: String(host.PORT1 ?? "")
+      },
+      comm: { portSettings: commPorts },
+      password: String(passwordValue),
+      print: { passcard }
+    };
+    return config;
+  } catch (err) {
+    console.error("❌ Config.xml 로드 실패(렌더러/typed):", err);
+    return null;
+  }
+}
+async function loadConfig_RawCompat() {
+  try {
+    const setting = await getSetting();
+    if (!setting) {
+      console.warn("[Config] SETTING 노드 없음(rawCompat)");
+      return null;
+    }
+    return {
+      SETTING: setting,
+      ...setting,
+      Common: setting.Common ?? setting.COMMON,
+      PRINT: setting.PRINT,
+      DBSQL: setting.DBSQL
+    };
+  } catch (err) {
+    console.error("❌ Config.xml 로드 실패(렌더러/rawCompat):", err);
+    return null;
+  }
+}
+exports.loadConfigClient = loadConfigClient;
+exports.loadConfig_RawCompat = loadConfig_RawCompat;

@@ -1,0 +1,1122 @@
+"use strict";
+const electron = require("electron");
+const path = require("path");
+const utils = require("@electron-toolkit/utils");
+const fs = require("fs");
+const fastXmlParser = require("fast-xml-parser");
+const express = require("express");
+const cors = require("cors");
+const http = require("http");
+const net = require("net");
+const crypto = require("crypto");
+const axios = require("axios");
+const path$1 = require("node:path");
+const node_url = require("node:url");
+function _interopNamespaceDefault(e) {
+  const n = Object.create(null, { [Symbol.toStringTag]: { value: "Module" } });
+  if (e) {
+    for (const k in e) {
+      if (k !== "default") {
+        const d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: () => e[k]
+        });
+      }
+    }
+  }
+  n.default = e;
+  return Object.freeze(n);
+}
+const path__namespace = /* @__PURE__ */ _interopNamespaceDefault(path);
+function getBaseLocal() {
+  return process.platform === "win32" ? process.env.LOCALAPPDATA || path__namespace.resolve(electron.app.getPath("appData"), "..", "Local") : electron.app.getPath("userData");
+}
+function ensureLocalMirror() {
+  try {
+    const resPath = process.resourcesPath || path__namespace.dirname(electron.app.getPath("exe"));
+    const src = path__namespace.join(resPath, "public", "Config.xml");
+    const dstDir = path__namespace.join(getBaseLocal(), "E_SCAN");
+    const dst = path__namespace.join(dstDir, "Config.xml");
+    if (fs.existsSync(src)) {
+      fs.mkdirSync(dstDir, { recursive: true });
+      if (!fs.existsSync(dst)) fs.copyFileSync(src, dst);
+    }
+  } catch (e) {
+    console.warn("[Config] ensureLocalMirror 실패:", e);
+  }
+}
+function resolveCandidates() {
+  const exeDir = path__namespace.dirname(electron.app.getPath("exe"));
+  const resources = process.resourcesPath || path__namespace.join(exeDir, "resources");
+  const baseLocal = getBaseLocal();
+  const userData = electron.app.getPath("userData");
+  const cwd = process.cwd();
+  const envOverride = String(process.env.CONFIG_XML || "").trim();
+  const names = ["Config.xml", "Config_Db.xml"];
+  const prodCandidates = [
+    path__namespace.join(resources, "public"),
+    resources,
+    path__namespace.join(baseLocal, "E_SCAN"),
+    userData
+  ];
+  const devCandidates = [
+    path__namespace.resolve(__dirname, "../../public"),
+    path__namespace.resolve(__dirname, "../../"),
+    path__namespace.resolve(cwd, "public"),
+    path__namespace.resolve(cwd)
+  ];
+  const list = [];
+  if (envOverride) list.push(envOverride);
+  for (const dir of [...prodCandidates, ...devCandidates]) {
+    for (const nm of names) list.push(path__namespace.join(dir, nm));
+  }
+  return Array.from(new Set(list.filter(Boolean)));
+}
+function readUtf8Safe(file) {
+  const buf = fs.readFileSync(file);
+  return buf.toString("utf8").replace(/^\uFEFF/, "");
+}
+function wrapLegacy(settingNode) {
+  const SETTING = settingNode || {};
+  return {
+    SETTING,
+    ...SETTING,
+    Common: SETTING.Common || SETTING.COMMON,
+    PRINT: SETTING.PRINT,
+    DBSQL: SETTING.DBSQL
+  };
+}
+function getBestConfigPath() {
+  ensureLocalMirror();
+  const tried = [];
+  for (const p of resolveCandidates()) {
+    try {
+      fs.accessSync(p, fs.constants.R_OK);
+      return p;
+    } catch {
+      tried.push(p);
+    }
+  }
+  throw new Error(
+    "[Config] Config.xml/Config_Db.xml을 찾지 못했습니다.\nTried:\n" + tried.join("\n")
+  );
+}
+async function loadXmlConfig() {
+  const errors = [];
+  const parser = new fastXmlParser.XMLParser({ ignoreAttributes: false, trimValues: true });
+  try {
+    const p = getBestConfigPath();
+    const xml = readUtf8Safe(p);
+    const parsed = parser.parse(xml);
+    const setting = parsed?.SETTING || parsed?.setting;
+    if (!setting) {
+      errors.push(`${p} → 'SETTING' 노드 없음`);
+    } else {
+      const cfg = wrapLegacy(setting);
+      console.info(`[Config] OK: ${p}`);
+      return { path: p, cfg };
+    }
+  } catch (e) {
+    errors.push(e?.message || String(e));
+  }
+  console.error(["[Config] 로드 실패", ...errors].join("\n"));
+  return null;
+}
+const API_VERSION = process.env.API_VERSION || electron.app.getVersion() || "0.0.0";
+const APP_SIGNATURE = (() => {
+  let name = "app";
+  try {
+    name = electron.app.getName?.() || name;
+  } catch {
+  }
+  const exeOrCwd = process.execPath || process.cwd();
+  const hash = crypto.createHash("sha1").update(String(exeOrCwd)).digest("hex").slice(0, 8);
+  return `${name}-${hash}`;
+})();
+function ensureDir(p) {
+  try {
+    fs.mkdirSync(p, { recursive: true });
+  } catch {
+  }
+}
+function readJSONSafe(p) {
+  try {
+    return JSON.parse(fs.readFileSync(p, "utf8"));
+  } catch {
+    return null;
+  }
+}
+function writeJSONSafe(p, obj) {
+  try {
+    ensureDir(path.dirname(p));
+    fs.writeFileSync(p, JSON.stringify(obj, null, 2), "utf8");
+  } catch {
+  }
+}
+function getLockDir() {
+  const dir = path.join(electron.app.getPath("userData"), "local-api");
+  ensureDir(dir);
+  return dir;
+}
+function lockPath(mode = "shared") {
+  const base = mode === "isolated" ? `server.${APP_SIGNATURE}` : `server.shared.v${API_VERSION}`;
+  return path.join(getLockDir(), `${base}.lock`);
+}
+function readLock(mode) {
+  const j = readJSONSafe(lockPath(mode));
+  return j && j.port && j.pid ? j : null;
+}
+function writeLock(mode, info) {
+  writeJSONSafe(lockPath(mode), info);
+}
+function isPidAlive(pid) {
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch {
+    return false;
+  }
+}
+function httpJson(host, port, pathName, timeout = 800) {
+  return new Promise((resolve) => {
+    const req = http.get({ host, port, path: pathName, timeout }, (res) => {
+      let data = "";
+      res.on("data", (c) => data += c);
+      res.on("end", () => {
+        try {
+          resolve(JSON.parse(data));
+        } catch {
+          resolve(null);
+        }
+      });
+    });
+    req.on("error", () => resolve(null));
+    req.on("timeout", () => {
+      try {
+        req.destroy();
+      } catch {
+      }
+      resolve(null);
+    });
+  });
+}
+const isAlive = (port, host = "127.0.0.1") => httpJson(host, port, "/health").then((j) => !!(j && j.ok));
+const whoAmI = (port, host = "127.0.0.1") => httpJson(host, port, "/whoami");
+function isPortBusy(port, host = "127.0.0.1") {
+  return new Promise((resolve) => {
+    const s = net.createServer().once("error", () => resolve(true)).once("listening", () => s.close(() => resolve(false))).listen(port, host);
+  });
+}
+async function findFreePort(preferred = 4e3, host = "127.0.0.1") {
+  if (!await isPortBusy(preferred, host)) return preferred;
+  for (let p = preferred + 1; p < preferred + 50; p++) {
+    if (!await isPortBusy(p, host)) return p;
+  }
+  return new Promise((resolve) => {
+    const s = net.createServer().once("listening", () => {
+      const addr = s.address();
+      const port = typeof addr === "object" && addr ? addr.port : preferred;
+      s.close(() => resolve(port));
+    }).listen(0, host);
+  });
+}
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+async function waitReady(port, host = "127.0.0.1", total = 3e3, step = 150) {
+  const t0 = Date.now();
+  while (Date.now() - t0 < total) {
+    if (await isAlive(port, host)) return true;
+    await wait(step);
+  }
+  return false;
+}
+const same = (a, b) => String(a ?? "") === String(b);
+async function createApp(meta) {
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
+  app.get("/health", (_req, res) => res.status(200).json({ ok: true, pid: process.pid, ts: Date.now() }));
+  app.get("/whoami", (_req, res) => res.status(200).json({
+    pid: process.pid,
+    appSignature: APP_SIGNATURE,
+    apiVersion: API_VERSION,
+    startedAt: meta?.startedAt || null,
+    mode: meta?.mode
+  }));
+  app.get("/api/healthz", (_req, res) => res.status(200).json({ ok: true, ts: Date.now() }));
+  const mssqlRoutes = (await Promise.resolve().then(() => require("./mssqlRoutes-XY8XZxM7.js"))).default;
+  const oracleRoutes = (await Promise.resolve().then(() => require("./oracleRoutes-FTDZNvzm.js"))).default;
+  const sapRoutes = (await Promise.resolve().then(() => require("./sapRoutes-DdUGyjlr.js"))).default;
+  const getIpRoutes = (await Promise.resolve().then(() => require("./getIpRoutes-B4xLYB9q.js"))).default;
+  const deviceRoutes = (await Promise.resolve().then(() => require("./deviceRoutes-Y_7GCT6q.js"))).default;
+  app.use("/api", oracleRoutes);
+  app.use("/api/mssql", mssqlRoutes);
+  app.use("/api", sapRoutes);
+  app.use("/api", getIpRoutes);
+  app.use("/api/devices", deviceRoutes);
+  app.get("/api/mssql/ping", async (_req, res) => {
+    try {
+      if (typeof mssqlRoutes?.ping === "function") {
+        const out = await mssqlRoutes.ping();
+        return res.json({ ok: true, via: "mssqlRoutes.ping()", out: out ?? null });
+      }
+      return res.json({ ok: true, via: "fallback" });
+    } catch (e) {
+      console.error("[/api/mssql/ping] failed:", e);
+      return res.status(500).json({ ok: false, error: String(e?.message || e) });
+    }
+  });
+  if (process.env.LOG_ROUTES === "1") {
+    try {
+      const rows = [];
+      app._router?.stack?.forEach((m) => {
+        if (m.name === "router" && m.handle?.stack) {
+          m.handle.stack.forEach((h) => {
+            if (h.route?.path) {
+              const methods = Object.keys(h.route.methods).join(",").toUpperCase();
+              rows.push(`${methods} ${h.route.path}`);
+            }
+          });
+        } else if (m.route?.path) {
+          const methods = Object.keys(m.route.methods).join(",").toUpperCase();
+          rows.push(`${methods} ${m.route.path}`);
+        }
+      });
+      console.log("[ROUTES]\n" + rows.map((s) => " - " + s).join("\n"));
+    } catch (e) {
+      console.log("[ROUTES] dump failed", e);
+    }
+  }
+  app.use((req, res, next) => {
+    if (res.headersSent) return next();
+    res.status(404).json({ error: "NotFound", path: req.originalUrl });
+  });
+  app.use((err, _req, res, _next) => {
+    console.error("[LOCAL API ERROR]", err);
+    res.status(500).json({ error: "InternalError", detail: String(err?.message || err) });
+  });
+  return app;
+}
+async function ensureLocalApiServer(optsOrPort = 4e3, hostFallback = "127.0.0.1") {
+  const opts = typeof optsOrPort === "number" ? { preferredPort: optsOrPort, host: hostFallback, mode: "shared" } : optsOrPort || {};
+  const preferredPort = opts.preferredPort ?? 4e3;
+  const host = opts.host ?? "127.0.0.1";
+  const mode = opts.mode === "isolated" ? "isolated" : "shared";
+  const lock = readLock(mode);
+  if (lock && isPidAlive(lock.pid) && await isAlive(lock.port, host)) {
+    const who = await whoAmI(lock.port, host);
+    if (who && who.appSignature === APP_SIGNATURE && (mode === "isolated" || same(who.apiVersion, API_VERSION))) {
+      return { port: lock.port, host, mode, reused: true };
+    }
+  }
+  if (await isAlive(preferredPort, host)) {
+    const who = await whoAmI(preferredPort, host);
+    if (who && who.appSignature === APP_SIGNATURE && (mode === "isolated" || same(who.apiVersion, API_VERSION))) {
+      writeLock(mode, {
+        port: preferredPort,
+        pid: who.pid ?? 0,
+        appSignature: who.appSignature,
+        apiVersion: who.apiVersion,
+        startedAt: who.startedAt ?? null
+      });
+      return { port: preferredPort, host, mode, reused: true };
+    }
+  }
+  let port = await findFreePort(preferredPort, host);
+  const meta = { startedAt: (/* @__PURE__ */ new Date()).toISOString(), mode };
+  const app = await createApp(meta);
+  await new Promise((resolve, reject) => {
+    const server = app.listen(port, host);
+    server.once("listening", resolve);
+    server.once("error", async (err) => {
+      if (err && (err.code === "EADDRINUSE" || err.code === "EACCES")) {
+        const ok = await waitReady(port, host, 2500, 150);
+        if (ok) {
+          writeLock(mode, { port, pid: 0, appSignature: APP_SIGNATURE, apiVersion: API_VERSION, startedAt: meta.startedAt });
+          return resolve();
+        }
+        try {
+          const alt = await findFreePort(port + 1, host);
+          const altServer = (await createApp(meta)).listen(alt, host);
+          altServer.once("listening", () => {
+            port = alt;
+            writeLock(mode, { port, pid: process.pid, appSignature: APP_SIGNATURE, apiVersion: API_VERSION, startedAt: meta.startedAt });
+            console.log(`✅ 로컬 API 실행(대체 포트): http://${host}:${port} (${mode}, ${APP_SIGNATURE}, v${API_VERSION})`);
+            resolve();
+          }).once("error", reject);
+        } catch (e) {
+          reject(e);
+        }
+      } else {
+        reject(err);
+      }
+    });
+  });
+  writeLock(mode, { port, pid: process.pid, appSignature: APP_SIGNATURE, apiVersion: API_VERSION, startedAt: meta.startedAt });
+  console.log(`✅ 로컬 API 실행: http://${host}:${port} (${mode}, ${APP_SIGNATURE}, v${API_VERSION})`);
+  return { port, host, mode, reused: false };
+}
+let warmupPromise = null;
+function warmupOnce(baseURL) {
+  if (warmupPromise) return warmupPromise;
+  warmupPromise = (async () => {
+    try {
+      const ax = axios.create({ baseURL, timeout: 1500 });
+      await Promise.allSettled([
+        ax.get("/api/healthz"),
+        ax.get("/api/mssql/ping")
+      ]);
+    } catch (e) {
+      console.warn("[warmup] failed (ignored):", e);
+    }
+  })();
+  return warmupPromise;
+}
+let lastBaseUrl = "http://127.0.0.1:4000";
+function setWarmupBaseUrl(url) {
+  lastBaseUrl = url;
+}
+function registerWarmupIpc() {
+  electron.ipcMain.handle("warmup:run", () => warmupOnce(lastBaseUrl));
+}
+process.on("uncaughtException", (err) => {
+  console.error("💥 [MAIN] uncaughtException:", err);
+});
+process.on("unhandledRejection", (reason) => {
+  console.error("💥 [MAIN] unhandledRejection:", reason);
+});
+electron.app.commandLine.appendSwitch("disable-print-preview");
+electron.app.commandLine.appendSwitch("kiosk-printing");
+electron.app.commandLine.appendSwitch("disable-renderer-backgrounding");
+electron.app.commandLine.appendSwitch("disable-backgrounding-occluded-windows");
+electron.app.commandLine.appendSwitch("disable-features", "CalculateNativeWinOcclusion");
+function applyAppMenu() {
+  const LANGS = [
+    { code: "ko-KR", label: "한국어" },
+    { code: "en", label: "English" },
+    { code: "vi", label: "Tiếng Việt" },
+    { code: "zh-Hans", label: "简体中文" },
+    { code: "id", label: "Bahasa Indonesia" }
+  ];
+  const current = loadSavedLang() ?? "en";
+  const languageSubmenu = LANGS.map((l) => ({
+    label: l.label,
+    type: "radio",
+    checked: current === l.code,
+    click: () => {
+      saveLang(l.code);
+      process.env.APP_LANG = l.code;
+      const win = electron.BrowserWindow.getAllWindows()[0];
+      if (win && !win.isDestroyed()) win.webContents.send("lang:changed", l.code);
+      applyAppMenu();
+    }
+  }));
+  const template = [
+    { label: "File", submenu: [{ role: "quit", label: "Exit" }] },
+    {
+      label: "Edit",
+      submenu: [
+        { role: "undo" },
+        { role: "redo" },
+        { type: "separator" },
+        { role: "cut" },
+        { role: "copy" },
+        { role: "paste" },
+        { role: "selectAll" }
+      ]
+    },
+    {
+      label: "View",
+      submenu: [
+        { role: "reload" },
+        { role: "toggleDevTools" },
+        { type: "separator" },
+        { role: "resetZoom" },
+        { role: "zoomIn" },
+        { role: "zoomOut" },
+        { type: "separator" },
+        { role: "togglefullscreen" }
+      ]
+    },
+    { label: "Window", submenu: [{ role: "minimize" }, { role: "close" }] },
+    { label: "Language", submenu: languageSubmenu },
+    { label: "Help", submenu: [{ role: "about", label: "About" }] }
+  ];
+  electron.Menu.setApplicationMenu(electron.Menu.buildFromTemplate(template));
+}
+const settingsPath = () => path.join(electron.app.getPath("userData"), "settings.json");
+const readJsonSafe = (p) => {
+  try {
+    return JSON.parse(fs.readFileSync(p, "utf-8"));
+  } catch {
+    return {};
+  }
+};
+const writeJsonSafe = (p, obj) => {
+  try {
+    fs.mkdirSync(path.dirname(p), { recursive: true });
+  } catch {
+  }
+  fs.writeFileSync(p, JSON.stringify(obj, null, 2), "utf-8");
+};
+function readLangFromArgsEnv() {
+  const arg = process.argv.find((a) => a.startsWith("--lang="))?.slice("--lang=".length);
+  return arg || process.env.APP_LANG || null;
+}
+function loadSavedLang() {
+  try {
+    if (!fs.existsSync(settingsPath())) return null;
+    const j = JSON.parse(fs.readFileSync(settingsPath(), "utf-8"));
+    return typeof j.lang === "string" ? j.lang : null;
+  } catch {
+    return null;
+  }
+}
+function saveLang(lang) {
+  let j = {};
+  try {
+    if (fs.existsSync(settingsPath())) j = JSON.parse(fs.readFileSync(settingsPath(), "utf-8"));
+  } catch {
+  }
+  j.lang = lang;
+  writeJsonSafe(settingsPath(), j);
+}
+function initLanguageAtBoot() {
+  const incoming = readLangFromArgsEnv();
+  const saved = loadSavedLang();
+  const lang = incoming || saved || "en";
+  if (incoming && incoming !== saved) saveLang(lang);
+  process.env.APP_LANG = lang;
+  return lang;
+}
+function listFiles(dir) {
+  try {
+    return fs.readdirSync(dir);
+  } catch {
+    return [];
+  }
+}
+function readAllJsonInDir(dir) {
+  const out = {};
+  try {
+    if (!fs.existsSync(dir)) return out;
+    const list = fs.readdirSync(dir, { withFileTypes: true });
+    for (const ent of list) {
+      if (!ent.isFile()) continue;
+      const file = path.join(dir, ent.name);
+      try {
+        const txt = fs.readFileSync(file, "utf-8").trim();
+        if (!txt) continue;
+        const obj = JSON.parse(txt);
+        if (obj && typeof obj === "object") Object.assign(out, obj);
+      } catch {
+      }
+    }
+  } catch {
+  }
+  return out;
+}
+function rowMatrixToDict(raw, lang) {
+  if (!Array.isArray(raw)) return {};
+  const out = {};
+  for (const row of raw) {
+    const k = typeof row?.Key === "string" ? row.Key.trim() : "";
+    if (!k) continue;
+    const v = (row?.[lang] ?? row?.en ?? "").toString();
+    if (v) out[k] = v;
+  }
+  return out;
+}
+function getLauncherLocalesFallback() {
+  const baseLocal = process.env.LOCALAPPDATA ? path.join(process.env.LOCALAPPDATA, "Programs") : path.join(electron.app.getPath("home"), "AppData", "Local", "Programs");
+  try {
+    const dirs = fs.readdirSync(baseLocal, { withFileTypes: true });
+    for (const ent of dirs) {
+      if (!ent.isDirectory()) continue;
+      const name = ent.name.toLowerCase();
+      if (!name.endsWith("_electron-launcher")) continue;
+      const cand = path.join(baseLocal, ent.name, "resources", "public", "locales");
+      if (fs.existsSync(cand)) {
+        console.log(`[MAIN i18n] launcher fallback hit: ${cand}`);
+        return cand;
+      }
+    }
+  } catch (e) {
+    console.warn("[MAIN i18n] fallback scan failed:", e?.message || e);
+  }
+  return null;
+}
+function getLocalesRoot() {
+  const candidates = [
+    { p: path.join(electron.app.getPath("userData"), "locales"), why: "userData/locales" },
+    { p: electron.app.isPackaged ? path.join(process.resourcesPath, "public", "locales") : path.join(__dirname, "../../public/locales"), why: electron.app.isPackaged ? "resources/public/locales" : "dev public/locales" }
+  ];
+  const launcher = getLauncherLocalesFallback();
+  if (launcher) candidates.push({ p: launcher, why: "LAUNCHER resources/public/locales (fallback)" });
+  for (const c of candidates) {
+    if (fs.existsSync(c.p)) {
+      console.log(`[MAIN i18n] try root = ${c.p} (${c.why})`);
+      return { root: c.p, reason: c.why };
+    }
+  }
+  const last = candidates[candidates.length - 1];
+  console.warn(`[MAIN i18n] none found, fallback to last: ${last.p} (${last.why})`);
+  return { root: last.p, reason: "last fallback" };
+}
+function loadBundle(lang) {
+  const { root } = getLocalesRoot();
+  const matrixCommon = path.join(root, "translations.json");
+  const matrixLang = path.join(root, lang, "translations.json");
+  if (fs.existsSync(matrixCommon)) {
+    const raw = readJsonSafe(matrixCommon);
+    const dict2 = rowMatrixToDict(raw, lang);
+    console.log(`[MAIN i18n] used matrixCommon, keys=${Object.keys(dict2).length}`);
+    if (Object.keys(dict2).length) return dict2;
+  }
+  if (fs.existsSync(matrixLang)) {
+    const raw = readJsonSafe(matrixLang);
+    const dict2 = rowMatrixToDict(raw, lang);
+    console.log(`[MAIN i18n] used matrixLang, keys=${Object.keys(dict2).length}`);
+    if (Object.keys(dict2).length) return dict2;
+  }
+  const baseDir = path.join(root, "en");
+  const langDir = path.join(root, lang);
+  console.log(`[MAIN i18n] merge dirs base=${baseDir} files=${listFiles(baseDir).join(",")}`);
+  console.log(`[MAIN i18n] merge dirs lang=${langDir} files=${listFiles(langDir).join(",")}`);
+  const base = readAllJsonInDir(baseDir);
+  const over = lang === "en" ? {} : readAllJsonInDir(langDir);
+  const dict = { ...base, ...over };
+  console.log(`[MAIN i18n] merged keys=${Object.keys(dict).length}`);
+  return dict;
+}
+electron.ipcMain.handle("config:get", async () => {
+  try {
+    return await loadXmlConfig();
+  } catch {
+    return null;
+  }
+});
+electron.ipcMain.handle("config:getXml", async () => {
+  try {
+    const xmlPath = !electron.app.isPackaged ? path.join(__dirname, "../../public/Config.xml") : path.join(process.resourcesPath, "public", "Config.xml");
+    return fs.readFileSync(xmlPath, "utf-8");
+  } catch {
+    return "";
+  }
+});
+electron.ipcMain.handle("settings:getLang", () => loadSavedLang() ?? "en");
+electron.ipcMain.handle("settings:setLang", (_evt, lang) => {
+  saveLang(lang);
+  process.env.APP_LANG = lang;
+  return true;
+});
+electron.ipcMain.handle("i18n:getBundle", () => loadBundle(loadSavedLang() ?? "en"));
+let LOCAL_API_PORT = 4e3;
+electron.ipcMain.handle("getLocalApiPort", () => LOCAL_API_PORT);
+let PRINT_MODULE_READY = false;
+electron.ipcMain.handle("print:isReady", () => PRINT_MODULE_READY);
+electron.ipcMain.handle("print:config-info", async () => {
+  try {
+    const cfg = await loadXmlConfig();
+    return { cfg, src: getConfigPath() };
+  } catch (e) {
+    return { error: e?.message || String(e) };
+  }
+});
+electron.ipcMain.handle("print:config-reload", async () => {
+  try {
+    const cfg = await loadXmlConfig();
+    return { ok: true, cfg, src: getConfigPath() };
+  } catch (e) {
+    return { ok: false, error: e?.message || String(e) };
+  }
+});
+async function tryLoadPrintModule() {
+  if (process.env.DISABLE_PRINT === "1") {
+    console.warn("[MAIN] print disabled by env");
+    PRINT_MODULE_READY = false;
+    return false;
+  }
+  try {
+    const rel = electron.app.isPackaged ? "./epcardPrint.js" : "./epcardPrint";
+    const absPath = path$1.resolve(__dirname, rel);
+    try {
+      require(absPath);
+    } catch {
+      await import(node_url.pathToFileURL(absPath).href);
+    }
+    PRINT_MODULE_READY = true;
+    console.log("[MAIN] epcardPrint loaded:", absPath);
+    return true;
+  } catch (e) {
+    PRINT_MODULE_READY = false;
+    console.error("❌ [MAIN] epcardPrint load failed:", e);
+    return false;
+  }
+}
+function isDevMode() {
+  return !electron.app.isPackaged;
+}
+function getConfigPath() {
+  return isDevMode() ? path.join(__dirname, "../../public/Config.xml") : path.join(process.resourcesPath, "public", "Config.xml");
+}
+function configExists() {
+  const p = getConfigPath();
+  const ok = fs.existsSync(p);
+  if (!ok) console.warn(`❌ Config 파일 없음: ${p}`);
+  return ok;
+}
+function readAppNameFromConfig() {
+  const xml = fs.readFileSync(getConfigPath(), "utf-8");
+  const m = xml.match(/<TITLE>\s*([^<]+)\s*<\/TITLE>/i);
+  if (!m || !m[1]) throw new Error("❌ Config에 <TITLE> 없음");
+  return m[1].trim();
+}
+function buildAppTitle(title) {
+  return `${title}${electron.app.getVersion()}`;
+}
+async function waitForReady() {
+  let tries = 30;
+  while (tries-- > 0) {
+    if (LOCAL_API_PORT && configExists()) return;
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  throw new Error("plant/port not ready");
+}
+function readPlantFromConfig(cfg) {
+  const pickStr = (v) => {
+    if (v == null) return "";
+    if (typeof v === "string" || typeof v === "number") return String(v).trim();
+    if (Array.isArray(v)) return pickStr(v[0]);
+    if (typeof v === "object") {
+      if ("_" in v) return pickStr(v._);
+      if ("#text" in v) return pickStr(v["#text"]);
+      const candKeys = ["PLANT_CD", "plant_cd", "PLANT", "plant", "plantCode", "Plant", "plantcode", "plantcd"];
+      for (const k of candKeys) {
+        if (k in v) return pickStr(v[k]);
+        const ku = k.toUpperCase();
+        const kl = k.toLowerCase();
+        if (ku in v) return pickStr(v[ku]);
+        if (kl in v) return pickStr(v[kl]);
+      }
+    }
+    return "";
+  };
+  const want = /* @__PURE__ */ new Set(["plant_cd", "plant", "plantcode", "plantcd"]);
+  const stack = [cfg];
+  const seen = /* @__PURE__ */ new Set();
+  while (stack.length) {
+    const cur = stack.pop();
+    if (!cur || typeof cur !== "object" || seen.has(cur)) continue;
+    seen.add(cur);
+    for (const [k, val] of Object.entries(cur)) {
+      const key = k.toLowerCase();
+      if (want.has(key)) {
+        const s = pickStr(val);
+        if (s) return s.toUpperCase();
+      }
+      if (val && typeof val === "object") stack.push(val);
+    }
+  }
+  try {
+    const top = Object.keys(cfg || {});
+    const set = cfg?.SETTING ?? cfg?.setting;
+    const common = set?.Common ?? set?.COMMON ?? cfg?.Common ?? cfg?.common;
+    console.warn("[TIME] PLANT not found in config (deep search). topKeys=", top, "has SETTING=", !!set, "has Common=", !!common);
+  } catch {
+  }
+  return "";
+}
+let TIME_CONTEXT = {
+  ok: false,
+  source: "local",
+  isOnline: false,
+  plant: null,
+  timeZone: null,
+  serverEpochMs: null,
+  workDate: null
+};
+function ymdInTzFromEpoch(epochMs, tz) {
+  return new Intl.DateTimeFormat("sv-SE", {
+    timeZone: tz,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(new Date(epochMs));
+}
+function fullInTzFromEpoch(epochMs, tz) {
+  return new Intl.DateTimeFormat("sv-SE", {
+    timeZone: tz,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).format(new Date(epochMs));
+}
+function normalizeBodyEpochToMs(v) {
+  const n = typeof v === "string" ? Number(v) : typeof v === "number" ? v : NaN;
+  if (!Number.isFinite(n)) return null;
+  if (n >= 1e15 && n < 1e16) return Math.floor(n / 1e3);
+  if (n >= 1e12 && n < 1e13) return Math.floor(n);
+  if (n >= 1e9 && n < 1e10) return Math.floor(n * 1e3);
+  return null;
+}
+function computeFromHeaderAndTz(resp, data, tz) {
+  const upstreamDateStr = resp?.headers?.["x-upstream-date"] || data?.header?.upstreamDateGmt || data?.header?.dateGmt || void 0;
+  const epochBodyMs = normalizeBodyEpochToMs(
+    data?.header?.serverNowEpochMs ?? data?.serverNowEpochMs ?? data?.serverNow ?? null
+  );
+  const localHeaderDateStr = resp?.headers?.["date"] || resp?.headers?.["Date"];
+  const tryParse = (s) => {
+    if (!s) return null;
+    const t = Date.parse(s);
+    return Number.isNaN(t) ? null : t;
+  };
+  const upstreamMs = tryParse(upstreamDateStr);
+  const localHdrMs = tryParse(localHeaderDateStr);
+  const epoch = upstreamMs ?? null ?? (epochBodyMs ?? null) ?? (localHdrMs ?? null);
+  if (!epoch || !tz) {
+    return {
+      epoch: null,
+      workDate: null,
+      localFull: null,
+      headerDateStr: upstreamDateStr ?? localHeaderDateStr,
+      _upstreamDateStr: upstreamDateStr,
+      _localHeaderDateStr: localHeaderDateStr,
+      _source: "none"
+    };
+  }
+  const workDate = ymdInTzFromEpoch(epoch, tz);
+  const localFull = fullInTzFromEpoch(epoch, tz);
+  return {
+    epoch,
+    workDate,
+    localFull,
+    headerDateStr: upstreamDateStr ?? localHeaderDateStr,
+    _upstreamDateStr: upstreamDateStr,
+    _localHeaderDateStr: localHeaderDateStr,
+    _source: upstreamMs != null ? "upstream-header" : epochBodyMs != null ? "body-epoch" : "local-header"
+  };
+}
+function makeLocalContext(plant, online) {
+  const epoch = Date.now();
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  return {
+    ok: true,
+    source: "local",
+    isOnline: online,
+    plant,
+    timeZone: tz,
+    serverEpochMs: epoch,
+    workDate: ymdInTzFromEpoch(epoch, tz)
+  };
+}
+function withAliases(ctx) {
+  return {
+    ...ctx,
+    timezone: ctx.timeZone,
+    workday: ctx.workDate,
+    tz: ctx.timeZone,
+    currentWorkday: ctx.workDate
+  };
+}
+electron.ipcMain.handle("time:getContext", () => withAliases(TIME_CONTEXT));
+electron.ipcMain.handle("time:getSource", () => TIME_CONTEXT.source);
+electron.ipcMain.handle("time:getWorkDate", () => TIME_CONTEXT.workDate);
+electron.ipcMain.handle("time:getPlantTime", () => withAliases(TIME_CONTEXT));
+electron.ipcMain.handle("time:refreshPlantTime", async () => {
+  try {
+    await waitForReady();
+    const cfg = await loadXmlConfig();
+    const plant = readPlantFromConfig(cfg);
+    const baseURL = `http://127.0.0.1:${LOCAL_API_PORT}`;
+    if (!plant) {
+      console.warn("[TIME/refresh] PLANT not found → local");
+      TIME_CONTEXT = makeLocalContext(null, false);
+      return { ok: false, fallback: withAliases(TIME_CONTEXT), error: "PLANT not found in config" };
+    }
+    try {
+      const resp = await axios.get(`${baseURL}/api/sap/plant-timezone`, {
+        params: { plant },
+        timeout: 1e4,
+        // ↑ 10s
+        validateStatus: () => true
+      });
+      if (resp.status < 200 || resp.status >= 300) {
+        console.warn("[TIME/refresh] API non-2xx:", { status: resp.status, data: resp.data });
+        throw new Error(`HTTP ${resp.status}`);
+      }
+      const data = resp.data;
+      const tz = data?.timeZone ?? data?.etpTimezone ?? data?.tz ?? null;
+      if (!tz) throw new Error("invalid payload: missing timeZone");
+      const { epoch, workDate, localFull, headerDateStr, _upstreamDateStr, _localHeaderDateStr, _source } = computeFromHeaderAndTz(resp, data, tz);
+      if (!epoch || !workDate) throw new Error(`invalid payload tz=${tz} epoch=${epoch} workDate=${workDate}`);
+      TIME_CONTEXT = {
+        ok: true,
+        source: "plant",
+        isOnline: true,
+        plant,
+        timeZone: tz,
+        serverEpochMs: epoch,
+        workDate,
+        raw: {
+          ...data,
+          _headerDate: headerDateStr,
+          _upstreamHeaderDate: _upstreamDateStr,
+          _localHeaderDate: _localHeaderDateStr,
+          _localFullInPlantTz: localFull,
+          _source
+        }
+      };
+      console.log("[TIME/refresh] OK(header+tz):", {
+        plant,
+        tz,
+        headerDateStr,
+        epoch,
+        workDate,
+        localFull,
+        _source
+      });
+      return { ok: true, data: withAliases(TIME_CONTEXT) };
+    } catch (e) {
+      const ax = e;
+      if (ax?.response) {
+        console.warn("[TIME/refresh] API error:", { status: ax.response.status, data: ax.response.data });
+      } else {
+        console.warn("[TIME/refresh] error:", ax?.message || String(ax));
+      }
+      const ctx = makeLocalContext(TIME_CONTEXT.plant ?? plant ?? null, false);
+      TIME_CONTEXT = ctx;
+      return { ok: false, fallback: withAliases(ctx), error: ax?.message || "API error" };
+    }
+  } catch (e) {
+    console.warn("[TIME/refresh] failed early:", e?.message || String(e));
+    const ctx = makeLocalContext(TIME_CONTEXT.plant ?? null, false);
+    TIME_CONTEXT = ctx;
+    return { ok: false, fallback: withAliases(ctx), error: e?.message || String(e) };
+  }
+});
+let PRINT_HOST = null;
+let KEEPALIVE_TIMER = null;
+function pickPrinterNameFromConfig(cfg) {
+  const dev = cfg?.SETTING?.PRINT?.PASSCARD?.DEVICE_NAME ?? cfg?.PRINT?.PASSCARD?.DEVICE_NAME ?? process.env.PRINTER_NAME ?? void 0;
+  const s = typeof dev === "string" ? dev.trim() : void 0;
+  return s || void 0;
+}
+async function ensurePrintHost(deviceName) {
+  if (PRINT_HOST && !PRINT_HOST.isDestroyed()) return PRINT_HOST;
+  PRINT_HOST = new electron.BrowserWindow({
+    show: false,
+    webPreferences: { offscreen: true, backgroundThrottling: false, sandbox: false }
+  });
+  await PRINT_HOST.loadURL("data:text/html,<html><body></body></html>");
+  try {
+    await new Promise((resolve) => {
+      PRINT_HOST.webContents.print(
+        {
+          silent: true,
+          printBackground: false,
+          deviceName,
+          pageSize: { width: 1, height: 1 }
+          // 극소 사이즈
+        },
+        () => resolve()
+      );
+    });
+    console.log("[PRINT] warmup done", deviceName ? `(device=${deviceName})` : "");
+  } catch (e) {
+    console.warn("[PRINT] warmup failed (continue):", e);
+  }
+  PRINT_HOST.on("closed", () => {
+    PRINT_HOST = null;
+  });
+  return PRINT_HOST;
+}
+function startPrintKeepAlive(deviceName, intervalMs = 6e4) {
+  if (KEEPALIVE_TIMER) return;
+  KEEPALIVE_TIMER = setInterval(async () => {
+    try {
+      const host = await ensurePrintHost(deviceName);
+      host.webContents.print(
+        { silent: true, deviceName, printBackground: false, pageSize: { width: 1, height: 1 } },
+        () => {
+        }
+      );
+    } catch {
+    }
+  }, intervalMs);
+}
+function stopPrintKeepAlive() {
+  if (KEEPALIVE_TIMER) {
+    clearInterval(KEEPALIVE_TIMER);
+    KEEPALIVE_TIMER = null;
+  }
+}
+electron.ipcMain.handle("print:start-keepalive", async (_e, ms) => {
+  const cfg = await loadXmlConfig().catch(() => null);
+  const device = pickPrinterNameFromConfig(cfg);
+  const interval = typeof ms === "number" && ms > 0 ? ms : Number(process.env.PRINT_KEEPALIVE_MS || 0) || 6e4;
+  startPrintKeepAlive(device, interval);
+  return { ok: true, device, interval };
+});
+electron.ipcMain.handle("print:stop-keepalive", async () => {
+  stopPrintKeepAlive();
+  return { ok: true };
+});
+function createWindow(appName) {
+  const iconPath = utils.is.dev ? path.join(electron.app.getAppPath(), "src/renderer/resources/icon.png") : path.join(process.resourcesPath, "icon.png");
+  const iconImage = electron.nativeImage.createFromPath(iconPath);
+  const fixedTitle = buildAppTitle(appName);
+  const mainWindow = new electron.BrowserWindow({
+    width: 1920,
+    height: 1080,
+    title: fixedTitle,
+    show: false,
+    autoHideMenuBar: true,
+    icon: iconImage,
+    webPreferences: {
+      preload: path.join(__dirname, "../preload/index.js"),
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: false,
+      backgroundThrottling: false
+    }
+  });
+  mainWindow.on("page-title-updated", (e) => {
+    e.preventDefault();
+    mainWindow.setTitle(fixedTitle);
+  });
+  mainWindow.once("ready-to-show", () => {
+    mainWindow.maximize();
+    mainWindow.show();
+    mainWindow.setTitle(fixedTitle);
+  });
+  mainWindow.webContents.setWindowOpenHandler((details) => {
+    electron.shell.openExternal(details.url);
+    return { action: "deny" };
+  });
+  const rendererURL = process.env["ELECTRON_RENDERER_URL"];
+  if (utils.is.dev && rendererURL) mainWindow.loadURL(rendererURL);
+  else mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"));
+  return mainWindow;
+}
+let BOOT_BROADCAST_DONE = false;
+console.log("[MAIN] boot…");
+electron.app.whenReady().then(async () => {
+  utils.electronApp.setAppUserModelId("com.electron");
+  electron.app.on("browser-window-created", (_, window) => utils.optimizer.watchWindowShortcuts(window));
+  const currentLang = initLanguageAtBoot();
+  console.log("[MAIN] language =", currentLang);
+  applyAppMenu();
+  if (!configExists()) {
+    electron.app.quit();
+    return;
+  }
+  const loadPrintPromise = tryLoadPrintModule().catch(() => false);
+  const { port } = await ensureLocalApiServer(4e3, "127.0.0.1");
+  LOCAL_API_PORT = port;
+  registerWarmupIpc();
+  const baseURL = `http://127.0.0.1:${LOCAL_API_PORT}`;
+  setWarmupBaseUrl(baseURL);
+  let title = "E-Scan";
+  try {
+    title = readAppNameFromConfig();
+  } catch (e) {
+    console.warn("[MAIN] TITLE fallback:", e);
+  }
+  const mainWindow = createWindow(title);
+  try {
+    await waitForReady();
+    const cfg = await loadXmlConfig();
+    const plant = readPlantFromConfig(cfg);
+    const baseURL2 = `http://127.0.0.1:${LOCAL_API_PORT}`;
+    if (plant) {
+      try {
+        const resp = await axios.get(`${baseURL2}/api/sap/plant-timezone`, {
+          params: { plant },
+          timeout: 1e4,
+          validateStatus: () => true
+        });
+        if (resp.status < 200 || resp.status >= 300) {
+          console.warn("[TIME/init] API non-2xx:", { status: resp.status, data: resp.data });
+          throw new Error(`HTTP ${resp.status}`);
+        }
+        const data = resp.data;
+        const tz = data?.timeZone ?? data?.etpTimezone ?? data?.tz ?? null;
+        if (tz) {
+          const { epoch, workDate, localFull, headerDateStr, _upstreamDateStr, _localHeaderDateStr, _source } = computeFromHeaderAndTz(resp, data, tz);
+          if (epoch && workDate) {
+            TIME_CONTEXT = {
+              ok: true,
+              source: "plant",
+              isOnline: true,
+              plant,
+              timeZone: tz,
+              serverEpochMs: epoch,
+              workDate,
+              raw: {
+                ...data,
+                _headerDate: headerDateStr,
+                _upstreamHeaderDate: _upstreamDateStr,
+                _localHeaderDate: _localHeaderDateStr,
+                _localFullInPlantTz: localFull,
+                _source
+              }
+            };
+            console.log("[TIME/init] OK(header+tz):", { plant, tz, headerDateStr, epoch, workDate, localFull, _source });
+          } else {
+            console.warn("[TIME/init] payload insufficient → local fallback", { tz, epoch, workDate });
+            TIME_CONTEXT = makeLocalContext(plant, false);
+          }
+        } else {
+          console.warn("[TIME/init] missing tz → local fallback");
+          TIME_CONTEXT = makeLocalContext(plant, false);
+        }
+      } catch (e) {
+        const ax = e;
+        if (ax?.response) {
+          console.warn("[TIME/init] API error:", { status: ax.response.status, data: ax.response.data });
+        } else {
+          console.warn("[TIME/init] error:", ax?.message || String(ax));
+        }
+        TIME_CONTEXT = makeLocalContext(plant, false);
+      }
+    } else {
+      console.warn("[TIME/init] PLANT not found → local fallback");
+      TIME_CONTEXT = makeLocalContext(null, false);
+    }
+    try {
+      const device = pickPrinterNameFromConfig(cfg);
+      await ensurePrintHost(device);
+      const ka = Number(process.env.PRINT_KEEPALIVE_MS || 0);
+      if (ka > 0) {
+        startPrintKeepAlive(device, ka);
+        console.log(`[PRINT] keep-alive started (interval=${ka}ms)`);
+      }
+    } catch (e) {
+      console.warn("[PRINT] warmup setup skipped:", e?.message || e);
+    }
+  } catch (e) {
+    console.warn("⚠️ TIME_CONTEXT init failed, fallback local:", e);
+    TIME_CONTEXT = makeLocalContext(null, false);
+  }
+  mainWindow.webContents.once("did-finish-load", () => {
+    if (!BOOT_BROADCAST_DONE) {
+      mainWindow.webContents.send("plant-time:ready", withAliases(TIME_CONTEXT));
+      BOOT_BROADCAST_DONE = true;
+    }
+  });
+  warmupOnce(baseURL).catch(() => {
+  });
+  loadPrintPromise.then((ok) => {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.webContents.send("print:module-ready", { ok });
+    }
+  });
+});
+electron.app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") electron.app.quit();
+});

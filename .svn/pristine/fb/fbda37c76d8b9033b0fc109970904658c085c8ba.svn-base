@@ -1,0 +1,416 @@
+const TARGET = "เป้าหมาย";
+const DEVIATION = "ค่าเบี่ยงเบน";
+const ABORT = "ยกเลิก";
+const CANCEL = "ยกเลิก";
+const CLOSE = "ปิด";
+const DELETE = "ลบ";
+const IGNORE = "ละเว้น";
+const NO = "ไม่ใช่";
+const OK = "ตกลง";
+const RETRY = "ลองใหม่";
+const YES = "ใช่";
+const CLEAR_SORTING = "ล้างการจัดเรียง";
+const SORT_ASCENDING = "จัดเรียงจากน้อยไปหามาก";
+const SORT_DESCENDING = "จัดเรียงจากมากไปหาน้อย";
+const GROUP = "จัดกลุ่ม";
+const GROUPED = "จัดกลุ่มแล้ว";
+const UNGROUP = "ยกเลิกการจัดกลุ่ม";
+const DRAG_TO_RESIZE = "ลากเพื่อปรับขนาด";
+const PLEASE_WAIT = "กรุณารอสักครู่";
+const CONFIRMATION = "การยืนยัน";
+const ERROR = "ข้อผิดพลาด";
+const INFORMATION = "ข้อมูล";
+const SUCCESS = "สำเร็จ";
+const WARNING = "คำเตือน";
+const SHOW_LESS = "แสดงน้อยลง";
+const SHOW_MORE = "แสดงเพิ่มเติม";
+const EXPAND_GROUP = "ขยายกลุ่ม";
+const COLLAPSE_GROUP = "ย่อรวมกลุ่ม";
+const SHOW_FILTER_BAR = "แสดงแถบฟิลเตอร์";
+const HIDE_FILTER_BAR = "ซ่อนแถบฟิลเตอร์";
+const CLEAR = "ล้าง";
+const RESTORE = "คืนค่า";
+const FILTERS = "ฟิลเตอร์";
+const ADAPT_FILTERS = "ปรับฟิลเตอร์";
+const GO = "ไป";
+const SAVE = "เก็บบันทึก";
+const SHOW_ON_FILTER_BAR = "แสดงบนแถบฟิลเตอร์";
+const BASIC = "พื้นฐาน";
+const SEARCH_FOR_FILTERS = "ค้นหาฟิลเตอร์";
+const FIELDS_BY_ATTRIBUTE = "แสดงฟิลเตอร์ตามแอททริบิวต์";
+const VISIBLE = "มองเห็นได้";
+const ACTIVE = "ใช้งาน";
+const VISIBLE_AND_ACTIVE = "มองเห็นได้และใช้งาน";
+const MANDATORY = "บังคับ";
+const LIST_VIEW = "มุมมองรายการ";
+const GROUP_VIEW = "มุมมองกลุ่ม";
+const SHOW_VALUES = "แสดงค่า";
+const HIDE_VALUES = "ซ่อนค่า";
+const FIELD = "ฟิลด์";
+const FILTER = "ฟิลเตอร์";
+const FILTER_IS_ACTIVE = "ฟิลเตอร์ใช้งานอยู่";
+const COLLAPSE_HEADER = "ย่อรวมส่วนหัว";
+const EXPAND_HEADER = "ขยายส่วนหัว";
+const PIN_HEADER = "ตรึงส่วนหัว";
+const UNPIN_HEADER = "ยกเลิกการตรึงส่วนหัว";
+const SEPARATOR = "ตัวคั่น";
+const AVAILABLE_ACTIONS = "การดำเนินการที่มี";
+const X_OF_Y = "รายการ {0} จาก {1}";
+const MY_VIEWS = "มุมมองของฉัน";
+const SAVE_VIEW = "เก็บบันทึกมุมมอง";
+const MANAGE_VIEWS = "จัดการมุมมอง";
+const VIEW = "มุมมอง";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "มีชื่อมุมมองนี้อยู่แล้ว กรุณาป้อนชื่ออื่น";
+const SPECIFY_VIEW_NAME = "กรุณาระบุชื่อมุมมอง";
+const SET_AS_DEFAULT = "กำหนดเป็นค่าตั้งต้น";
+const PUBLIC = "สาธารณะ";
+const APPLY_AUTOMATICALLY = "นำไปใช้โดยอัตโนมัติ";
+const SHARING = "การแชร์";
+const DEFAULT = "ค่าตั้งต้น";
+const CREATED_BY = "สร้างโดย";
+const MANAGE = "จัดการ";
+const PRIVATE = "ส่วนบุคคล";
+const MARK_AS_STANDARD = "ใช้เป็นมุมมองมาตรฐาน";
+const MARK_AS_FAVORITE = "ทำเครื่องหมายเป็นมุมมองโปรด";
+const DELETE_VIEW = "ลบมุมมอง";
+const SELECT_VIEW = "เลือกมุมมอง";
+const SEARCH_VARIANT = "ชุดตัวเลือกการค้นหา";
+const ALL = "ทั้งหมด";
+const SEARCH = "ค้นหา";
+const SAVE_AS = "เก็บบันทึกเป็น";
+const RESET = "รีเซ็ต";
+const SELECTED_AS_FAVORITE = "เลือกเป็นรายการโปรด";
+const UNSELECTED_AS_FAVORITE = "ยกเลิกการเลือกเป็นรายการโปรด";
+const SELECT = "เลือก";
+const SELECTED = "เลือกแล้ว";
+const PRESS_ARROW_KEYS_TO_MOVE = "กดแป้นลูกศรเพื่อย้าย";
+const LIST_NO_DATA = "ไม่มีข้อมูล";
+const EXPAND_NODE = "ขยายโหนด";
+const COLLAPSE_NODE = "ย่อรวมโหนด";
+const EXPAND_PRESS_SPACE = "เมื่อต้องการขยายแถว ให้กด Spacebar";
+const COLLAPSE_PRESS_SPACE = "เมื่อต้องการย่อรวมแถว ให้กด Spacebar";
+const ROW_EXPANDED = "ขยายแถวแล้ว";
+const ROW_COLLAPSED = "ย่อรวมแถวแล้ว";
+const ROW_X_EXPANDED = "ขยายแถว {0} แล้ว";
+const ROW_X_COLLAPSED = "ย่อรวมแถว {0} แล้ว";
+const SELECT_PRESS_SPACE = "เมื่อต้องการเลือกแถว ให้กด Spacebar";
+const UNSELECT_PRESS_SPACE = "เมื่อต้องการยกเลิกการเลือกแถว ให้กด Spacebar";
+const SELECT_ALL_PRESS_SPACE = "เมื่อต้องการเลือกแถวทั้งหมด ให้กด Spacebar";
+const UNSELECT_ALL_PRESS_SPACE = "เมื่อต้องการยกเลิกการเลือกแถวทั้งหมด ให้กด Spacebar";
+const INVALID_TABLE = "ตารางไม่ถูกต้อง";
+const FILTERED = "ฟิลเตอร์แล้ว";
+const ARIA_DESC_CARD_HEADER = "ส่วนหัวของบัตร";
+const SEMANTIC_COLOR_CRITICAL = "คำเตือน";
+const SEMANTIC_COLOR_GOOD = "ดี";
+const SEMANTIC_COLOR_NEUTRAL = "กลางๆ";
+const SEMANTIC_COLOR_ERROR = "วิกฤต";
+const NUMERICCONTENT_DEVIATION_UP = "จากน้อยไปหามาก";
+const NUMERICCONTENT_DEVIATION_DOWN = "จากมากไปหาน้อย";
+const ARIA_OBJ_STATUS_DESC = "ปุ่มสถานะออบเจค";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "สถานะของออบเจค";
+const INDICATION_COLOR = "สีที่ระบุ";
+const EMPTY_VALUE = "ค่าว่าง";
+const SELECT_ALL = "เลือกทั้งหมด";
+const DESELECT_ALL = "ยกเลิกการเลือกทั้งหมด";
+const SHOW_FULL_TEXT = "แสดงข้อความเต็ม";
+const CLOSE_POPOVER = "ปิด Popover";
+const FILTER_DIALOG_RESET_WARNING = "คุณกำลังจะรีเซ็ตการเปลี่ยนแปลงทั้งหมดที่คุณทำกับการกำหนดค่ามุมมองแล้วแปลงกลับเป็นมุมมองที่เลือก";
+const MOVE_TO_TOP = "ย้ายขึ้นด้านบน{0}";
+const MOVE_UP = "ย้ายขึ้น{0}";
+const MOVE_DOWN = "ย้ายลง{0}";
+const MOVE_TO_BOTTOM = "ย้ายลงด้านล่าง{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "กด {0} และแป้นขึ้นหรือลงเพื่อย้าย";
+const DOWN_ARROW = "ลูกศรลง";
+const UP_ARROW = "ลูกศรขึ้น";
+const NO_DATA_FILTERED = "ไม่พบข้อมูล กรุณาลองปรับปรุงการกำหนดค่าฟิลเตอร์";
+const WITH_X_ITEMS = "มี {0} รายการ";
+const ERROR_TYPE = "ประเภทข้อผิดพลาด";
+const WARNING_TYPE = "ประเภทคำเตือน";
+const INFORMATION_TYPE = "ประเภทข้อมูล";
+const SUCCESS_TYPE = "ประเภทความสำเร็จ";
+const MESSAGE_TYPES = "ประเภทข้อความ";
+const NAVIGATE_BACK = "เนวิเกตย้อนกลับ";
+const MESSAGE_DETAILS = "รายละเอียดข้อความ";
+const HAS_DETAILS = "มีรายละเอียด";
+const COUNTER = "ตัวนับ";
+const SELECTED_ITEMS = "รายการที่เลือก {0}";
+const INCLUDES_X = "รวม {0}";
+const messagebundle_th = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_th as default
+};

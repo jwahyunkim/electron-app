@@ -1,0 +1,31 @@
+"use strict";
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const express = require("express");
+const os = require("os");
+const axios = require("axios");
+const router = express.Router();
+function getLocalIp() {
+  const interfaces = os.networkInterfaces();
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      if (iface.family === "IPv4" && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+  return null;
+}
+router.get("/get-ip", async (req, res) => {
+  try {
+    const localIp = getLocalIp();
+    const externalResp = await axios.get("https://api.ipify.org?format=json");
+    const externalIp = externalResp.data.ip;
+    res.json({
+      localIp,
+      externalIp
+    });
+  } catch (err) {
+    res.status(500).json({ error: "IP 조회 실패", detail: err.message });
+  }
+});
+exports.default = router;

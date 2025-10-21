@@ -1,0 +1,38 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2020"],
+    "types": ["node", "electron", "electron-vite/node"],
+    "baseUrl": "src",
+    "paths": {
+      "@main/*": ["main/*"],
+      "@renderer/*": ["renderer/*"],
+      "@shared/*": ["shared/*"],
+      "@pages/*": ["renderer/pages/*"],
+      "@utils/*": ["renderer/utils/*"],
+      "@common/*": ["common/*"]
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true
+  },
+  "include": [
+    "src/main/**/*",
+    "src/preload/**/*",
+    "src/shared/sap.js",
+    "src/shared/mssql2.js",
+    "src/shared/mssql.js",
+    "src/shared/oracle.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "out",
+    "electron.vite.config.*.mjs",
+    "electron.vite.config.*.cjs"
+  ]
+}

@@ -1,0 +1,179 @@
+const ICON_ACTION_SETTINGS = "Nastavení";
+const ICON_ACTIVATE = "Aktivace";
+const ICON_ADD = "Přidat";
+const ICON_ADD_CONTACT = "Přidat kontakt";
+const ICON_ADD_FILTER = "Přidat filtr";
+const ICON_ADD_PHOTO = "Přidat foto";
+const ICON_BACK_TO_TOP = "Na začátek";
+const ICON_COLLAPSE = "Sbalit";
+const ICON_COLLAPSE_GROUP = "Sbalit skupinu";
+const ICON_CROP = "Sestřihnout";
+const ICON_DECLINE = "Zamítnutí";
+const ICON_DELETE = "Vymazat";
+const ICON_DISPLAY = "Zobrazit";
+const ICON_DOWN = "Dolů";
+const ICON_DOWNLOAD = "Download";
+const ICON_DRILL_DOWN = "Rozbalit";
+const ICON_DRILL_UP = "Nahoru";
+const ICON_ERROR = "Chyba";
+const ICON_EXIT_FULL_SCREEN = "Ukončit režim celé obrazovky";
+const ICON_EXPAND = "Rozbalit";
+const ICON_EXPAND_GROUP = "Rozbalit skupinu";
+const ICON_FILTER = "Filtrovat";
+const ICON_FLAG = "Označení";
+const ICON_FORWARD = "Předání";
+const ICON_FULL_SCREEN = "Aktivovat režim celé obrazovky";
+const ICON_GENERATE_SHORTCUT = "Založení propojení";
+const ICON_GROUP_2 = "Seskupit";
+const ICON_HIDE = "Skrýt";
+const ICON_IPAD = "Tablet";
+const ICON_IPHONE = "Telefon";
+const ICON_LAPTOP = "Laptop";
+const ICON_MESSAGE_ERROR = "Chyba";
+const ICON_MESSAGE_INFORMATION = "Informace";
+const ICON_MESSAGE_SUCCESS = "Úspěšné";
+const ICON_MESSAGE_WARNING = "Upozornění";
+const ICON_MOVE = "Přemístění";
+const ICON_MULTI_SELECT = "Vícenásobný výběr";
+const ICON_NAV_BACK = "Navigovat zpět";
+const ICON_OVERFLOW = "Více";
+const ICON_REDO = "Opakování";
+const ICON_REFRESH = "Aktualizovat";
+const ICON_RESIZE = "Změnit velikost";
+const ICON_RESIZE_HORIZONTAL = "Změnit horizontální velikost";
+const ICON_RESIZE_VERTICAL = "Změnit vertikální velikost";
+const ICON_RESPONSE = "Odpověď";
+const ICON_SAVE = "Uložit";
+const ICON_SEARCH = "Hledat";
+const ICON_SETTINGS = "Nastavení";
+const ICON_SHOW = "Zobrazit";
+const ICON_SORT = "Třídit";
+const ICON_SORT_ASCENDING = "Vzestupné třídění";
+const ICON_SORT_DESCENDING = "Sestupné třídění";
+const ICON_SYNCHRONIZE = "Synchronizace";
+const ICON_UNDO = "Vrátit zpět";
+const ICON_UP = "Nahoru";
+const ICON_UPLOAD = "Upload";
+const ICON_ZOOM_IN = "Zvětšení";
+const ICON_ZOOM_OUT = "Zmenšení";
+const messagebundle_cs = {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT
+};
+export {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT,
+  messagebundle_cs as default
+};

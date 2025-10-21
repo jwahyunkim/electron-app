@@ -1,0 +1,416 @@
+const TARGET = "대상";
+const DEVIATION = "차이";
+const ABORT = "중단";
+const CANCEL = "취소";
+const CLOSE = "닫기";
+const DELETE = "삭제";
+const IGNORE = "무시";
+const NO = "아니오";
+const OK = "확인";
+const RETRY = "재시도";
+const YES = "예";
+const CLEAR_SORTING = "정렬 지우기";
+const SORT_ASCENDING = "오름차순 정렬";
+const SORT_DESCENDING = "내림차순 정렬";
+const GROUP = "그룹";
+const GROUPED = "그룹화됨";
+const UNGROUP = "그룹 해제";
+const DRAG_TO_RESIZE = "크기를 조정하려면 끄십시오.";
+const PLEASE_WAIT = "잠시 기다려 주십시오.";
+const CONFIRMATION = "확인";
+const ERROR = "오류";
+const INFORMATION = "정보";
+const SUCCESS = "성공";
+const WARNING = "경고";
+const SHOW_LESS = "간단히 표시";
+const SHOW_MORE = "자세히 표시";
+const EXPAND_GROUP = "그룹 펼치기";
+const COLLAPSE_GROUP = "그룹 접기";
+const SHOW_FILTER_BAR = "필터 바 표시";
+const HIDE_FILTER_BAR = "필터 바 숨기기";
+const CLEAR = "지우기";
+const RESTORE = "복원";
+const FILTERS = "필터";
+const ADAPT_FILTERS = "필터 적용";
+const GO = "실행";
+const SAVE = "저장";
+const SHOW_ON_FILTER_BAR = "필터 바에 표시";
+const BASIC = "기본";
+const SEARCH_FOR_FILTERS = "필터 검색";
+const FIELDS_BY_ATTRIBUTE = "특성별 필터 표시";
+const VISIBLE = "표시";
+const ACTIVE = "활성";
+const VISIBLE_AND_ACTIVE = "표시 및 활성";
+const MANDATORY = "필수";
+const LIST_VIEW = "리스트 뷰";
+const GROUP_VIEW = "그룹 뷰";
+const SHOW_VALUES = "값 표시";
+const HIDE_VALUES = "값 숨기기";
+const FIELD = "필드";
+const FILTER = "필터";
+const FILTER_IS_ACTIVE = "필터가 활성 상태임";
+const COLLAPSE_HEADER = "헤더 접기";
+const EXPAND_HEADER = "헤더 펼치기";
+const PIN_HEADER = "헤더 고정";
+const UNPIN_HEADER = "헤더 고정 취소";
+const SEPARATOR = "분리자";
+const AVAILABLE_ACTIONS = "사용 가능한 액션";
+const X_OF_Y = "항목({0}/{1})";
+const MY_VIEWS = "내 뷰";
+const SAVE_VIEW = "뷰 저장";
+const MANAGE_VIEWS = "뷰 관리";
+const VIEW = "뷰";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "뷰 이름이 이미 있습니다. 다른 이름을 입력하십시오.";
+const SPECIFY_VIEW_NAME = "뷰 이름을 지정하십시오.";
+const SET_AS_DEFAULT = "기본값으로 설정";
+const PUBLIC = "공용";
+const APPLY_AUTOMATICALLY = "자동으로 적용";
+const SHARING = "공유";
+const DEFAULT = "기본값";
+const CREATED_BY = "생성자";
+const MANAGE = "관리";
+const PRIVATE = "비공개";
+const MARK_AS_STANDARD = "표준 뷰로 사용";
+const MARK_AS_FAVORITE = "즐겨찾는 뷰로 표시";
+const DELETE_VIEW = "뷰 삭제";
+const SELECT_VIEW = "뷰 선택";
+const SEARCH_VARIANT = "변형 검색";
+const ALL = "모두";
+const SEARCH = "검색";
+const SAVE_AS = "다른 이름으로 저장";
+const RESET = "재설정";
+const SELECTED_AS_FAVORITE = "즐겨찾기로 선택됨";
+const UNSELECTED_AS_FAVORITE = "즐겨찾기로 선택 해제됨";
+const SELECT = "선택";
+const SELECTED = "선택됨";
+const PRESS_ARROW_KEYS_TO_MOVE = "화살표 키를 눌러 이동";
+const LIST_NO_DATA = "데이터 없음";
+const EXPAND_NODE = "노드 펼치기";
+const COLLAPSE_NODE = "노드 접기";
+const EXPAND_PRESS_SPACE = "행을 펼치려면 스페이스바를 누르십시오.";
+const COLLAPSE_PRESS_SPACE = "행을 접으려면 스페이스바를 누르십시오.";
+const ROW_EXPANDED = "행 펼침";
+const ROW_COLLAPSED = "행 접음";
+const ROW_X_EXPANDED = "행 {0} 펼침";
+const ROW_X_COLLAPSED = "행 {0} 접음";
+const SELECT_PRESS_SPACE = "행을 선택하려면 스페이스바를 누르십시오.";
+const UNSELECT_PRESS_SPACE = "행 선택을 해제하려면 스페이스바를 누르십시오.";
+const SELECT_ALL_PRESS_SPACE = "모든 행을 선택하려면 스페이스바를 누르십시오.";
+const UNSELECT_ALL_PRESS_SPACE = "모든 행을 삭제하려면 스페이스바를 누르십시오.";
+const INVALID_TABLE = "잘못된 테이블";
+const FILTERED = "필터링됨";
+const ARIA_DESC_CARD_HEADER = "카드 헤더";
+const SEMANTIC_COLOR_CRITICAL = "경고";
+const SEMANTIC_COLOR_GOOD = "좋음";
+const SEMANTIC_COLOR_NEUTRAL = "중립";
+const SEMANTIC_COLOR_ERROR = "위험";
+const NUMERICCONTENT_DEVIATION_UP = "오름차순";
+const NUMERICCONTENT_DEVIATION_DOWN = "내림차순";
+const ARIA_OBJ_STATUS_DESC = "오브젝트 상태 버튼";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "오브젝트 상태";
+const INDICATION_COLOR = "표시 색";
+const EMPTY_VALUE = "비어 있는 값";
+const SELECT_ALL = "모두 선택";
+const DESELECT_ALL = "모두 선택 해제";
+const SHOW_FULL_TEXT = "전체 텍스트 표시";
+const CLOSE_POPOVER = "팝오버 닫기";
+const FILTER_DIALOG_RESET_WARNING = "뷰 설정에 대한 모든 변경 내용을 재설정하고 선택한 뷰로 되돌리려고 합니다.";
+const MOVE_TO_TOP = "맨 위로 이동{0}";
+const MOVE_UP = "위로 이동{0}";
+const MOVE_DOWN = "아래로 이동{0}";
+const MOVE_TO_BOTTOM = "맨 아래로 이동{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "이동하려면 {0} 및 위아래 키를 누르십시오.";
+const DOWN_ARROW = "아래 화살표";
+const UP_ARROW = "위 화살표";
+const NO_DATA_FILTERED = "데이터가 없습니다. 필터 설정을 조정해 보십시오.";
+const WITH_X_ITEMS = "{0} 항목 포함";
+const ERROR_TYPE = "오류 유형";
+const WARNING_TYPE = "경고 유형";
+const INFORMATION_TYPE = "정보 유형";
+const SUCCESS_TYPE = "성공 유형";
+const MESSAGE_TYPES = "메시지 유형";
+const NAVIGATE_BACK = "돌아가기";
+const MESSAGE_DETAILS = "메시지 세부사항";
+const HAS_DETAILS = "세부사항 있음";
+const COUNTER = "카운터";
+const SELECTED_ITEMS = "{0}개의 선택한 항목";
+const INCLUDES_X = "{0} 포함";
+const messagebundle_ko = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_ko as default
+};

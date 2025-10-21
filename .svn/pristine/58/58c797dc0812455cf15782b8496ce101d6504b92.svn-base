@@ -1,0 +1,179 @@
+const ICON_ACTION_SETTINGS = "הגדרות";
+const ICON_ACTIVATE = "הפעל";
+const ICON_ADD = "הוסף";
+const ICON_ADD_CONTACT = "הוסף איש קשר";
+const ICON_ADD_FILTER = "הוסף מסנן";
+const ICON_ADD_PHOTO = "הוסף תמונה";
+const ICON_BACK_TO_TOP = "חזור למעלה";
+const ICON_COLLAPSE = "צמצם";
+const ICON_COLLAPSE_GROUP = "צמצם קבוצה";
+const ICON_CROP = "חתוך";
+const ICON_DECLINE = "דחה";
+const ICON_DELETE = "מחק";
+const ICON_DISPLAY = "הצג";
+const ICON_DOWN = "למטה";
+const ICON_DOWNLOAD = "הורד";
+const ICON_DRILL_DOWN = "הרחבה";
+const ICON_DRILL_UP = "בצע Drill Up";
+const ICON_ERROR = "שגיאה";
+const ICON_EXIT_FULL_SCREEN = "צא ממסך מלא";
+const ICON_EXPAND = "הרחב";
+const ICON_EXPAND_GROUP = "הרחב קבוצה";
+const ICON_FILTER = "מסנן";
+const ICON_FLAG = "סימון";
+const ICON_FORWARD = "העבר";
+const ICON_FULL_SCREEN = "היכנס למסך מלא";
+const ICON_GENERATE_SHORTCUT = "צור קיצור דרך";
+const ICON_GROUP_2 = "קבוצה";
+const ICON_HIDE = "הסתר";
+const ICON_IPAD = "מחשב לוח";
+const ICON_IPHONE = "טלפון";
+const ICON_LAPTOP = "מחשב נייד";
+const ICON_MESSAGE_ERROR = "שגיאה";
+const ICON_MESSAGE_INFORMATION = "מידע";
+const ICON_MESSAGE_SUCCESS = "מוצלח";
+const ICON_MESSAGE_WARNING = "אזהרה";
+const ICON_MOVE = "העבר";
+const ICON_MULTI_SELECT = "בחירה מרובה";
+const ICON_NAV_BACK = "נווט חזרה";
+const ICON_OVERFLOW = "יותר";
+const ICON_REDO = "בצע מחדש";
+const ICON_REFRESH = "רענן";
+const ICON_RESIZE = "שנה גודל";
+const ICON_RESIZE_HORIZONTAL = "שנה גודל באופן אופקי";
+const ICON_RESIZE_VERTICAL = "שנה גודל באופן אנכי";
+const ICON_RESPONSE = "השב";
+const ICON_SAVE = "שמור";
+const ICON_SEARCH = "חפש";
+const ICON_SETTINGS = "הגדרות";
+const ICON_SHOW = "הצג";
+const ICON_SORT = "מיין";
+const ICON_SORT_ASCENDING = "מיין בסדר עולה";
+const ICON_SORT_DESCENDING = "מיין בסדר יורד";
+const ICON_SYNCHRONIZE = "סנכרן";
+const ICON_UNDO = "בטל פעולה";
+const ICON_UP = "למעלה";
+const ICON_UPLOAD = "העלה";
+const ICON_ZOOM_IN = "התמקדות";
+const ICON_ZOOM_OUT = "התרחקות";
+const messagebundle_iw = {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT
+};
+export {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT,
+  messagebundle_iw as default
+};

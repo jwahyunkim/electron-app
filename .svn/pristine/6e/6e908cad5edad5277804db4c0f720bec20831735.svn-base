@@ -1,0 +1,179 @@
+const ICON_ACTION_SETTINGS = "Iestatījumi";
+const ICON_ACTIVATE = "Aktivizēt";
+const ICON_ADD = "Pievienot";
+const ICON_ADD_CONTACT = "Pievienot kontaktpersonu";
+const ICON_ADD_FILTER = "Pievienot filtru";
+const ICON_ADD_PHOTO = "Pievienot fotoattēlu";
+const ICON_BACK_TO_TOP = "Atpakaļ uz sākumu";
+const ICON_COLLAPSE = "Sakļaut";
+const ICON_COLLAPSE_GROUP = "Sakļaut grupu";
+const ICON_CROP = "Apgriezt";
+const ICON_DECLINE = "Noraidīt";
+const ICON_DELETE = "Dzēst";
+const ICON_DISPLAY = "Parādīt";
+const ICON_DOWN = "Uz leju";
+const ICON_DOWNLOAD = "Lejupielādēt";
+const ICON_DRILL_DOWN = "Detalizēt uz leju";
+const ICON_DRILL_UP = "Detalizēt uz augšu";
+const ICON_ERROR = "Kļūda";
+const ICON_EXIT_FULL_SCREEN = "Iziet no pilnekrāna";
+const ICON_EXPAND = "Izvērst";
+const ICON_EXPAND_GROUP = "Izvērst grupu";
+const ICON_FILTER = "Filtrs";
+const ICON_FLAG = "Atzīmēt";
+const ICON_FORWARD = "Pārsūtīt";
+const ICON_FULL_SCREEN = "Pārslēgt pilnekrāna režīmu";
+const ICON_GENERATE_SHORTCUT = "Izveidot saīsni";
+const ICON_GROUP_2 = "Grupēt";
+const ICON_HIDE = "Paslēpt";
+const ICON_IPAD = "Planšetdators";
+const ICON_IPHONE = "Tālrunis";
+const ICON_LAPTOP = "Klēpjdators";
+const ICON_MESSAGE_ERROR = "Kļūda";
+const ICON_MESSAGE_INFORMATION = "Informācija";
+const ICON_MESSAGE_SUCCESS = "Izdevās";
+const ICON_MESSAGE_WARNING = "Brīdinājums";
+const ICON_MOVE = "Pārvietot";
+const ICON_MULTI_SELECT = "Vairākatlase";
+const ICON_NAV_BACK = "Naviģēt atpakaļ";
+const ICON_OVERFLOW = "Vairāk";
+const ICON_REDO = "Atcelt atsaukšanu";
+const ICON_REFRESH = "Atsvaidzināt";
+const ICON_RESIZE = "Mainīt lielumu";
+const ICON_RESIZE_HORIZONTAL = "Mainīt lielumu horizontāli";
+const ICON_RESIZE_VERTICAL = "Mainīt lielumu vertikāli";
+const ICON_RESPONSE = "Atbildēt";
+const ICON_SAVE = "Saglabāt";
+const ICON_SEARCH = "Meklēt";
+const ICON_SETTINGS = "Iestatījumi";
+const ICON_SHOW = "Rādīt";
+const ICON_SORT = "Kārtot";
+const ICON_SORT_ASCENDING = "Kārtot augošā secībā";
+const ICON_SORT_DESCENDING = "Kārtot dilstošā secībā";
+const ICON_SYNCHRONIZE = "Sinhronizēt";
+const ICON_UNDO = "Atsaukt";
+const ICON_UP = "Uz augšu";
+const ICON_UPLOAD = "Augšupielādēt";
+const ICON_ZOOM_IN = "Tuvināt";
+const ICON_ZOOM_OUT = "Tālināt";
+const messagebundle_lv = {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT
+};
+export {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT,
+  messagebundle_lv as default
+};

@@ -1,0 +1,416 @@
+const TARGET = "Đích";
+const DEVIATION = "Chênh lệch";
+const ABORT = "Hủy bỏ";
+const CANCEL = "Hủy";
+const CLOSE = "Đóng";
+const DELETE = "Xóa";
+const IGNORE = "Bỏ qua";
+const NO = "Không";
+const OK = "OK";
+const RETRY = "Thử lại";
+const YES = "Có";
+const CLEAR_SORTING = "Xóa sắp xếp";
+const SORT_ASCENDING = "Sắp xếp tăng dần";
+const SORT_DESCENDING = "Sắp xếp giảm dần";
+const GROUP = "Nhóm";
+const GROUPED = "Được phân nhóm";
+const UNGROUP = "Tách nhóm";
+const DRAG_TO_RESIZE = "Kéo để thay đổi kích thước";
+const PLEASE_WAIT = "Vui lòng chờ";
+const CONFIRMATION = "Xác nhận";
+const ERROR = "Lỗi";
+const INFORMATION = "Thông tin";
+const SUCCESS = "Thành công";
+const WARNING = "Cảnh báo";
+const SHOW_LESS = "H.th ít hơn";
+const SHOW_MORE = "H.thị thêm";
+const EXPAND_GROUP = "Mở rộng nhóm";
+const COLLAPSE_GROUP = "Thu gọn nhóm";
+const SHOW_FILTER_BAR = "Hiển thị thanh lọc";
+const HIDE_FILTER_BAR = "Ẩn thanh lọc";
+const CLEAR = "Xóa";
+const RESTORE = "Khôi phục";
+const FILTERS = "Bộ lọc";
+const ADAPT_FILTERS = "Điều chỉnh bộ lọc";
+const GO = "Tiến hành";
+const SAVE = "Lưu";
+const SHOW_ON_FILTER_BAR = "Hiển thị trên thanh lọc";
+const BASIC = "Cơ bản";
+const SEARCH_FOR_FILTERS = "Tìm kiếm bộ lọc";
+const FIELDS_BY_ATTRIBUTE = "Hiển thị bộ lọc theo thuộc tính";
+const VISIBLE = "Hiển thị";
+const ACTIVE = "Đang hoạt động";
+const VISIBLE_AND_ACTIVE = "Hiển thị và đang hoạt động";
+const MANDATORY = "Bắt buộc";
+const LIST_VIEW = "Màn hình danh sách";
+const GROUP_VIEW = "Màn hình nhóm";
+const SHOW_VALUES = "Hiện giá trị";
+const HIDE_VALUES = "Ẩn giá trị";
+const FIELD = "Trường";
+const FILTER = "Bộ lọc";
+const FILTER_IS_ACTIVE = "Bộ lọc đang hoạt động";
+const COLLAPSE_HEADER = "Thu nhỏ tiêu đề";
+const EXPAND_HEADER = "Mở rộng tiêu đề";
+const PIN_HEADER = "Ghim tiêu đề";
+const UNPIN_HEADER = "Tháo ghim tiêu đề";
+const SEPARATOR = "Dấu tách";
+const AVAILABLE_ACTIONS = "Hành động sẵn có";
+const X_OF_Y = "Mục {0} của {1}";
+const MY_VIEWS = "Màn hình của tôi";
+const SAVE_VIEW = "Lưu màn hình";
+const MANAGE_VIEWS = "Quản lý các màn hình";
+const VIEW = "Màn hình";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Tên màn hình tồn tại rồi. Vui lòng nhập tên khác.";
+const SPECIFY_VIEW_NAME = "Vui lòng định rõ tên màn hình.";
+const SET_AS_DEFAULT = "Thiết lập thành mặc định";
+const PUBLIC = "Chung";
+const APPLY_AUTOMATICALLY = "Áp dụng tự động";
+const SHARING = "Chia sẻ";
+const DEFAULT = "Mặc định";
+const CREATED_BY = "Được tạo bởi";
+const MANAGE = "Quản lý";
+const PRIVATE = "Riêng tư";
+const MARK_AS_STANDARD = "Sử dụng là màn hình tiêu chuẩn";
+const MARK_AS_FAVORITE = "Đánh dấu là màn hình ưa thích";
+const DELETE_VIEW = "Xóa màn hình";
+const SELECT_VIEW = "Chọn màn hình";
+const SEARCH_VARIANT = "Biến thể tìm kiếm";
+const ALL = "Tất cả";
+const SEARCH = "Tìm kiếm";
+const SAVE_AS = "Lưu thành";
+const RESET = "Thiết lập lại";
+const SELECTED_AS_FAVORITE = "Được chọn là mục ưa thích";
+const UNSELECTED_AS_FAVORITE = "Bỏ chọn là mục ưa thích";
+const SELECT = "Chọn";
+const SELECTED = "Được chọn";
+const PRESS_ARROW_KEYS_TO_MOVE = "Nhấn phím MŨI TÊN để chuyển";
+const LIST_NO_DATA = "Không có dữ liệu";
+const EXPAND_NODE = "Mở rộng nút";
+const COLLAPSE_NODE = "Thu gọn nút";
+const EXPAND_PRESS_SPACE = "Để mở rộng hàng, nhấn phím cách.";
+const COLLAPSE_PRESS_SPACE = "Để thu gọn hàng, nhấn phím cách.";
+const ROW_EXPANDED = "Hàng được mở rộng";
+const ROW_COLLAPSED = "Hàng được thu gọn";
+const ROW_X_EXPANDED = "Hàng {0} được mở rộng";
+const ROW_X_COLLAPSED = "Hàng {0} được thu gọn";
+const SELECT_PRESS_SPACE = "Để chọn hàng, nhấn phím cách.";
+const UNSELECT_PRESS_SPACE = "Để bỏ chọn hàng, nhấn phím cách.";
+const SELECT_ALL_PRESS_SPACE = "Để chọn tất cả hàng, nhấn phím cách.";
+const UNSELECT_ALL_PRESS_SPACE = "Để bỏ chọn tất cả hàng, nhấn phím cách.";
+const INVALID_TABLE = "Bảng không hợp lệ";
+const FILTERED = "Đã được lọc";
+const ARIA_DESC_CARD_HEADER = "Tiêu đề thẻ";
+const SEMANTIC_COLOR_CRITICAL = "Cảnh báo";
+const SEMANTIC_COLOR_GOOD = "Tốt";
+const SEMANTIC_COLOR_NEUTRAL = "Trung tính";
+const SEMANTIC_COLOR_ERROR = "Tới hạn";
+const NUMERICCONTENT_DEVIATION_UP = "Tăng dần";
+const NUMERICCONTENT_DEVIATION_DOWN = "Giảm dần";
+const ARIA_OBJ_STATUS_DESC = "Nút trạng thái đối tượng";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Trạng thái đối tượng";
+const INDICATION_COLOR = "Màu chỉ báo";
+const EMPTY_VALUE = "Giá trị rỗng";
+const SELECT_ALL = "Chọn tất cả";
+const DESELECT_ALL = "Bỏ chọn tất cả";
+const SHOW_FULL_TEXT = "Hiển thị toàn văn bản";
+const CLOSE_POPOVER = "Đóng cửa sổ bật lên";
+const FILTER_DIALOG_RESET_WARNING = "Bạn sẽ thiết lập lại tất cả thay đổi bạn đã thực hiện đối với thiết lập màn hình của và khôi phục trở lại màn hình được chọn.";
+const MOVE_TO_TOP = "Di chuyển lên trên cùng{0}";
+const MOVE_UP = "Di chuyển lên{0}";
+const MOVE_DOWN = "Di chuyển xuống{0}";
+const MOVE_TO_BOTTOM = "Di chuyển xuống dưới cùng{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Nhấn {0} và phím lên hoặc xuống để di chuyển.";
+const DOWN_ARROW = "Mũi tên xuống";
+const UP_ARROW = "Mũi tên lên";
+const NO_DATA_FILTERED = "Không tìm thấy dữ liệu. Thử điều chỉnh các thiết lập bộ lọc.";
+const WITH_X_ITEMS = "có {0} mục";
+const ERROR_TYPE = "Loại lỗi";
+const WARNING_TYPE = "Kiểu cảnh báo";
+const INFORMATION_TYPE = "Loại thông tin";
+const SUCCESS_TYPE = "Kiểu thành công";
+const MESSAGE_TYPES = "Kiểu thông báo";
+const NAVIGATE_BACK = "Điều hướng quay lại";
+const MESSAGE_DETAILS = "Chi tiết thông báo";
+const HAS_DETAILS = "Có chi tiết";
+const COUNTER = "Bộ đếm";
+const SELECTED_ITEMS = "Mục được chọn {0}";
+const INCLUDES_X = "Bao gồm {0}";
+const messagebundle_vi = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_vi as default
+};

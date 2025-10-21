@@ -1,0 +1,179 @@
+const ICON_ACTION_SETTINGS = "Beállítások";
+const ICON_ACTIVATE = "Aktiválás";
+const ICON_ADD = "Hozzáadás";
+const ICON_ADD_CONTACT = "Tárgyalópartner hozzáadása";
+const ICON_ADD_FILTER = "Szűrő hozzáadása";
+const ICON_ADD_PHOTO = "Fotó hozzáadása";
+const ICON_BACK_TO_TOP = "Elejére";
+const ICON_COLLAPSE = "Visszazárás";
+const ICON_COLLAPSE_GROUP = "Csoport visszazárása";
+const ICON_CROP = "Levágás";
+const ICON_DECLINE = "Elutasítás";
+const ICON_DELETE = "Törlés";
+const ICON_DISPLAY = "Megjelenítés";
+const ICON_DOWN = "Lefelé";
+const ICON_DOWNLOAD = "Letöltés";
+const ICON_DRILL_DOWN = "Lefelé";
+const ICON_DRILL_UP = "Felfelé";
+const ICON_ERROR = "Hiba";
+const ICON_EXIT_FULL_SCREEN = "Kilépés a teljes képernyős módból";
+const ICON_EXPAND = "Kibontás";
+const ICON_EXPAND_GROUP = "Csoport kibontása";
+const ICON_FILTER = "Szűrés";
+const ICON_FLAG = "Kijelölés";
+const ICON_FORWARD = "Továbbítás";
+const ICON_FULL_SCREEN = "Teljes képernyős mód aktiválása";
+const ICON_GENERATE_SHORTCUT = "Összekapcsolás létrehozása";
+const ICON_GROUP_2 = "Csoportosítás";
+const ICON_HIDE = "Elrejtés";
+const ICON_IPAD = "Táblagép";
+const ICON_IPHONE = "Telefon";
+const ICON_LAPTOP = "Laptop";
+const ICON_MESSAGE_ERROR = "Hiba";
+const ICON_MESSAGE_INFORMATION = "Információ";
+const ICON_MESSAGE_SUCCESS = "Sikeres";
+const ICON_MESSAGE_WARNING = "Figyelmeztetés";
+const ICON_MOVE = "Áthelyezés";
+const ICON_MULTI_SELECT = "Többszörös kiválasztás";
+const ICON_NAV_BACK = "Visszalépés";
+const ICON_OVERFLOW = "Továbbiak";
+const ICON_REDO = "Újra";
+const ICON_REFRESH = "Frissítés";
+const ICON_RESIZE = "Méret módosítása";
+const ICON_RESIZE_HORIZONTAL = "Méret módosítása vízszintesen";
+const ICON_RESIZE_VERTICAL = "Méret módosítása függőlegesen";
+const ICON_RESPONSE = "Válasz";
+const ICON_SAVE = "Mentés";
+const ICON_SEARCH = "Keresés";
+const ICON_SETTINGS = "Beállítások";
+const ICON_SHOW = "Megjelenítés";
+const ICON_SORT = "Rendezés";
+const ICON_SORT_ASCENDING = "Növekvő rendezés";
+const ICON_SORT_DESCENDING = "Csökkenő rendezés";
+const ICON_SYNCHRONIZE = "Szinkronizálás";
+const ICON_UNDO = "Visszavonás";
+const ICON_UP = "Fel";
+const ICON_UPLOAD = "Feltöltés";
+const ICON_ZOOM_IN = "Nagyítás";
+const ICON_ZOOM_OUT = "Kicsinyítés";
+const messagebundle_hu = {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT
+};
+export {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT,
+  messagebundle_hu as default
+};

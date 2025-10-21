@@ -1,0 +1,8 @@
+const DRAG_DROP_MULTIPLE_TEXT = "4r96ZyyeFuBw3vy23me9QQ_{0} items";
+const messagebundle_en_US_saptrc = {
+  DRAG_DROP_MULTIPLE_TEXT
+};
+export {
+  DRAG_DROP_MULTIPLE_TEXT,
+  messagebundle_en_US_saptrc as default
+};

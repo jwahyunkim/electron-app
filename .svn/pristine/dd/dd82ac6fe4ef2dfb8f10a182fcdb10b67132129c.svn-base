@@ -1,0 +1,433 @@
+import express from "express";
+import oracledb from "oracledb";
+import { getConnection } from "@shared/oracle";
+
+const router = express.Router();
+
+/**
+ * ✅ 1. E-SCAN 테이블 데이터 조회 (Pivot 포함)
+ */
+router.get("/oracle/escan", async (req, res) => {
+  const { plant, line, date } = req.query;
+  const selectedDate = date?.replace(/-/g, "") || "20250521"; // YYYYMMDD
+
+  // console.log("📦 /oracle/escan 호출됨:", { plant, line, date });
+
+  const bindParams = {
+    ARG_DATE: { val: selectedDate, type: oracledb.STRING },
+    ARG_PLANT: { val: plant || "2110", type: oracledb.STRING },
+    ARG_LINE: { val: line || "ALL", type: oracledb.STRING },
+    ARG_FGA_MLINE: { val: "ALL", type: oracledb.STRING },
+    ARG_UPS_MLINE: { val: "ALL", type: oracledb.STRING },
+    ARG_OP_CD: { val: "UPE", type: oracledb.STRING },
+    ARG_ITPO: { val: "O", type: oracledb.STRING },
+    ARG_DIV: { val: "COMP", type: oracledb.STRING },
+    CV_1: { dir: oracledb.BIND_OUT, type: oracledb.CURSOR },
+    CV_2: { dir: oracledb.BIND_OUT, type: oracledb.CURSOR },
+  };
+
+  let conn, rs1, rs2;
+
+  try {
+    conn = await getConnection();
+    const result = await conn.execute(
+      `BEGIN PKG_SMT_EMB_VJ1.SELECT_COMPONENT(
+        :ARG_DATE, :ARG_PLANT, :ARG_LINE, :ARG_FGA_MLINE,
+        :ARG_UPS_MLINE, :ARG_OP_CD, :ARG_ITPO, :ARG_DIV,
+        :CV_1, :CV_2
+      ); END;`,
+      bindParams
+    );
+
+    rs1 = result.outBinds.CV_1;
+    rs2 = result.outBinds.CV_2;
+
+    const rows1 = await rs1.getRows();
+    const rows2 = await rs2.getRows();
+
+    // ✅ 날짜 추출 (YMD_CAPTION 기준)
+    const ymdList = [...new Set(rows1.map(r => r[11]))]
+      .map(ymd => new Date(ymd))
+      .sort((a, b) => a.getTime() - b.getTime());
+
+    const selectedDateObj = new Date(
+      `${selectedDate.slice(0, 4)}-${selectedDate.slice(4, 6)}-${selectedDate.slice(6)}`
+    );
+    const selectedDateStr = selectedDateObj.toISOString().slice(0, 10);
+
+    // ✅ D-4 ~ TODAY ~ D+4 구성
+    const past = ymdList.filter(d => d < selectedDateObj).slice(-4);
+    const center = ymdList.find(d => d.getTime() === selectedDateObj.getTime()) || selectedDateObj;
+    const future = ymdList.filter(d => d > selectedDateObj).slice(0, 4);
+
+    const fullDates = [...past, center, ...future];
+
+    const finalHeaders = fullDates.map((dateObj, idx) => {
+      const ymd = dateObj.toISOString().slice(0, 10);
+      const field = `DD_${idx}`;
+      let label = "";
+      if (ymd === selectedDateStr) {
+        label = "TODAY";
+      } else {
+        label = idx < 4 ? `D-${4 - idx}` : `D+${idx - 4}`;
+      }
+      return {
+        date: ymd,
+        label,
+        fieldName: field,
+      };
+    });
+
+    // ✅ Pivot 처리
+    const ymdToField = Object.fromEntries(finalHeaders.map(h => [h.date, h.fieldName]));
+    const grouped = {};
+
+    for (const row of rows1) {
+      const [
+        faWcCd, erpFaWcCd, faMlineCd, plant, line, modelName,
+        styleCode, partNo, partName, qty,
+        faDate, ymdCaption, ddCaption,
+        plantQty, prodQty, outQty, color,
+        distinctRow, starColumn,
+      ] = row;
+
+      const key = `${faWcCd}_${erpFaWcCd}_${faMlineCd}_${plant}_${line}_${modelName}_${styleCode || ""}_${partNo}`;
+      if (!grouped[key]) {
+        grouped[key] = {
+          FA_WC_CD: faWcCd,
+          ERP_FA_WC_CD: erpFaWcCd,
+          FA_MLINE_CD: faMlineCd,
+          PLANT: plant,
+          LINE: line,
+          MODEL_NAME: modelName,
+          STYLE_CD: styleCode || "",
+          PART_NO: partNo,
+          PART_NAME: partName,
+          COLOR: color,
+          DISTINCTROW: distinctRow,
+          STAR_COLUMN: starColumn,
+        };
+      }
+
+      const pivotKey = ymdToField[ymdCaption];
+      if (pivotKey) {
+        grouped[key][pivotKey] = qty;
+        grouped[key][`COLOR_${pivotKey}`] = color;
+        grouped[key][`SUM_${pivotKey}`] = String(qty)
+          .split("/")
+          .map((q) => parseInt(q.trim(), 10) || 0)
+          .reduce((a, b) => a + b, 0);
+      }
+    }
+
+    const resultList = Object.values(grouped).map((row) => {
+      const base = { ...row };
+      for (let i = 0; i <= 8; i++) {
+        const key = `DD_${i}`;
+        const colorKey = `COLOR_DD_${i}`;
+        const sumKey = `SUM_DD_${i}`;
+        if (!(key in base)) base[key] = "";
+        if (!(colorKey in base)) base[colorKey] = "";
+        if (!(sumKey in base)) base[sumKey] = 0;
+      }
+      return base;
+    });
+
+    res.json({ cv1: resultList, cv2: rows2, headers: finalHeaders });
+  } catch (err) {
+    console.error("❌ /oracle/escan 실패:", err);
+    res.status(500).json({ error: "Oracle escan 실패" });
+  } finally {
+    try { if (rs1) await rs1.close(); } catch (e) {}
+    try { if (rs2) await rs2.close(); } catch (e) {}
+    try { if (conn) await conn.close(); } catch (e) {}
+  }
+});
+
+//  * ✅ 2. 콤보박스 (Plant, Line) 조회 API
+// 📂 routes/oracleRoutes.js 내부
+router.get("/oracle/cbo-line", async (req, res) => {
+  const { type, plant, line } = req.query;
+
+  console.log("📦 /cbo-line 호출:", { type, plant, line });
+
+  if (!plant || typeof plant !== 'string') {
+    return res.status(400).json({ error: "❌ 유효하지 않은 Plant 파라미터" });
+  }
+
+  try {
+    const conn = await getConnection();
+
+    const result = await conn.execute(
+      `BEGIN PKG_SMT_EMB_VJ1.SELECT_STIT_LINE(:ARG_TYPE, :ARG_PLANT, :ARG_LINE, :OUT_CURSOR); END;`,
+      {
+        ARG_TYPE:   { val: type || 'Q1', type: oracledb.STRING },
+        ARG_PLANT:  { val: plant, type: oracledb.STRING },
+        ARG_LINE:   { val: line || 'ALL', type: oracledb.STRING },
+        OUT_CURSOR: { dir: oracledb.BIND_OUT, type: oracledb.CURSOR }
+      }
+    );
+
+    const rs = result.outBinds.OUT_CURSOR;
+    if (!rs) {
+      console.error("❌ OUT_CURSOR가 반환되지 않았습니다.");
+      return res.status(500).json({ error: "OUT_CURSOR 없음" });
+    }
+    const rawRows = rs ? await rs.getRows(1000) : [];
+    console.log("📤 PLANT 응답 rawRows:", rawRows);
+
+    await rs?.close();
+    await conn.close();
+    // console.log("📦 /cbo-line 호출:", { type, plant, line });
+
+    const rows = rawRows.map(row => {
+      const [code, name, stt] = row;
+      return {
+        CODE: code,
+        NAME: name,
+        STT: stt ?? 1
+      };
+    });
+
+    res.json(rows);
+  } catch (err) {
+    console.error("❌ /oracle/cbo-line 실패:", err.message);
+    res.status(500).json({ error: "Combo 로딩 실패", detail: err.message });
+  }
+});
+
+// ✅ 3. ScanDialog 테이블 조회 API 테스트  
+// 📂 routes/oracleRoutes.js 내부
+router.get("/oracle/scan-dialog", async (req, res) => {
+  
+  console.log("📦 /oracle/scan-dialog 호출");
+  const { date, plant, line, fga_mline, ups_mline, style_cd, part_seq, op_cd, itpo } = req.query;
+
+  console.log("📦 /scan-dialog 호출:", { date, plant, line, fga_mline, ups_mline, style_cd, part_seq, op_cd, itpo });
+
+  try {
+    const conn = await getConnection();
+
+    const result = await conn.execute(
+      `BEGIN PKG_SMT_EMB_VJ1.SELECT_COMPONENT_TAIL
+      (:ARG_DATE, :ARG_PLANT, :ARG_LINE,
+      :ARG_FGA_MLINE, :ARG_UPS_MLINE, :ARG_STYLE_CD,
+      :ARG_PART_SEQ, :ARG_OP_CD, :ARG_ITPO, :CV_1); END;`,
+      {
+        ARG_DATE:   { val: date , type: oracledb.STRING },
+        ARG_PLANT:  { val: plant, type: oracledb.STRING },
+        ARG_LINE:   { val: line, type: oracledb.STRING },
+        ARG_FGA_MLINE:   { val: fga_mline, type: oracledb.STRING },
+        ARG_UPS_MLINE:   { val: ups_mline, type: oracledb.STRING },
+        ARG_STYLE_CD:   { val: style_cd, type: oracledb.STRING },
+        ARG_PART_SEQ:   { val: part_seq, type: oracledb.STRING },
+        ARG_OP_CD:   { val: op_cd, type: oracledb.STRING },
+        ARG_ITPO:   { val: itpo, type: oracledb.STRING },
+        CV_1: { dir: oracledb.BIND_OUT, type: oracledb.CURSOR }
+      }
+    );
+
+    const rs = result.outBinds.CV_1;
+    const rawRows = rs ? await rs.getRows(1000) : [];
+
+    await rs?.close();
+    await conn.close();
+
+    const rows = rawRows.map(row => {
+      return {
+
+        FA_WC_CD: row[0],
+        ERP_FA_WC_CD: row[1],
+        FA_MLINE_CD: row[2],
+        SIZE_NUM: row[3],
+        PLANT: row[4],
+        LINE: row[5],
+        MODEL_NAME: row[6],
+        STYLE_CODE: row[7],
+        FA_DATE: row[8],
+        SIZE: row[9],
+        TOTAL: row[10],
+        DAY_SEQ: row[11],
+        QTY: row[12],
+        COLOR: row[13],}
+    });
+
+    res.json(rows);
+    console.log("rows:", rows);
+  } catch (err) {
+    console.error("❌ /oracle/scan-dialog 실패:", err.message);
+    res.status(500).json({ error: "Combo 로딩 실패", detail: err.message });
+  }
+});
+
+//Get DetailSub PCard data
+router.get("/oracle/detailSub/selectPcard", async (req, res) => {
+  const { date, plant, line, fga_mline, ups_mline, style_cd, part_seq, cs_size, prio_input, op_cd, itpo } = req.query;
+
+  // 잘못된 plant 값 방지
+  if (!plant || typeof plant !== 'string' || plant.length > 4) {
+    return res.status(400).json({ error: "❌ 유효하지 않은 Plant 파라미터입니다" });
+  }
+
+  try {
+    const conn = await getConnection();
+
+    const result = await conn.execute(
+      `BEGIN PKG_SMT_EMB_VJ1.SELECT_PCARD(:ARG_DATE, :ARG_PLANT, :ARG_LINE, :ARG_FGA_MLINE, :ARG_UPS_MLINE, 
+                                          :ARG_STYLE_CD, :ARG_PART_SEQ, :ARG_CS_SIZE, :ARG_PRIO_INPUT, :ARG_OP_CD, 
+                                          :ARG_ITPO,  :OUT_CURSOR); END;`,
+      {
+        ARG_DATE:   { val: date || '20250520',  type: oracledb.STRING },
+        ARG_PLANT:  { val: plant || '2110', type: oracledb.STRING },
+        ARG_LINE:   { val: line || 'FGA2D', type: oracledb.STRING },
+        ARG_FGA_MLINE:   { val: fga_mline || 'FGAD2',  type: oracledb.STRING },
+        ARG_UPS_MLINE:  { val: ups_mline || '01', type: oracledb.STRING },
+        ARG_STYLE_CD:   { val: style_cd || 'IF0668-002', type: oracledb.STRING },
+        ARG_PART_SEQ:   { val: part_seq || 'UPE02',  type: oracledb.STRING },
+        ARG_CS_SIZE:  { val: cs_size || '9T', type: oracledb.STRING },
+        ARG_PRIO_INPUT:   { val: prio_input || '3', type: oracledb.STRING },
+        ARG_OP_CD:   { val: op_cd || 'UPE',  type: oracledb.STRING },
+        ARG_ITPO:  { val: itpo || 'O', type: oracledb.STRING },
+        OUT_CURSOR: { dir: oracledb.BIND_OUT, type: oracledb.CURSOR }
+      }
+    );
+
+    const rs = result.outBinds.OUT_CURSOR;
+    const rawRows = rs ? await rs.getRows(1000) : [];
+
+    await rs?.close();
+    await conn.close();
+
+    const rows = rawRows.map(row => {
+      const [
+        code,
+        name,
+        stt,
+        c1_Qty,
+        c1_Confirm_Yn,
+        c1_PCard_Id,
+        c2_Qty,
+        c2_Confirm_Yn,
+        c2_PCard_Id
+      ] = row;
+    
+      return {
+        CODE: code,
+        NAME: name,
+        STT: stt ?? 1,
+        c1_Qty,
+        c1_Confirm_Yn,
+        c1_PCard_Id,
+        c2_Qty,
+        c2_Confirm_Yn,
+        c2_PCard_Id
+      };
+    });
+    
+    // console.log("🔍 raw row sample:", rawRows[0]);  // 중요!
+
+    res.json(rows);
+  } catch (err) {
+    console.error("❌ /oracle/detailSub/selectPcard 실패:", err);
+    res.status(500).json({ error: "Detail Sub Form 로딩 실패" });
+  }
+});
+
+//
+router.get("/oracle/stitching-input", async (req, res) => {
+  console.log("📦 /oracle/stitching-input 호출");
+
+  const { date, factory, plant, fga_mline, ups_mline, date_yn } = req.query;
+
+  try {
+    const conn = await getConnection();
+
+    const result = await conn.execute(
+      `BEGIN PKG_SMART_E_SCAN_VC_NOS.SELECT_STITCHING_SET_V04(
+        :ARG_DATE,
+        :ARG_FACTORY,
+        :ARG_PLANT,
+        :ARG_FGA_MLINE,
+        :ARG_UPS_MLINE,
+        :ARG_DATE_YN,
+        :CV_1,
+        :CV_2,
+        :CV_3
+      ); END;`,
+      {
+        ARG_DATE:     { val: date,      type: oracledb.STRING },
+        ARG_FACTORY:  { val: factory,   type: oracledb.STRING },
+        ARG_PLANT:    { val: plant,     type: oracledb.STRING },
+        ARG_FGA_MLINE:{ val: fga_mline, type: oracledb.STRING },
+        ARG_UPS_MLINE:{ val: ups_mline, type: oracledb.STRING },
+        ARG_DATE_YN:  { val: date_yn,   type: oracledb.STRING },
+        CV_1:         { dir: oracledb.BIND_OUT, type: oracledb.CURSOR },
+        CV_2:         { dir: oracledb.BIND_OUT, type: oracledb.CURSOR },
+        CV_3:         { dir: oracledb.BIND_OUT, type: oracledb.CURSOR },
+      }
+    );
+
+    const [rs1, rs2, rs3] = [result.outBinds.CV_1, result.outBinds.CV_2, result.outBinds.CV_3];
+    const [rows1, rows2, rows3] = await Promise.all([
+      rs1.getRows(1000),
+      rs2.getRows(1000),
+      rs3.getRows(1000),
+    ]);
+
+    await rs1.close();
+    await rs2.close();
+    await rs3.close();
+    await conn.close();
+
+    res.json({
+      cv1: rows1,
+      cv2: rows2,
+      cv3: rows3
+    });
+
+    console.log("✅ /oracle/stitching-input 완료");
+  } catch (err) {
+    console.error("❌ /oracle/stitching-input 실패:", err.message);
+    res.status(500).json({ error: "Stitching Input 호출 실패", detail: err.message });
+  }
+});
+
+
+router.get("/oracle/stitching-lines", async (req, res) => {
+  const { plant, fac, line = 'ALL', div } = req.query;
+
+  try {
+    const conn = await getConnection();
+    const result = await conn.execute(
+      `BEGIN PKG_SMART_E_SCAN_VC_NOS.SELECT_STIT_LINE(
+        :ARG_TYPE, :ARG_PLANT, :ARG_FAC, :ARG_LINE, :ARG_DIV, :CV_1
+      ); END;`,
+      {
+        ARG_TYPE:  'Q2',
+        ARG_PLANT: plant,
+        ARG_FAC:   fac,
+        ARG_LINE:  line,
+        ARG_DIV:   div,
+        CV_1:      { dir: oracledb.BIND_OUT, type: oracledb.CURSOR }
+      }
+    );
+
+    const rs = result.outBinds.CV_1;
+    const rows = await rs.getRows(100); // or getRow() for single
+    await rs.close();
+    await conn.close();
+
+    const lineButtons = rows.map(row => ({
+      code: row[0],
+      name: row[1]
+    }));
+
+    res.json(lineButtons);
+    // console.log("✅ /oracle/stitching-lines 완료", lineButtons);
+  } catch (err) {
+    console.error("❌ stitching-lines error:", err.message);
+    res.status(500).json({ error: "라인 목록 조회 실패" });
+  }
+});
+
+export default router;

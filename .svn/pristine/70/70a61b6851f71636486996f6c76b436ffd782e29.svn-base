@@ -1,0 +1,8 @@
+const DRAG_DROP_MULTIPLE_TEXT = "[[[{0} įţēɱş]]]";
+const messagebundle_en_US_sappsd = {
+  DRAG_DROP_MULTIPLE_TEXT
+};
+export {
+  DRAG_DROP_MULTIPLE_TEXT,
+  messagebundle_en_US_sappsd as default
+};

@@ -1,0 +1,10 @@
+node_modules
+dist
+out
+.DS_Store
+.eslintcache
+*.log*
+
+# electron-vite 임시 변환 산출물 무시
+electron.vite.config.*.mjs
+electron.vite.config.*.cjs

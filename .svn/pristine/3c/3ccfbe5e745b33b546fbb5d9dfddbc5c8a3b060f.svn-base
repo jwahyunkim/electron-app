@@ -1,0 +1,179 @@
+const ICON_ACTION_SETTINGS = "सेटिंग";
+const ICON_ACTIVATE = "सक्रिय करें";
+const ICON_ADD = "जोड़ें";
+const ICON_ADD_CONTACT = "संपर्क जोड़ें";
+const ICON_ADD_FILTER = "फ़िल्टर जोड़ें";
+const ICON_ADD_PHOTO = "फोटो जोड़ें";
+const ICON_BACK_TO_TOP = "शीर्ष पर वापस जाएं";
+const ICON_COLLAPSE = "संकुचित करें";
+const ICON_COLLAPSE_GROUP = "समूह संकुचित करें";
+const ICON_CROP = "क्रॉप";
+const ICON_DECLINE = "अस्वीकृत करें";
+const ICON_DELETE = "हटाएँ";
+const ICON_DISPLAY = "प्रदर्शन करें";
+const ICON_DOWN = "डाउन";
+const ICON_DOWNLOAD = "डाउनलोड करें";
+const ICON_DRILL_DOWN = "ड्रिल डाउन";
+const ICON_DRILL_UP = "ड्रिल अप";
+const ICON_ERROR = "त्रुटि";
+const ICON_EXIT_FULL_SCREEN = "पूर्ण स्क्रीन से बाहर निकलें";
+const ICON_EXPAND = "विस्तृत करें";
+const ICON_EXPAND_GROUP = "समूह विस्तृत करें";
+const ICON_FILTER = "फ़िल्टर";
+const ICON_FLAG = "ध्वजांकित करें";
+const ICON_FORWARD = "अग्रेषित करें";
+const ICON_FULL_SCREEN = "पूर्ण स्क्रिन दर्ज करें";
+const ICON_GENERATE_SHORTCUT = "शॉर्टकट बनाएं";
+const ICON_GROUP_2 = "समूह";
+const ICON_HIDE = "छिपाएं";
+const ICON_IPAD = "टैबलेट";
+const ICON_IPHONE = "फ़ोन";
+const ICON_LAPTOP = "लैपटॉप";
+const ICON_MESSAGE_ERROR = "त्रुटि";
+const ICON_MESSAGE_INFORMATION = "जानकारी";
+const ICON_MESSAGE_SUCCESS = "सफल";
+const ICON_MESSAGE_WARNING = "चेतावनी";
+const ICON_MOVE = "हटाएँ";
+const ICON_MULTI_SELECT = "बहु-चयन";
+const ICON_NAV_BACK = "वापस नेविगेट करें";
+const ICON_OVERFLOW = "अधिक";
+const ICON_REDO = "फिर से करें";
+const ICON_REFRESH = "रीफ़्रेश करें";
+const ICON_RESIZE = "आकार बदलें";
+const ICON_RESIZE_HORIZONTAL = "क्षैतिज आकार बदलें";
+const ICON_RESIZE_VERTICAL = "अनुलंब का आकार बदलें";
+const ICON_RESPONSE = "प्रत्युत्तर";
+const ICON_SAVE = "सहेजें";
+const ICON_SEARCH = "खोजें";
+const ICON_SETTINGS = "सेटिंग";
+const ICON_SHOW = "दिखाएं";
+const ICON_SORT = "क्रमित करें";
+const ICON_SORT_ASCENDING = "आरोही क्रमित करें";
+const ICON_SORT_DESCENDING = "अवरोही क्रमित करें";
+const ICON_SYNCHRONIZE = "सिंक्रनाइज़";
+const ICON_UNDO = "पूर्ववत करें";
+const ICON_UP = "ऊपर";
+const ICON_UPLOAD = "अपलोड करें";
+const ICON_ZOOM_IN = "ज़ूम इन";
+const ICON_ZOOM_OUT = "ज़ूम आउट";
+const messagebundle_hi = {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT
+};
+export {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT,
+  messagebundle_hi as default
+};

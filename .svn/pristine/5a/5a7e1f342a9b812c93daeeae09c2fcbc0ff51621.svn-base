@@ -1,0 +1,179 @@
+const ICON_ACTION_SETTINGS = "Ayarlar";
+const ICON_ACTIVATE = "Etkinleştir";
+const ICON_ADD = "Ekle";
+const ICON_ADD_CONTACT = "İlgili kişi ekle";
+const ICON_ADD_FILTER = "Filtre ekle";
+const ICON_ADD_PHOTO = "Fotoğraf ekle";
+const ICON_BACK_TO_TOP = "Başlangıç";
+const ICON_COLLAPSE = "Sıkıştır";
+const ICON_COLLAPSE_GROUP = "Grubu daralt";
+const ICON_CROP = "Kes";
+const ICON_DECLINE = "Reddet";
+const ICON_DELETE = "Sil";
+const ICON_DISPLAY = "Görüntüle";
+const ICON_DOWN = "Aşağı";
+const ICON_DOWNLOAD = "İndir";
+const ICON_DRILL_DOWN = "Ayrıntı seviyesini artır";
+const ICON_DRILL_UP = "Ayrıntı seviyesini azalt";
+const ICON_ERROR = "Hata";
+const ICON_EXIT_FULL_SCREEN = "Tam ekran kipini sonlandır";
+const ICON_EXPAND = "Genişlet";
+const ICON_EXPAND_GROUP = "Grubu genişlet";
+const ICON_FILTER = "Filtrele";
+const ICON_FLAG = "Seç";
+const ICON_FORWARD = "İlet";
+const ICON_FULL_SCREEN = "Tam ekranı gir";
+const ICON_GENERATE_SHORTCUT = "Bağlantı yarat";
+const ICON_GROUP_2 = "Gruplama";
+const ICON_HIDE = "Gizleme";
+const ICON_IPAD = "Tablet";
+const ICON_IPHONE = "Telefon";
+const ICON_LAPTOP = "Dizüstü bilgisayar";
+const ICON_MESSAGE_ERROR = "Hata";
+const ICON_MESSAGE_INFORMATION = "Bilgi";
+const ICON_MESSAGE_SUCCESS = "Başarılı";
+const ICON_MESSAGE_WARNING = "Uyarı";
+const ICON_MOVE = "Taşı";
+const ICON_MULTI_SELECT = "Çoklu seçim";
+const ICON_NAV_BACK = "Dolaşmaya geri dön";
+const ICON_OVERFLOW = "Daha fazla";
+const ICON_REDO = "Yinele";
+const ICON_REFRESH = "Güncelle";
+const ICON_RESIZE = "Büyüklüğü değiştir";
+const ICON_RESIZE_HORIZONTAL = "Büyüklüğü yatay değiştir";
+const ICON_RESIZE_VERTICAL = "Büyüklüğü dikey değiştir";
+const ICON_RESPONSE = "Cevapla";
+const ICON_SAVE = "Kaydet";
+const ICON_SEARCH = "Ara";
+const ICON_SETTINGS = "Ayarlar";
+const ICON_SHOW = "Göster";
+const ICON_SORT = "Sırala";
+const ICON_SORT_ASCENDING = "Artan düzende sırala";
+const ICON_SORT_DESCENDING = "Azalan düzende sırala";
+const ICON_SYNCHRONIZE = "Senkronize et";
+const ICON_UNDO = "Geri al";
+const ICON_UP = "Yukarı";
+const ICON_UPLOAD = "Yukarı yükle";
+const ICON_ZOOM_IN = "Yakınlaştır";
+const ICON_ZOOM_OUT = "Uzaklaştır";
+const messagebundle_tr = {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT
+};
+export {
+  ICON_ACTION_SETTINGS,
+  ICON_ACTIVATE,
+  ICON_ADD,
+  ICON_ADD_CONTACT,
+  ICON_ADD_FILTER,
+  ICON_ADD_PHOTO,
+  ICON_BACK_TO_TOP,
+  ICON_COLLAPSE,
+  ICON_COLLAPSE_GROUP,
+  ICON_CROP,
+  ICON_DECLINE,
+  ICON_DELETE,
+  ICON_DISPLAY,
+  ICON_DOWN,
+  ICON_DOWNLOAD,
+  ICON_DRILL_DOWN,
+  ICON_DRILL_UP,
+  ICON_ERROR,
+  ICON_EXIT_FULL_SCREEN,
+  ICON_EXPAND,
+  ICON_EXPAND_GROUP,
+  ICON_FILTER,
+  ICON_FLAG,
+  ICON_FORWARD,
+  ICON_FULL_SCREEN,
+  ICON_GENERATE_SHORTCUT,
+  ICON_GROUP_2,
+  ICON_HIDE,
+  ICON_IPAD,
+  ICON_IPHONE,
+  ICON_LAPTOP,
+  ICON_MESSAGE_ERROR,
+  ICON_MESSAGE_INFORMATION,
+  ICON_MESSAGE_SUCCESS,
+  ICON_MESSAGE_WARNING,
+  ICON_MOVE,
+  ICON_MULTI_SELECT,
+  ICON_NAV_BACK,
+  ICON_OVERFLOW,
+  ICON_REDO,
+  ICON_REFRESH,
+  ICON_RESIZE,
+  ICON_RESIZE_HORIZONTAL,
+  ICON_RESIZE_VERTICAL,
+  ICON_RESPONSE,
+  ICON_SAVE,
+  ICON_SEARCH,
+  ICON_SETTINGS,
+  ICON_SHOW,
+  ICON_SORT,
+  ICON_SORT_ASCENDING,
+  ICON_SORT_DESCENDING,
+  ICON_SYNCHRONIZE,
+  ICON_UNDO,
+  ICON_UP,
+  ICON_UPLOAD,
+  ICON_ZOOM_IN,
+  ICON_ZOOM_OUT,
+  messagebundle_tr as default
+};

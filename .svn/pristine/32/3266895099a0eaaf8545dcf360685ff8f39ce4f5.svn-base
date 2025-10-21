@@ -1,0 +1,416 @@
+const TARGET = "[[[Ţąŗğēţ∙∙∙∙∙∙∙∙]]]";
+const DEVIATION = "[[[Ďēʋįąţįŏŋ∙∙∙∙∙]]]";
+const ABORT = "[[[Āƃŏŗţ∙∙∙∙∙∙∙∙∙]]]";
+const CANCEL = "[[[Ĉąŋċēĺ∙∙∙∙∙∙∙∙]]]";
+const CLOSE = "[[[Ĉĺŏşē∙∙∙∙∙∙∙∙∙]]]";
+const DELETE = "[[[Ďēĺēţē∙∙∙∙∙∙∙∙]]]";
+const IGNORE = "[[[Ĭğŋŏŗē∙∙∙∙∙∙∙∙]]]";
+const NO = "[[[Ńŏ∙∙]]]";
+const OK = "[[[ŎĶ∙∙]]]";
+const RETRY = "[[[Řēţŗŷ∙∙∙∙∙∙∙∙∙]]]";
+const YES = "[[[Ŷēş∙]]]";
+const CLEAR_SORTING = "[[[Ĉĺēąŗ Ŝŏŗţįŋğ∙∙∙∙∙∙]]]";
+const SORT_ASCENDING = "[[[Ŝŏŗţ Āşċēŋƌįŋğ∙∙∙∙∙]]]";
+const SORT_DESCENDING = "[[[Ŝŏŗţ Ďēşċēŋƌįŋğ∙∙∙∙]]]";
+const GROUP = "[[[Ģŗŏűρ∙∙∙∙∙∙∙∙∙]]]";
+const GROUPED = "[[[Ģŗŏűρēƌ∙∙∙∙∙∙∙]]]";
+const UNGROUP = "[[[Ůŋğŗŏűρ∙∙∙∙∙∙∙]]]";
+const DRAG_TO_RESIZE = "[[[Ďŗąğ ţŏ ŗēşįžē∙∙∙∙∙]]]";
+const PLEASE_WAIT = "[[[Ƥĺēąşē ŵąįţ∙∙∙∙∙∙∙∙]]]";
+const CONFIRMATION = "[[[Ĉŏŋƒįŗɱąţįŏŋ∙∙∙∙∙∙∙]]]";
+const ERROR = "[[[Ĕŗŗŏŗ∙∙∙∙∙∙∙∙∙]]]";
+const INFORMATION = "[[[Ĭŋƒŏŗɱąţįŏŋ∙∙∙∙∙∙∙∙]]]";
+const SUCCESS = "[[[Ŝűċċēşş∙∙∙∙∙∙∙]]]";
+const WARNING = "[[[Ŵąŗŋįŋğ∙∙∙∙∙∙∙]]]";
+const SHOW_LESS = "[[[Ŝĥŏŵ Ļēşş∙∙∙∙∙]]]";
+const SHOW_MORE = "[[[Ŝĥŏŵ Μŏŗē∙∙∙∙∙]]]";
+const EXPAND_GROUP = "[[[Ĕχρąŋƌ Ģŗŏűρ∙∙∙∙∙∙∙]]]";
+const COLLAPSE_GROUP = "[[[Ĉŏĺĺąρşē Ģŗŏűρ∙∙∙∙∙]]]";
+const SHOW_FILTER_BAR = "[[[Ŝĥŏŵ Ƒįĺţēŗ Ɓąŗ∙∙∙∙]]]";
+const HIDE_FILTER_BAR = "[[[Ĥįƌē Ƒįĺţēŗ Ɓąŗ∙∙∙∙]]]";
+const CLEAR = "[[[Ĉĺēąŗ∙∙∙∙∙∙∙∙∙]]]";
+const RESTORE = "[[[Řēşţŏŗē∙∙∙∙∙∙∙]]]";
+const FILTERS = "[[[Ƒįĺţēŗş∙∙∙∙∙∙∙]]]";
+const ADAPT_FILTERS = "[[[Āƌąρţ Ƒįĺţēŗş∙∙∙∙∙∙]]]";
+const GO = "[[[Ģŏ∙∙]]]";
+const SAVE = "[[[Ŝąʋē]]]";
+const SHOW_ON_FILTER_BAR = "[[[Ŝĥŏŵ ŏŋ Ƒįĺţēŗ Ɓąŗ∙∙∙∙∙∙]]]";
+const BASIC = "[[[Ɓąşįċ∙∙∙∙∙∙∙∙∙]]]";
+const SEARCH_FOR_FILTERS = "[[[Ŝēąŗċĥ ƒŏŗ Ƒįĺţēŗş∙∙∙∙∙∙]]]";
+const FIELDS_BY_ATTRIBUTE = "[[[Ŝĥŏŵ Ƒįĺţēŗş ƃŷ Āţţŗįƃűţē∙∙∙∙∙∙∙]]]";
+const VISIBLE = "[[[Ʋįşįƃĺē∙∙∙∙∙∙∙]]]";
+const ACTIVE = "[[[Āċţįʋē∙∙∙∙∙∙∙∙]]]";
+const VISIBLE_AND_ACTIVE = "[[[Ʋįşįƃĺē ąŋƌ Āċţįʋē∙∙∙∙∙∙]]]";
+const MANDATORY = "[[[Μąŋƌąţŏŗŷ∙∙∙∙∙]]]";
+const LIST_VIEW = "[[[Ļįşţ Ʋįēŵ∙∙∙∙∙]]]";
+const GROUP_VIEW = "[[[Ģŗŏűρ Ʋįēŵ∙∙∙∙]]]";
+const SHOW_VALUES = "[[[Ŝĥŏŵ Ʋąĺűēş∙∙∙∙∙∙∙∙]]]";
+const HIDE_VALUES = "[[[Ĥįƌē Ʋąĺűēş∙∙∙∙∙∙∙∙]]]";
+const FIELD = "[[[Ƒįēĺƌ∙∙∙∙∙∙∙∙∙]]]";
+const FILTER = "[[[Ƒįĺţēŗ∙∙∙∙∙∙∙∙]]]";
+const FILTER_IS_ACTIVE = "[[[Ƒįĺţēŗ įş ąċţįʋē∙∙∙∙∙∙∙∙]]]";
+const COLLAPSE_HEADER = "[[[Ĉŏĺĺąρşē Ĥēąƌēŗ∙∙∙∙]]]";
+const EXPAND_HEADER = "[[[Ĕχρąŋƌ Ĥēąƌēŗ∙∙∙∙∙∙]]]";
+const PIN_HEADER = "[[[Ƥįŋ Ĥēąƌēŗ∙∙∙∙]]]";
+const UNPIN_HEADER = "[[[Ůŋρįŋ Ĥēąƌēŗ∙∙∙∙∙∙∙]]]";
+const SEPARATOR = "[[[Ŝēρąŗąţŏŗ∙∙∙∙∙]]]";
+const AVAILABLE_ACTIONS = "[[[Āʋąįĺąƃĺē Āċţįŏŋş∙∙∙∙∙∙∙]]]";
+const X_OF_Y = "[[[Ĭţēɱ {0} ŏƒ {1}]]]";
+const MY_VIEWS = "[[[Μŷ Ʋįēŵş∙∙∙∙∙∙]]]";
+const SAVE_VIEW = "[[[Ŝąʋē Ʋįēŵ∙∙∙∙∙]]]";
+const MANAGE_VIEWS = "[[[Μąŋąğē Ʋįēŵş∙∙∙∙∙∙∙]]]";
+const VIEW = "[[[Ʋįēŵ]]]";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "[[[Ţĥē ʋįēŵ ŋąɱē ąĺŗēąƌŷ ēχįşţş. Ƥĺēąşē ēŋţēŗ ą ƌįƒƒēŗēŋţ ŋąɱē.∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const SPECIFY_VIEW_NAME = "[[[Ƥĺēąşē şρēċįƒŷ ą ʋįēŵ ŋąɱē.∙∙∙∙∙∙∙∙]]]";
+const SET_AS_DEFAULT = "[[[Ŝēţ ąş Ďēƒąűĺţ∙∙∙∙∙]]]";
+const PUBLIC = "[[[Ƥűƃĺįċ∙∙∙∙∙∙∙∙]]]";
+const APPLY_AUTOMATICALLY = "[[[Āρρĺŷ Āűţŏɱąţįċąĺĺŷ∙∙∙∙∙]]]";
+const SHARING = "[[[Ŝĥąŗįŋğ∙∙∙∙∙∙∙]]]";
+const DEFAULT = "[[[Ďēƒąűĺţ∙∙∙∙∙∙∙]]]";
+const CREATED_BY = "[[[Ĉŗēąţēƌ Ɓŷ∙∙∙∙]]]";
+const MANAGE = "[[[Μąŋąğē∙∙∙∙∙∙∙∙]]]";
+const PRIVATE = "[[[Ƥŗįʋąţē∙∙∙∙∙∙∙]]]";
+const MARK_AS_STANDARD = "[[[Ůşē ąş Ŝţąŋƌąŗƌ Ʋįēŵ∙∙∙∙]]]";
+const MARK_AS_FAVORITE = "[[[Μąŗķ ąş Ƒąʋŏŗįţē Ʋįēŵ∙∙∙∙∙]]]";
+const DELETE_VIEW = "[[[Ďēĺēţē Ʋįēŵ∙∙∙∙∙∙∙∙]]]";
+const SELECT_VIEW = "[[[Ŝēĺēċţ Ʋįēŵ∙∙∙∙∙∙∙∙]]]";
+const SEARCH_VARIANT = "[[[Ŝēąŗċĥ Ʋąŗįąŋţ∙∙∙∙∙]]]";
+const ALL = "[[[Āĺĺ∙]]]";
+const SEARCH = "[[[Ŝēąŗċĥ∙∙∙∙∙∙∙∙]]]";
+const SAVE_AS = "[[[Ŝąʋē Āş∙∙∙∙∙∙∙]]]";
+const RESET = "[[[Řēşēţ∙∙∙∙∙∙∙∙∙]]]";
+const SELECTED_AS_FAVORITE = "[[[Ŝēĺēċţēƌ ąş Ƒąʋŏŗįţē∙∙∙∙]]]";
+const UNSELECTED_AS_FAVORITE = "[[[Ůŋşēĺēċţēƌ ąş Ƒąʋŏŗįţē∙∙∙∙∙]]]";
+const SELECT = "[[[Ŝēĺēċţ∙∙∙∙∙∙∙∙]]]";
+const SELECTED = "[[[Ŝēĺēċţēƌ∙∙∙∙∙∙]]]";
+const PRESS_ARROW_KEYS_TO_MOVE = "[[[Ƥŗēşş ĀŘŘŎŴ ķēŷş ţŏ ɱŏʋē∙∙∙∙∙∙]]]";
+const LIST_NO_DATA = "[[[Ńŏ ƌąţą∙∙∙∙∙∙∙]]]";
+const EXPAND_NODE = "[[[Ĕχρąŋƌ Ńŏƌē∙∙∙∙∙∙∙∙]]]";
+const COLLAPSE_NODE = "[[[Ĉŏĺĺąρşē Ńŏƌē∙∙∙∙∙∙]]]";
+const EXPAND_PRESS_SPACE = "[[[Ţŏ ēχρąŋƌ ţĥē ŗŏŵ, ρŗēşş ţĥē şρąċēƃąŗ.∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const COLLAPSE_PRESS_SPACE = "[[[Ţŏ ċŏĺĺąρşē ţĥē ŗŏŵ, ρŗēşş ţĥē şρąċēƃąŗ.∙∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const ROW_EXPANDED = "[[[Řŏŵ ēχρąŋƌēƌ∙∙∙∙∙∙∙]]]";
+const ROW_COLLAPSED = "[[[Řŏŵ ċŏĺĺąρşēƌ∙∙∙∙∙∙]]]";
+const ROW_X_EXPANDED = "[[[Řŏŵ {0} ēχρąŋƌēƌ]]]";
+const ROW_X_COLLAPSED = "[[[Řŏŵ {0} ċŏĺĺąρşēƌ]]]";
+const SELECT_PRESS_SPACE = "[[[Ţŏ şēĺēċţ ţĥē ŗŏŵ, ρŗēşş ţĥē şρąċēƃąŗ.∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const UNSELECT_PRESS_SPACE = "[[[Ţŏ ƌēşēĺēċţ ţĥē ŗŏŵ, ρŗēşş ţĥē şρąċēƃąŗ.∙∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const SELECT_ALL_PRESS_SPACE = "[[[Ţŏ şēĺēċţ ąĺĺ ŗŏŵş, ρŗēşş ţĥē şρąċēƃąŗ.∙∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const UNSELECT_ALL_PRESS_SPACE = "[[[Ţŏ ƌēşēĺēċţ ąĺĺ ŗŏŵş, ρŗēşş ţĥē şρąċēƃąŗ.∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const INVALID_TABLE = "[[[Ĭŋʋąĺįƌ Ţąƃĺē∙∙∙∙∙∙]]]";
+const FILTERED = "[[[Ƒįĺţēŗēƌ∙∙∙∙∙∙]]]";
+const ARIA_DESC_CARD_HEADER = "[[[Ĉąŗƌ Ĥēąƌēŗ∙∙∙∙∙∙∙∙]]]";
+const SEMANTIC_COLOR_CRITICAL = "[[[Ŵąŗŋįŋğ∙∙∙∙∙∙∙]]]";
+const SEMANTIC_COLOR_GOOD = "[[[Ģŏŏƌ]]]";
+const SEMANTIC_COLOR_NEUTRAL = "[[[Ńēűţŗąĺ∙∙∙∙∙∙∙]]]";
+const SEMANTIC_COLOR_ERROR = "[[[Ĉŗįţįċąĺ∙∙∙∙∙∙]]]";
+const NUMERICCONTENT_DEVIATION_UP = "[[[Āşċēŋƌįŋğ∙∙∙∙∙]]]";
+const NUMERICCONTENT_DEVIATION_DOWN = "[[[Ďēşċēŋƌįŋğ∙∙∙∙]]]";
+const ARIA_OBJ_STATUS_DESC = "[[[Ŏƃĵēċţ Ŝţąţűş Ɓűţţŏŋ∙∙∙∙]]]";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "[[[Ŏƃĵēċţ Ŝţąţűş∙∙∙∙∙∙]]]";
+const INDICATION_COLOR = "[[[Ĭŋƌįċąţįŏŋ Ĉŏĺŏŗ∙∙∙∙∙∙∙∙]]]";
+const EMPTY_VALUE = "[[[Ĕɱρţŷ Ʋąĺűē∙∙∙∙∙∙∙∙]]]";
+const SELECT_ALL = "[[[Ŝēĺēċţ Āĺĺ∙∙∙∙]]]";
+const DESELECT_ALL = "[[[Ďēşēĺēċţ Āĺĺ∙∙∙∙∙∙∙]]]";
+const SHOW_FULL_TEXT = "[[[Ŝĥŏŵ ţĥē ƒűĺĺ ţēχţ∙∙∙∙∙∙]]]";
+const CLOSE_POPOVER = "[[[Ĉĺŏşē ţĥē ρŏρŏʋēŗ∙∙∙∙∙∙∙]]]";
+const FILTER_DIALOG_RESET_WARNING = "[[[Ŷŏű ąŗē ąƃŏűţ ţŏ ŗēşēţ ąĺĺ ţĥē ċĥąŋğēş ŷŏű ɱąƌē ţŏ ŷŏűŗ ʋįēŵ şēţţįŋğş ąŋƌ ŗēʋēŗţ ţŏ ţĥē şēĺēċţēƌ ʋįēŵ.∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const MOVE_TO_TOP = "[[[Μŏʋē ţŏ Ţŏρ{0}]]]";
+const MOVE_UP = "[[[Μŏʋē Ůρ{0}]]]";
+const MOVE_DOWN = "[[[Μŏʋē Ďŏŵŋ{0}]]]";
+const MOVE_TO_BOTTOM = "[[[Μŏʋē ţŏ Ɓŏţţŏɱ{0}]]]";
+const FILTER_DIALOG_REORDER_FILTERS = "[[[Ƥŗēşş {0} ąŋƌ űρ ŏŗ ƌŏŵŋ ķēŷ ţŏ ɱŏʋē.]]]";
+const DOWN_ARROW = "[[[Ďŏŵŋ Āŗŗŏŵ∙∙∙∙]]]";
+const UP_ARROW = "[[[Ůρ Āŗŗŏŵ∙∙∙∙∙∙]]]";
+const NO_DATA_FILTERED = "[[[Ńŏ ƌąţą ƒŏűŋƌ. Ţŗŷ ąƌĵűşţįŋğ ţĥē ƒįĺţēŗ şēţţįŋğş.∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]]]";
+const WITH_X_ITEMS = "[[[ŵįţĥ {0} įţēɱş]]]";
+const ERROR_TYPE = "[[[Ĕŗŗŏŗ Ţŷρē∙∙∙∙]]]";
+const WARNING_TYPE = "[[[Ŵąŗŋįŋğ Ţŷρē∙∙∙∙∙∙∙]]]";
+const INFORMATION_TYPE = "[[[Ĭŋƒŏŗɱąţįŏŋ Ţŷρē∙∙∙∙∙∙∙∙]]]";
+const SUCCESS_TYPE = "[[[Ŝűċċēşş Ţŷρē∙∙∙∙∙∙∙]]]";
+const MESSAGE_TYPES = "[[[Μēşşąğē Ţŷρēş∙∙∙∙∙∙]]]";
+const NAVIGATE_BACK = "[[[Ńąʋįğąţē Ɓąċķ∙∙∙∙∙∙]]]";
+const MESSAGE_DETAILS = "[[[Μēşşąğē Ďēţąįĺş∙∙∙∙]]]";
+const HAS_DETAILS = "[[[Ĥąş Ďēţąįĺş∙∙∙∙∙∙∙∙]]]";
+const COUNTER = "[[[Ĉŏűŋţēŗ∙∙∙∙∙∙∙]]]";
+const SELECTED_ITEMS = "[[[Ŝēĺēċţēƌ Ĭţēɱş {0}]]]";
+const INCLUDES_X = "[[[Ĭŋċĺűƌēş {0}]]]";
+const messagebundle_en_US_sappsd = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_en_US_sappsd as default
+};

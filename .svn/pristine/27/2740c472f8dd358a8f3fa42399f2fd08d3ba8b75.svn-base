@@ -1,0 +1,416 @@
+const TARGET = "Mål";
+const DEVIATION = "Avvikelse";
+const ABORT = "Avbryt";
+const CANCEL = "Annullera";
+const CLOSE = "Stäng";
+const DELETE = "Radera";
+const IGNORE = "Ignorera";
+const NO = "Nej";
+const OK = "OK";
+const RETRY = "Upprepa";
+const YES = "Ja";
+const CLEAR_SORTING = "Rensa sortering";
+const SORT_ASCENDING = "Sortera stigande";
+const SORT_DESCENDING = "Sortera fallande";
+const GROUP = "Gruppera";
+const GROUPED = "Grupperade";
+const UNGROUP = "Ta bort gruppering";
+const DRAG_TO_RESIZE = "Dra för att ändra storlek";
+const PLEASE_WAIT = "Vänta";
+const CONFIRMATION = "Bekräftelse";
+const ERROR = "Fel";
+const INFORMATION = "Information";
+const SUCCESS = "Lyckades";
+const WARNING = "Varning";
+const SHOW_LESS = "Visa mindre";
+const SHOW_MORE = "Visa mer";
+const EXPAND_GROUP = "Expandera grupp";
+const COLLAPSE_GROUP = "Komprimera grupp";
+const SHOW_FILTER_BAR = "Visa filterfält";
+const HIDE_FILTER_BAR = "Dölj filterfält";
+const CLEAR = "Rensa";
+const RESTORE = "Återställ";
+const FILTERS = "Filter";
+const ADAPT_FILTERS = "Anpassa filter";
+const GO = "OK";
+const SAVE = "Spara";
+const SHOW_ON_FILTER_BAR = "Visa på filterfält";
+const BASIC = "Grundläggande";
+const SEARCH_FOR_FILTERS = "Sök efter filter";
+const FIELDS_BY_ATTRIBUTE = "Visa filter efter attribut";
+const VISIBLE = "Synliga";
+const ACTIVE = "Aktiva";
+const VISIBLE_AND_ACTIVE = "Synliga och aktiva";
+const MANDATORY = "Obligatoriska";
+const LIST_VIEW = "Listvy";
+const GROUP_VIEW = "Gruppvy";
+const SHOW_VALUES = "Visa värden";
+const HIDE_VALUES = "Dölj värden";
+const FIELD = "Fält";
+const FILTER = "Filter";
+const FILTER_IS_ACTIVE = "Filter är aktivt";
+const COLLAPSE_HEADER = "Komprimera huvud";
+const EXPAND_HEADER = "Expandera huvud";
+const PIN_HEADER = "Fäst huvud";
+const UNPIN_HEADER = "Lossa huvud";
+const SEPARATOR = "Skiljetecken";
+const AVAILABLE_ACTIONS = "Tillgängliga åtgärder";
+const X_OF_Y = "Position {0} av {1}";
+const MY_VIEWS = "Mina vyer";
+const SAVE_VIEW = "Spara vy";
+const MANAGE_VIEWS = "Hantera vyer";
+const VIEW = "Vy";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Vynamnet finns redan. Ange ett annat namn.";
+const SPECIFY_VIEW_NAME = "Ange ett vynamn.";
+const SET_AS_DEFAULT = "Ange som standard";
+const PUBLIC = "Offentlig";
+const APPLY_AUTOMATICALLY = "Tillämpa automatiskt";
+const SHARING = "Delning";
+const DEFAULT = "Standard";
+const CREATED_BY = "Uppläggning av";
+const MANAGE = "Hantera";
+const PRIVATE = "Privat";
+const MARK_AS_STANDARD = "Använd som standardvy";
+const MARK_AS_FAVORITE = "Markera som favoritvy";
+const DELETE_VIEW = "Radera vy";
+const SELECT_VIEW = "Välj vy";
+const SEARCH_VARIANT = "Sökvariant";
+const ALL = "Alla";
+const SEARCH = "Sök";
+const SAVE_AS = "Spara som";
+const RESET = "Återställ";
+const SELECTED_AS_FAVORITE = "Markerad som favorit";
+const UNSELECTED_AS_FAVORITE = "Avmarkerad som favorit";
+const SELECT = "Markera";
+const SELECTED = "Markerad";
+const PRESS_ARROW_KEYS_TO_MOVE = "Använd piltangenterna för att flytta";
+const LIST_NO_DATA = "Inga data";
+const EXPAND_NODE = "Expandera nod";
+const COLLAPSE_NODE = "Komprimera nod";
+const EXPAND_PRESS_SPACE = "Tryck på blanksteg för att expandera raden.";
+const COLLAPSE_PRESS_SPACE = "Tryck på blanksteg för att komprimera raden.";
+const ROW_EXPANDED = "Rad expanderad";
+const ROW_COLLAPSED = "Rad komprimerad";
+const ROW_X_EXPANDED = "Rad {0} expanderad";
+const ROW_X_COLLAPSED = "Rad {0} komprimerad";
+const SELECT_PRESS_SPACE = "Tryck på blanksteg för att markera raden.";
+const UNSELECT_PRESS_SPACE = "Tryck på blanksteg för att avmarkera raden.";
+const SELECT_ALL_PRESS_SPACE = "Tryck på blanksteg för att markera alla rader.";
+const UNSELECT_ALL_PRESS_SPACE = "Tryck på blanksteg för att avmarkera alla rader.";
+const INVALID_TABLE = "Ogiltig tabell";
+const FILTERED = "Filtrerade";
+const ARIA_DESC_CARD_HEADER = "Korthuvud";
+const SEMANTIC_COLOR_CRITICAL = "Varning";
+const SEMANTIC_COLOR_GOOD = "Bra";
+const SEMANTIC_COLOR_NEUTRAL = "Neutral";
+const SEMANTIC_COLOR_ERROR = "Kritisk";
+const NUMERICCONTENT_DEVIATION_UP = "Stigande";
+const NUMERICCONTENT_DEVIATION_DOWN = "Fallande";
+const ARIA_OBJ_STATUS_DESC = "Objektstatusknapp";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Objektstatus";
+const INDICATION_COLOR = "Indikeringsfärg 1";
+const EMPTY_VALUE = "Tomt värde";
+const SELECT_ALL = "Markera alla";
+const DESELECT_ALL = "Avmarkera alla";
+const SHOW_FULL_TEXT = "Visa fulltext";
+const CLOSE_POPOVER = "Stäng popover";
+const FILTER_DIALOG_RESET_WARNING = "Du är på väg att återställa alla ändringar du gjort av dina vyinställningar och återgå till den valda vyn.";
+const MOVE_TO_TOP = "Flytta överst{0}";
+const MOVE_UP = "Flytta uppåt{0}";
+const MOVE_DOWN = "Flytta nedåt{0}";
+const MOVE_TO_BOTTOM = "Flytta underst{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Tryck på {0} och uppåt- eller nedåttangent för att flytta.";
+const DOWN_ARROW = "Nedåtpil";
+const UP_ARROW = "Uppåtpil";
+const NO_DATA_FILTERED = "Inga data hittades. Anpassa filterinställningarna.";
+const WITH_X_ITEMS = "med {0} positioner";
+const ERROR_TYPE = "Typ av fel";
+const WARNING_TYPE = "Typ av varning";
+const INFORMATION_TYPE = "Typ av information";
+const SUCCESS_TYPE = "Typ av resultat";
+const MESSAGE_TYPES = "Meddelandetyper";
+const NAVIGATE_BACK = "Gå tillbaka";
+const MESSAGE_DETAILS = "Meddelandedetaljer";
+const HAS_DETAILS = "Har detaljer";
+const COUNTER = "Räknare";
+const SELECTED_ITEMS = "Valda poster {0}";
+const INCLUDES_X = "Inkluderar {0}";
+const messagebundle_sv = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_sv as default
+};

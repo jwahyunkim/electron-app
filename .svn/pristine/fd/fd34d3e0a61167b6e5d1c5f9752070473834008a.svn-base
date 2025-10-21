@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SETTING>
+  <Common>
+    <INPUT>N</INPUT>
+    <PLANT_CD>C200</PLANT_CD>
+  </Common>
+
+  <SAP>
+    <TOKEN_URL>https://dmc-for-dev-gzkiwpb4.authentication.us20.hana.ondemand.com/oauth/token</TOKEN_URL>
+    <CLIENT_ID>sb-e073cc8c-e3bd-4fb7-b152-9e141fb25a5a!b31643|dmc-services!b257</CLIENT_ID>
+    <CLIENT_SECRET>b347225a-95fa-4098-829e-0be2508a0120$014oiS3md3mGHXYf2O0gtIINl-cFc-0t9ZAf9nAuV4E=</CLIENT_SECRET>
+    <API_BASE>https://api.us20.dmc.cloud.sap</API_BASE>
+    <!-- <PLANT>C200</PLANT> -->
+  </SAP>
+
+  <PRINT>
+    <PASSCARD>
+      <DEVICE_NAME>BIXOLON SRP-330II</DEVICE_NAME>
+
+      <!-- 프리뷰/크기 -->
+      <PREVIEW>false</PREVIEW>
+      <PREVIEW_COUNT_AS_PRINT>N</PREVIEW_COUNT_AS_PRINT>
+      <WIDTH_MM>78</WIDTH_MM>
+      <HEIGHT_MM>50</HEIGHT_MM>
+      <PREVIEW_ZOOM>1.00</PREVIEW_ZOOM>
+
+      <!-- 상단 위치 튜닝 -->
+      <TOP_PAD_DELTA_CM>-0.3</TOP_PAD_DELTA_CM>
+      <TOP_SHIFT_CM></TOP_SHIFT_CM>
+
+      <!-- 급지/여백 -->
+      <FEED_COMP_MM>0</FEED_COMP_MM>
+      <PAD_LEFT_CM>0.0</PAD_LEFT_CM>
+      <PAD_RIGHT_CM>0.40</PAD_RIGHT_CM>
+      <RIGHT_INSET_CM>0.15</RIGHT_INSET_CM>
+      <LINE_W_CM>0.03</LINE_W_CM>
+
+      <!-- QR -->
+      <QR_MARGIN>2</QR_MARGIN>
+      <QR_SCALE>10</QR_SCALE>
+      <QR_EC_LEVEL>M</QR_EC_LEVEL>
+
+      <!-- 스풀/검증 설정 (연속 출력 최적화) -->
+      <VERIFY_MODE>spool</VERIFY_MODE>
+      <PREFLIGHT_STRICT>false</PREFLIGHT_STRICT>
+      <SPOOL_WATCH>true</SPOOL_WATCH>
+      <SPOOL_POLL_MS>250</SPOOL_POLL_MS>              <!-- 큐 폴링 0.25s -->
+      <SPOOL_TIMEOUT_SEC>20</SPOOL_TIMEOUT_SEC>        <!-- 감시 타임아웃 20s -->
+      <SPOOL_OPTIMISTIC_MS>250</SPOOL_OPTIMISTIC_MS>   <!-- 전송 0.25s 후 다음 장 진행 허용 -->
+      <ANY_ON_DEVICE>true</ANY_ON_DEVICE>              <!-- 문서명 없어도 동일 프린터에서 관측 시 OK -->
+      <PRESENT_TOO_LONG_OK_MS>2500</PRESENT_TOO_LONG_OK_MS>  <!-- seen 상태 2.5s 지속 시 OK -->
+      <EVENTLOG_FALLBACK_OK>true</EVENTLOG_FALLBACK_OK>
+
+      <!-- (옵션) USB 진단 파라미터: 실제 검증엔 미사용 -->
+      <USB_VENDOR_ID>0x1504</USB_VENDOR_ID>
+      <USB_PRODUCT_ID>0x006E</USB_PRODUCT_ID>
+      <USB_IFACE_INDEX>0</USB_IFACE_INDEX>
+      <USB_IN_EP>0x81</USB_IN_EP>
+      <USB_OUT_EP>0x02</USB_OUT_EP>
+      <USB_TIMEOUT_MS>800</USB_TIMEOUT_MS>
+    </PASSCARD>
+  </PRINT>
+
+  <DBSQL>
+    <USR>sa</USR>
+    <PWD>Welcome1@init00$</PWD>
+    <DATA_SOURCE>203.228.118.39</DATA_SOURCE>
+    <DB_NAME>POP_SQLDB_UP</DB_NAME>
+  </DBSQL>
+
+  <POSTGRES>
+    <HOST>127.0.0.1</HOST>
+    <PORT>5432</PORT>
+    <USER>appuser</USER>
+    <PASSWORD>강한비밀번호!</PASSWORD>
+    <DB_NAME>appdb</DB_NAME>
+    <POOL_MAX>10</POOL_MAX>
+    <IDLE_MS>10000</IDLE_MS>
+  </POSTGRES>
+
+  <HOST>
+    <HOST>172.30.107.216</HOST>
+    <PORT>8887</PORT>
+    <HOST1>172.30.107.214</HOST1>
+    <PORT1>8888</PORT1>
+  </HOST>
+
+  <Comm>
+    <SETTINGS>9600,n8,1</SETTINGS>
+    <COMMPORT>2</COMMPORT>
+    <SETTINGS1>9600,n8,1</SETTINGS1>
+    <COMMPORT1>5</COMMPORT1>
+    <SETTINGS2>9600,n8,1</SETTINGS2>
+    <COMMPORT2>6</COMMPORT2>
+  </Comm>
+
+  <MQTT>
+    <BROKER>mqtt://192.168.0.100</BROKER>
+    <TOPIC>factory/device1</TOPIC>
+  </MQTT>
+
+  <FTP>
+    <HOST>203.228.101.72</HOST>
+    <PORT>2020</PORT>
+    <USER>DM_FTP</USER>
+    <PASSWORD>EoTls11@25#!</PASSWORD>
+    <APPNAME>E_SCAN</APPNAME>
+    <APPDIR>E_SCAN</APPDIR>
+  </FTP>
+
+  <APP>
+    <TITLE>E-Scan_v</TITLE>
+  </APP>
+
+  <!-- 예비 FTP 설정(주석) -->
+  <!--
+  <FTP>
+    <HOST>211.54.128.12</HOST>
+    <PORT>21</PORT>
+    <USER>ftpsystem</USER>
+    <PASSWORD>csiftpsystem</PASSWORD>
+    <APPNAME>E_SCAN</APPNAME>
+    <APPDIR>DD/AA</APPDIR>
+  </FTP>
+  -->
+
+  <PASSWORD>
+    <PASS>c</PASS>
+  </PASSWORD>
+</SETTING>

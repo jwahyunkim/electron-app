@@ -1,0 +1,416 @@
+const TARGET = "Мақсат";
+const DEVIATION = "Ауытқу";
+const ABORT = "Тоқтату";
+const CANCEL = "Болдырмау";
+const CLOSE = "Жабу";
+const DELETE = "Жою";
+const IGNORE = "Елемеу";
+const NO = "Жоқ";
+const OK = "OK";
+const RETRY = "Қайталау";
+const YES = "Иә";
+const CLEAR_SORTING = "Сұрыптауды тазарту";
+const SORT_ASCENDING = "Артуы бойынша сұрыптау";
+const SORT_DESCENDING = "Кемуі бойынша сұрыптау";
+const GROUP = "Топ";
+const GROUPED = "Топталған";
+const UNGROUP = "Топтаудан бас тарту";
+const DRAG_TO_RESIZE = "Өлшемін өзгерту үшін сүйреу";
+const PLEASE_WAIT = "Күте тұрыңыз";
+const CONFIRMATION = "Растау";
+const ERROR = "Қате";
+const INFORMATION = "Ақпарат";
+const SUCCESS = "Сәтті орындалды";
+const WARNING = "Ескерту";
+const SHOW_LESS = "Азырақ көрсету";
+const SHOW_MORE = "Көбірек көрсету";
+const EXPAND_GROUP = "Топты жаю";
+const COLLAPSE_GROUP = "Топты жию";
+const SHOW_FILTER_BAR = "Сүзгі жолағын көрсету";
+const HIDE_FILTER_BAR = "Сүзгі жолағын жасыру";
+const CLEAR = "Тазарту";
+const RESTORE = "Қалпына келтіру";
+const FILTERS = "Сүзгілер";
+const ADAPT_FILTERS = "Сүзгілерді сәйкестендіру";
+const GO = "Өту";
+const SAVE = "Сақтау";
+const SHOW_ON_FILTER_BAR = "Сүзгі жолағында көрсету";
+const BASIC = "Негізгі";
+const SEARCH_FOR_FILTERS = "Сүзгілерді іздеу";
+const FIELDS_BY_ATTRIBUTE = "Сүзгілерді атрибут бойынша көрсету";
+const VISIBLE = "Көрінетін";
+const ACTIVE = "Белсенді";
+const VISIBLE_AND_ACTIVE = "Көрінеді және белсенді";
+const MANDATORY = "Міндетті";
+const LIST_VIEW = "Тізім көрінісі";
+const GROUP_VIEW = "Топтық көрініс";
+const SHOW_VALUES = "Мәндерді көрсету";
+const HIDE_VALUES = "Мәндерді жасыру";
+const FIELD = "Өріс";
+const FILTER = "Сүзгі";
+const FILTER_IS_ACTIVE = "Сүзгі белсенді";
+const COLLAPSE_HEADER = "Тақырыпты жию";
+const EXPAND_HEADER = "Тақырыпты жаю";
+const PIN_HEADER = "Тақырыпты бекіту";
+const UNPIN_HEADER = "Тақырыпты босату";
+const SEPARATOR = "Бөлгіш";
+const AVAILABLE_ACTIONS = "Қолжетімді операциялар";
+const X_OF_Y = "Тармақ: {0} / {1}";
+const MY_VIEWS = "Көріністерім";
+const SAVE_VIEW = "Көріністі сақтау";
+const MANAGE_VIEWS = "Көріністерді басқару";
+const VIEW = "Көрініс";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Көрініс аты бұрыннан бар. Басқасын енгізіңіз.";
+const SPECIFY_VIEW_NAME = "Көрініс атын көрсетіңіз.";
+const SET_AS_DEFAULT = "Әдепкі ретінде орнату";
+const PUBLIC = "Жария";
+const APPLY_AUTOMATICALLY = "Автоматты түрде қолдану";
+const SHARING = "Бөлісу";
+const DEFAULT = "Әдепкі";
+const CREATED_BY = "Жасаған";
+const MANAGE = "Басқару";
+const PRIVATE = "Жеке";
+const MARK_AS_STANDARD = "Стандартты көрініс ретінде пайдалану";
+const MARK_AS_FAVORITE = "Таңдаулы көрініс ретінде белгілеу";
+const DELETE_VIEW = "Көріністі жою";
+const SELECT_VIEW = "Көріністі таңдау";
+const SEARCH_VARIANT = "Нұсқаны іздеу";
+const ALL = "Барлығы";
+const SEARCH = "Іздеу";
+const SAVE_AS = "Басқаша сақтау";
+const RESET = "Бастапқы қалпына келтіру";
+const SELECTED_AS_FAVORITE = "Таңдаулы деп белгіленді";
+const UNSELECTED_AS_FAVORITE = '"Таңдаулы" белгісі алынды';
+const SELECT = "Таңдау";
+const SELECTED = "Таңдалды";
+const PRESS_ARROW_KEYS_TO_MOVE = "Жылжу үшін КӨРСЕТКІ пернелерін басыңыз";
+const LIST_NO_DATA = "Дерек жоқ";
+const EXPAND_NODE = "Түйінді жаю";
+const COLLAPSE_NODE = "Түйінді жию";
+const EXPAND_PRESS_SPACE = "Жолды жаю үшін бос орын пернесін басыңыз.";
+const COLLAPSE_PRESS_SPACE = "Жолды жию үшін бос орын пернесін басыңыз.";
+const ROW_EXPANDED = "Жол жайылды";
+const ROW_COLLAPSED = "Жол жиылды";
+const ROW_X_EXPANDED = "Жол ({0}) жайылды";
+const ROW_X_COLLAPSED = "Жол ({0}) жиылды";
+const SELECT_PRESS_SPACE = "Жолды таңдау үшін бос орын пернесін басыңыз.";
+const UNSELECT_PRESS_SPACE = "Жолдың таңдауын алу үшін бос орын пернесін басыңыз.";
+const SELECT_ALL_PRESS_SPACE = "Барлық жолдарды таңдау үшін бос орын пернесін басыңыз.";
+const UNSELECT_ALL_PRESS_SPACE = "Барлық жолдардың таңдауын алу үшін бос орын пернесін басыңыз.";
+const INVALID_TABLE = "Жарамсыз кесте";
+const FILTERED = "Сүзгіленген";
+const ARIA_DESC_CARD_HEADER = "Карта тақырыбы";
+const SEMANTIC_COLOR_CRITICAL = "Ескерту";
+const SEMANTIC_COLOR_GOOD = "Жақсы";
+const SEMANTIC_COLOR_NEUTRAL = "Бейтарап";
+const SEMANTIC_COLOR_ERROR = "Қатерлі";
+const NUMERICCONTENT_DEVIATION_UP = "Өспелі ретпен";
+const NUMERICCONTENT_DEVIATION_DOWN = "Кему ретімен";
+const ARIA_OBJ_STATUS_DESC = "Нысан күйінің түймесі";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Нысан күйі";
+const INDICATION_COLOR = "Индикация түсі";
+const EMPTY_VALUE = "Бос мән";
+const SELECT_ALL = "Барлығын таңдау";
+const DESELECT_ALL = "Барлығының таңдауын алу";
+const SHOW_FULL_TEXT = "Толық мәтінді көрсету";
+const CLOSE_POPOVER = "Қалқымалы терезені жабу";
+const FILTER_DIALOG_RESET_WARNING = "Сіз көру параметрлеріне жасалған барлық өзгерістерді бастапқы қалпына келтірейін және таңдалған көрініске қайтайын деп жатырсыз.";
+const MOVE_TO_TOP = "Жоғарыға жылжыту{0}";
+const MOVE_UP = "Жоғары жылжыту{0}";
+const MOVE_DOWN = "Төмен жылжыту{0}";
+const MOVE_TO_BOTTOM = "Төменге жылжыту{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Жылжыту үшін {0} пернесін және жоғары немесе төмен пернесін басыңыз.";
+const DOWN_ARROW = "Төмен көрсеткі";
+const UP_ARROW = "Жоғары көрсеткі";
+const NO_DATA_FILTERED = "Ешбір дерек табылмады. Сүзгі параметрлерін реттеп көріңіз.";
+const WITH_X_ITEMS = "{0} тармағы бар";
+const ERROR_TYPE = "Қате түрі";
+const WARNING_TYPE = "Ескерту түрі";
+const INFORMATION_TYPE = "Ақпарат түрі";
+const SUCCESS_TYPE = "Сәттілік түрі";
+const MESSAGE_TYPES = "Хабар түрлері";
+const NAVIGATE_BACK = "Артқа өту";
+const MESSAGE_DETAILS = "Хабар мәліметтері";
+const HAS_DETAILS = "Мәліметтері бар";
+const COUNTER = "Есептегіш";
+const SELECTED_ITEMS = "Таңдалған тармақтар {0}";
+const INCLUDES_X = '"{0}" элементін қамтиды';
+const messagebundle_kk = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_kk as default
+};

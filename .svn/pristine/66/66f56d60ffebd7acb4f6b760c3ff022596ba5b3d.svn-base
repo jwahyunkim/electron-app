@@ -1,0 +1,416 @@
+const TARGET = "Targed";
+const DEVIATION = "Gwyriad";
+const ABORT = "Atal";
+const CANCEL = "Canslo";
+const CLOSE = "Cau";
+const DELETE = "Dileu";
+const IGNORE = "Anwybyddu";
+const NO = "Na";
+const OK = "IAWN";
+const RETRY = "Rhoi cynnig arall arni";
+const YES = "Iawn";
+const CLEAR_SORTING = "Trefnu Clir";
+const SORT_ASCENDING = "Trefnu o’r Dechrau i’r Diwedd";
+const SORT_DESCENDING = "Trefnu o’r Diwedd i’r Dechrau";
+const GROUP = "Grŵp";
+const GROUPED = "Wedi Grwpio";
+const UNGROUP = "Dad-grwpio";
+const DRAG_TO_RESIZE = "Llusgo i ailfeintio";
+const PLEASE_WAIT = "Arhoswch";
+const CONFIRMATION = "Cadarnhad";
+const ERROR = "Gwall";
+const INFORMATION = "Gwybodaeth";
+const SUCCESS = "Llwyddiant";
+const WARNING = "Rhybudd";
+const SHOW_LESS = "Dangos Llai";
+const SHOW_MORE = "Dangos Mwy";
+const EXPAND_GROUP = "Ehangu Grŵp";
+const COLLAPSE_GROUP = "Cwympo Grŵp";
+const SHOW_FILTER_BAR = "Dangos Bar Hidlo";
+const HIDE_FILTER_BAR = "Cuddio Bar Hidlo";
+const CLEAR = "Clirio";
+const RESTORE = "Adfer";
+const FILTERS = "Hidlyddion";
+const ADAPT_FILTERS = "Addasu Hidlyddion";
+const GO = "Mynd";
+const SAVE = "Cadw";
+const SHOW_ON_FILTER_BAR = "Dangos ar y Bar Hidlo";
+const BASIC = "Sylfaenol";
+const SEARCH_FOR_FILTERS = "Chwilio am Hidlyddion";
+const FIELDS_BY_ATTRIBUTE = "Dangos Hidlwyr yn ôl Priodoledd";
+const VISIBLE = "Gweladwy";
+const ACTIVE = "Gweithredol";
+const VISIBLE_AND_ACTIVE = "Gweladwy a Gweithredol";
+const MANDATORY = "Gorfodol";
+const LIST_VIEW = "Gwedd Rhestr";
+const GROUP_VIEW = "Gwedd Grŵp";
+const SHOW_VALUES = "Dangos Gwerthoedd";
+const HIDE_VALUES = "Cuddio Gwerthoedd";
+const FIELD = "Maes";
+const FILTER = "Hidlo";
+const FILTER_IS_ACTIVE = "Hidlydd ar waith";
+const COLLAPSE_HEADER = "Cwympo''r pennyn";
+const EXPAND_HEADER = "Ehangu''r pennyn";
+const PIN_HEADER = "Pinio''r Pennyn";
+const UNPIN_HEADER = "Dadbinio''r Pennyn";
+const SEPARATOR = "Gwahanydd";
+const AVAILABLE_ACTIONS = "Camau Gweithredu sydd ar gael";
+const X_OF_Y = "Eitem {0} o {1}";
+const MY_VIEWS = "Fy Ngweddau";
+const SAVE_VIEW = "Cadw''r Wedd";
+const MANAGE_VIEWS = "Rheoli Gweddau";
+const VIEW = "Gwedd";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Mae''r enw gwedd yn bodoli''n barod. Rhowch enw gwahanol.";
+const SPECIFY_VIEW_NAME = "Nodwch enw''r wedd.";
+const SET_AS_DEFAULT = "Rhagosod";
+const PUBLIC = "Cyhoeddus";
+const APPLY_AUTOMATICALLY = "Defnyddio yn Awtomatig";
+const SHARING = "Rhannu";
+const DEFAULT = "Diofyn";
+const CREATED_BY = "Wedi creu gan";
+const MANAGE = "Rheoli";
+const PRIVATE = "Preifat";
+const MARK_AS_STANDARD = "Defnyddio fel Gwedd Safonol";
+const MARK_AS_FAVORITE = "Marcio fel Hoff Wedd";
+const DELETE_VIEW = "Dileu Gwedd";
+const SELECT_VIEW = "Dewis Gwedd";
+const SEARCH_VARIANT = "Chwilio Amrywiad";
+const ALL = "Pob Un";
+const SEARCH = "Chwilio";
+const SAVE_AS = "Cadw Fel";
+const RESET = "Ailosod";
+const SELECTED_AS_FAVORITE = "Dewis fel Ffefryn";
+const UNSELECTED_AS_FAVORITE = "Dad-ddewis fel Ffefryn";
+const SELECT = "Dewis";
+const SELECTED = "Wedi''i Ddewis";
+const PRESS_ARROW_KEYS_TO_MOVE = "Pwyswch y byselli SAETH i symud";
+const LIST_NO_DATA = "Dim data";
+const EXPAND_NODE = "Ehangu Cwgn";
+const COLLAPSE_NODE = "Cwympo Nodyn";
+const EXPAND_PRESS_SPACE = "I ehangu''r rhes, pwyswch y bylchwr.";
+const COLLAPSE_PRESS_SPACE = "I gwympo''r rhes, pwyswch y bylchwr.";
+const ROW_EXPANDED = "Rhes wedi''i hehangu";
+const ROW_COLLAPSED = "Rhes wedi''i chwympo";
+const ROW_X_EXPANDED = "Rhes {0} wedi''i hehangu";
+const ROW_X_COLLAPSED = "Rhes {0} wedi''i chwympo";
+const SELECT_PRESS_SPACE = "I ddewis y rhes, pwyswch y bylchwr.";
+const UNSELECT_PRESS_SPACE = "I ddad-ddewis y rhes, pwyswch y bylchwr.";
+const SELECT_ALL_PRESS_SPACE = "I ddewis pob rhes, pwyswch y bylchwr.";
+const UNSELECT_ALL_PRESS_SPACE = "I ddad-ddewis pob rhes, pwyswch y bylchwr.";
+const INVALID_TABLE = "Tabl Annilys";
+const FILTERED = "Wedi Hidlo";
+const ARIA_DESC_CARD_HEADER = "Pennyn Cerdyn";
+const SEMANTIC_COLOR_CRITICAL = "Rhybudd";
+const SEMANTIC_COLOR_GOOD = "Da";
+const SEMANTIC_COLOR_NEUTRAL = "Niwtral";
+const SEMANTIC_COLOR_ERROR = "Critigol";
+const NUMERICCONTENT_DEVIATION_UP = "O’r dechrau i’r diwedd";
+const NUMERICCONTENT_DEVIATION_DOWN = "O’r diwedd i’r dechrau";
+const ARIA_OBJ_STATUS_DESC = "Botwm Statws Gwrthrych";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Statws Gwrthrych";
+const INDICATION_COLOR = "Lliw Dynodi";
+const EMPTY_VALUE = "Gwerth Gwag";
+const SELECT_ALL = "Dewis Pob Un";
+const DESELECT_ALL = "Dad-ddewis Pob Un";
+const SHOW_FULL_TEXT = "Dangos y testun llawn";
+const CLOSE_POPOVER = "Cau''r ffenestr naid";
+const FILTER_DIALOG_RESET_WARNING = "Rydych chi ar fin ailosod yr holl newidiadau a wnaethoch i osodiadau eich gwedd a dychwelyd yn ôl i''r wedd dan sylw.";
+const MOVE_TO_TOP = "Symud i''r Brig{0}";
+const MOVE_UP = "Symud i Fyny{0}";
+const MOVE_DOWN = "Symud i Lawr{0}";
+const MOVE_TO_BOTTOM = "Symud i''r Gwaelod{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Pwyswch {0} a''r fysell i fyny neu i lawr i symud.";
+const DOWN_ARROW = "Saeth i Lawr";
+const UP_ARROW = "Saeth i Fyny";
+const NO_DATA_FILTERED = "Heb ddod o hyd i ddata. Ceisiwch addasu gosodiadau’r hidlydd.";
+const WITH_X_ITEMS = "gyda {0} eitem";
+const ERROR_TYPE = "Math o Wall";
+const WARNING_TYPE = "Math o Rybudd";
+const INFORMATION_TYPE = "Math o Wybodaeth";
+const SUCCESS_TYPE = "Math o Lwyddiant";
+const MESSAGE_TYPES = "Mathau o Neges";
+const NAVIGATE_BACK = "Llywio''n ôl";
+const MESSAGE_DETAILS = "Manylion y Neges";
+const HAS_DETAILS = "Sydd â Manylion";
+const COUNTER = "Cownter";
+const SELECTED_ITEMS = "Eitemau a Ddewiswyd {0}";
+const INCLUDES_X = "Yn cynnwys {0}";
+const messagebundle_cy = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_cy as default
+};

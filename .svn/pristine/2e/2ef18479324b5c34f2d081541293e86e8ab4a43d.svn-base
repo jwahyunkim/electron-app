@@ -1,0 +1,80 @@
+# electron-builder.yml — FINAL (E_SCAN 전용)
+
+appId: com.changshin.app.E_SCAN                 # ★ 앱마다 고유값으로!
+productName: E_SCAN_electron-app                # 설치 폴더/표시명
+
+directories:
+  buildResources: build
+  output: dist/${version}
+
+files:
+  - "**/*"
+
+  # ⛔ 빌더 산출물만 정확히 제외 (out/의 앱 코드/리소스는 포함!)
+  - "!dist/win-*"
+  - "!dist/*.{exe,blockmap,yml,dmg,AppImage,snap,deb}"
+  - "!dist/**/*.zip"
+  - "!dist/**/builder-debug.yml"
+  - "!dist/latest*"
+
+  # 일반 개발 산출물/소스 제외(필요에 따라 조정 가능)
+  - "!public/**"           # asar엔 미포함(아래 extraResources로 복사)
+  - "!**/.vscode/**"
+  - "!electron.vite.config.{js,ts,mjs,cjs}"
+  - "!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}"
+  - "!{.env,.env.*,.npmrc,pnpm-lock.yaml}"
+  - "!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}"
+  - "!.git/**"
+  - "!**/*.map"            # (옵션) 소스맵 제외로 크기 절감
+
+extraResources:
+  # ▶ asar 밖(resources/public)에 배치할 정적 리소스
+  - from: public
+    to: public
+    # 필요 시 필터를 좁히고 싶다면 아래처럼 사용
+    # filter:
+    #   - "Config.xml"
+    #   - "Config_Db.xml"
+    #   - "locales/**"
+    #   - "helper/**"
+
+  # ▶ 런처/업데이트 메타(존재할 때만 복사되는 게 안전)
+  - from: dist/manifest.json
+    to: manifest.json
+  - from: build-assets/latest.json
+    to: latest.json
+
+  # ▶ (선택) UpdateHelper.exe를 포함해야 하면 경로에 맞춰 주석 해제
+  # - from: helper/bin/Release
+  #   to: helper
+  #   filter:
+  #     - "UpdateHelper.exe"
+  # - from: public/helper
+  #   to: helper
+  #   filter:
+  #     - "UpdateHelper.exe"
+
+# ✅ 네이티브 모듈 언팩(USB/SerialPort 등)
+asarUnpack:
+  - "**/*.node"
+  - "node_modules/@serialport/**"
+  - "node_modules/usb/**"
+
+win:
+  target:
+    - target: nsis
+      arch: [x64, ia32]
+  executableName: E_SCAN_app                         # exe 파일명: E_SCAN_app.exe
+  artifactName: E_SCAN_electron-app-${version}-${arch}.${ext}
+
+nsis:
+  oneClick: true
+  perMachine: false
+  allowToChangeInstallationDirectory: false
+  createDesktopShortcut: false
+  createStartMenuShortcut: true
+  shortcutName: E_SCAN_electron-app                  # 시작메뉴 이름 고유화
+  uninstallDisplayName: E_SCAN_electron-app          # 제어판 표시명 고유화
+  # include: build/installer.nsh                     # (선택) 커스텀 NSIS 스크립트 사용 시
+
+# (mac/linux/publish 블록은 기존 그대로 유지)

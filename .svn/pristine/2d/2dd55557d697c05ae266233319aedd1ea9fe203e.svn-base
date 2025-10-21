@@ -1,0 +1,416 @@
+const TARGET = "Doel";
+const DEVIATION = "Afwijking";
+const ABORT = "Afbreken";
+const CANCEL = "Annuleren";
+const CLOSE = "Sluiten";
+const DELETE = "Verwijderen";
+const IGNORE = "Negeren";
+const NO = "Nee";
+const OK = "OK";
+const RETRY = "Opnieuw proberen";
+const YES = "Ja";
+const CLEAR_SORTING = "Sortering wissen";
+const SORT_ASCENDING = "Oplopend sorteren";
+const SORT_DESCENDING = "Aflopend sorteren";
+const GROUP = "Groeperen";
+const GROUPED = "Gegroepeerd";
+const UNGROUP = "Groepering opheffen";
+const DRAG_TO_RESIZE = "Slepen om grootte aan te passen";
+const PLEASE_WAIT = "Even geduld";
+const CONFIRMATION = "Bevestiging";
+const ERROR = "Fout";
+const INFORMATION = "Informatie";
+const SUCCESS = "Geslaagd";
+const WARNING = "Waarschuwing";
+const SHOW_LESS = "Minder weergeven";
+const SHOW_MORE = "Meer weergeven";
+const EXPAND_GROUP = "Groep weergeven";
+const COLLAPSE_GROUP = "Groep verbergen";
+const SHOW_FILTER_BAR = "Filterbalk weergeven";
+const HIDE_FILTER_BAR = "Filterbalk verbergen";
+const CLEAR = "Wissen";
+const RESTORE = "Herstellen";
+const FILTERS = "Filters";
+const ADAPT_FILTERS = "Filters aanpassen";
+const GO = "Start";
+const SAVE = "Opslaan";
+const SHOW_ON_FILTER_BAR = "Weergeven op filterbalk";
+const BASIC = "Basis";
+const SEARCH_FOR_FILTERS = "Filters zoeken";
+const FIELDS_BY_ATTRIBUTE = "Filters weergeven op attribuut";
+const VISIBLE = "Zichtbaar";
+const ACTIVE = "Actief";
+const VISIBLE_AND_ACTIVE = "Zichtbaar en actief";
+const MANDATORY = "Verplicht";
+const LIST_VIEW = "Lijstview";
+const GROUP_VIEW = "Groepsview";
+const SHOW_VALUES = "Waarden weergeven";
+const HIDE_VALUES = "Waarden verbergen";
+const FIELD = "Veld";
+const FILTER = "Filter";
+const FILTER_IS_ACTIVE = "Filter is actief";
+const COLLAPSE_HEADER = "Kop verbergen";
+const EXPAND_HEADER = "Kop weergeven";
+const PIN_HEADER = "Kop vastzetten";
+const UNPIN_HEADER = "Kop losmaken";
+const SEPARATOR = "Scheidingsteken";
+const AVAILABLE_ACTIONS = "Beschikbare acties";
+const X_OF_Y = "Positie {0} van {1}";
+const MY_VIEWS = "Mijn views";
+const SAVE_VIEW = "View opslaan";
+const MANAGE_VIEWS = "Views beheren";
+const VIEW = "View";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Viewnaam bestaat al. Voer een andere naam in.";
+const SPECIFY_VIEW_NAME = "Geef een viewnaam op.";
+const SET_AS_DEFAULT = "Als standaard instellen";
+const PUBLIC = "Openbaar";
+const APPLY_AUTOMATICALLY = "Automatisch toepassen";
+const SHARING = "Delen";
+const DEFAULT = "Standaard";
+const CREATED_BY = "Gecreëerd door";
+const MANAGE = "Beheren";
+const PRIVATE = "Privé";
+const MARK_AS_STANDARD = "Gebruiken als standaardview";
+const MARK_AS_FAVORITE = "Markeren als favoriete view";
+const DELETE_VIEW = "View verwijderen";
+const SELECT_VIEW = "View selecteren";
+const SEARCH_VARIANT = "Zoekvariant";
+const ALL = "Alles";
+const SEARCH = "Zoeken";
+const SAVE_AS = "Opslaan als";
+const RESET = "Resetten";
+const SELECTED_AS_FAVORITE = "Als Favoriet geselecteerd";
+const UNSELECTED_AS_FAVORITE = "Selectie als Favoriet ongedaan gemaakt";
+const SELECT = "Selecteren";
+const SELECTED = "Geselecteerd";
+const PRESS_ARROW_KEYS_TO_MOVE = "Druk op de betreffende cursortoetsen om te verplaatsen";
+const LIST_NO_DATA = "Geen gegevens";
+const EXPAND_NODE = "Knooppunt weergeven";
+const COLLAPSE_NODE = "Knooppunt verbergen";
+const EXPAND_PRESS_SPACE = "Druk op de spatiebalk om de rij weer te geven.";
+const COLLAPSE_PRESS_SPACE = "Druk op de spatiebalk om de rij te verbergen.";
+const ROW_EXPANDED = "Rij weergegeven";
+const ROW_COLLAPSED = "Rij verborgen";
+const ROW_X_EXPANDED = "Rij {0} weergegeven";
+const ROW_X_COLLAPSED = "Rij {0} verborgen";
+const SELECT_PRESS_SPACE = "Druk op de spatiebalk om de rij te selecteren.";
+const UNSELECT_PRESS_SPACE = "Druk op de spatiebalk om de selectie van de rij ongedaan te maken.";
+const SELECT_ALL_PRESS_SPACE = "Druk op de spatiebalk om alle rijen te selecteren.";
+const UNSELECT_ALL_PRESS_SPACE = "Druk op de spatiebalk om selectie van alle rijen ongedaan te maken.";
+const INVALID_TABLE = "Ongeldige tabel";
+const FILTERED = "Gefilterd";
+const ARIA_DESC_CARD_HEADER = "Kaartkop";
+const SEMANTIC_COLOR_CRITICAL = "Waarschuwing";
+const SEMANTIC_COLOR_GOOD = "Goed";
+const SEMANTIC_COLOR_NEUTRAL = "Neutraal";
+const SEMANTIC_COLOR_ERROR = "Kritiek";
+const NUMERICCONTENT_DEVIATION_UP = "Oplopend";
+const NUMERICCONTENT_DEVIATION_DOWN = "Aflopend";
+const ARIA_OBJ_STATUS_DESC = "Knop Objectstatus";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Objectstatus";
+const INDICATION_COLOR = "Indicatiekleur";
+const EMPTY_VALUE = "Lege waarde";
+const SELECT_ALL = "Alles selecteren";
+const DESELECT_ALL = "Alles deselecteren";
+const SHOW_FULL_TEXT = "Volledige tekst weergeven";
+const CLOSE_POPOVER = "Pop-over sluiten";
+const FILTER_DIALOG_RESET_WARNING = "U staat op het punt alle wijzigingen die u aan uw viewinstellingen hebt aangebracht terug te zetten naar de geselecteerde view.";
+const MOVE_TO_TOP = "Naar begin verplaatsen{0}";
+const MOVE_UP = "Omhoog verplaatsen{0}";
+const MOVE_DOWN = "Omlaag verplaatsen{0}";
+const MOVE_TO_BOTTOM = "Naar einde verplaatsen{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Druk op {0} en PIJL-OMHOOG en PIJL-OMLAAG om te verplaatsen.";
+const DOWN_ARROW = "PIJL-OMLAAG";
+const UP_ARROW = "PIJL-OMHOOG";
+const NO_DATA_FILTERED = "Geen gegevens gevonden. Pas de filterinstellingen aan.";
+const WITH_X_ITEMS = "met {0} posities";
+const ERROR_TYPE = "Fouttype";
+const WARNING_TYPE = "Waarschuwingstype";
+const INFORMATION_TYPE = "Informatietype";
+const SUCCESS_TYPE = "Succestype";
+const MESSAGE_TYPES = "Berichttypen";
+const NAVIGATE_BACK = "Terug navigeren";
+const MESSAGE_DETAILS = "Berichtdetails";
+const HAS_DETAILS = "Heeft details";
+const COUNTER = "Teller";
+const SELECTED_ITEMS = "{0} geselecteerde elementen";
+const INCLUDES_X = "Inclusief {0}";
+const messagebundle_nl = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_nl as default
+};

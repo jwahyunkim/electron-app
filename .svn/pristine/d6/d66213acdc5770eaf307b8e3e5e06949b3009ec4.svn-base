@@ -1,0 +1,416 @@
+const TARGET = "Cible";
+const DEVIATION = "Écart";
+const ABORT = "Arrêter";
+const CANCEL = "Annuler";
+const CLOSE = "Fermer";
+const DELETE = "Suppr.";
+const IGNORE = "Ignorer";
+const NO = "Non";
+const OK = "OK";
+const RETRY = "Réessayer";
+const YES = "Oui";
+const CLEAR_SORTING = "Réinitialiser tri";
+const SORT_ASCENDING = "Trier par ordre croissant";
+const SORT_DESCENDING = "Trier par ordre décroissant";
+const GROUP = "Regrouper";
+const GROUPED = "Regroupé";
+const UNGROUP = "Dissocier";
+const DRAG_TO_RESIZE = "Glisser pour redimensionner";
+const PLEASE_WAIT = "Patientez.";
+const CONFIRMATION = "Confirmation";
+const ERROR = "Erreur";
+const INFORMATION = "Informations";
+const SUCCESS = "Correct";
+const WARNING = "Avertissement";
+const SHOW_LESS = "Afficher moins";
+const SHOW_MORE = "Afficher plus";
+const EXPAND_GROUP = "Développer groupe";
+const COLLAPSE_GROUP = "Réduire groupe";
+const SHOW_FILTER_BAR = "Afficher barre de filtres";
+const HIDE_FILTER_BAR = "Masquer barre de filtres";
+const CLEAR = "Supprimer";
+const RESTORE = "Restaurer";
+const FILTERS = "Filtres";
+const ADAPT_FILTERS = "Adapter filtres";
+const GO = "Lancer";
+const SAVE = "Sauvegarder";
+const SHOW_ON_FILTER_BAR = "Afficher dans la barre de filtres";
+const BASIC = "De base";
+const SEARCH_FOR_FILTERS = "Rechercher filtres";
+const FIELDS_BY_ATTRIBUTE = "Afficher les filtres par attribut";
+const VISIBLE = "Visible";
+const ACTIVE = "Actif";
+const VISIBLE_AND_ACTIVE = "Visible et actif";
+const MANDATORY = "Obligatoire";
+const LIST_VIEW = "Vue de liste";
+const GROUP_VIEW = "Vue de groupe";
+const SHOW_VALUES = "Afficher valeurs";
+const HIDE_VALUES = "Masquer les valeurs";
+const FIELD = "Zone";
+const FILTER = "Filtrer";
+const FILTER_IS_ACTIVE = "Filtre est actif";
+const COLLAPSE_HEADER = "Réduire l''en-tête";
+const EXPAND_HEADER = "Développer l''en-tête";
+const PIN_HEADER = "Épingler l''en-tête";
+const UNPIN_HEADER = "Détacher l''en-tête";
+const SEPARATOR = "Séparateur";
+const AVAILABLE_ACTIONS = "Actions disponibles";
+const X_OF_Y = "Élément {0} sur {1}";
+const MY_VIEWS = "Mes vues";
+const SAVE_VIEW = "Sauvegarder la vue";
+const MANAGE_VIEWS = "Gérer les vues";
+const VIEW = "Vue";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Une vue portant ce nom existe déjà. Saisissez un nom différent.";
+const SPECIFY_VIEW_NAME = "Indiquez un nom de vue.";
+const SET_AS_DEFAULT = "Définir par défaut";
+const PUBLIC = "Public";
+const APPLY_AUTOMATICALLY = "Appliquer automatiquement";
+const SHARING = "Partage";
+const DEFAULT = "Par défaut";
+const CREATED_BY = "Créé(e) par";
+const MANAGE = "Gérer";
+const PRIVATE = "Privé";
+const MARK_AS_STANDARD = "Utiliser comme vue standard";
+const MARK_AS_FAVORITE = "Marquer comme vue favorite";
+const DELETE_VIEW = "Supprimer vue";
+const SELECT_VIEW = "Sélectionner vue";
+const SEARCH_VARIANT = "Rechercher variante";
+const ALL = "Tout";
+const SEARCH = "Rechercher";
+const SAVE_AS = "Sauvegarder sous";
+const RESET = "Réinitialiser";
+const SELECTED_AS_FAVORITE = "Sélectionné(e) comme favori";
+const UNSELECTED_AS_FAVORITE = "Désélectionné(e) comme favori";
+const SELECT = "Sélectionner";
+const SELECTED = "Sélectionné(e)";
+const PRESS_ARROW_KEYS_TO_MOVE = "Appuyez sur les touches de DIRECTION correspondantes pour déplacer.";
+const LIST_NO_DATA = "Aucune donnée";
+const EXPAND_NODE = "Développer noeud";
+const COLLAPSE_NODE = "Réduire noeud";
+const EXPAND_PRESS_SPACE = "Pour développer la ligne, appuyez sur la barre d''espacement.";
+const COLLAPSE_PRESS_SPACE = "Pour réduire la ligne, appuyez sur la barre d''espacement.";
+const ROW_EXPANDED = "Ligne développée";
+const ROW_COLLAPSED = "Ligne réduite";
+const ROW_X_EXPANDED = "Ligne {0} développée";
+const ROW_X_COLLAPSED = "Ligne {0} réduite";
+const SELECT_PRESS_SPACE = "Pour sélectionner la ligne, appuyez sur la barre d''espacement.";
+const UNSELECT_PRESS_SPACE = "Pour désélectionner la ligne, appuyez sur la barre d''espacement.";
+const SELECT_ALL_PRESS_SPACE = "Pour sélectionner toutes les lignes, appuyez sur la barre d''espacement.";
+const UNSELECT_ALL_PRESS_SPACE = "Pour désélectionner toutes les lignes, appuyez sur la barre d''espacement.";
+const INVALID_TABLE = "Table non valide";
+const FILTERED = "Filtré";
+const ARIA_DESC_CARD_HEADER = "En-tête de fiche";
+const SEMANTIC_COLOR_CRITICAL = "Avertissement";
+const SEMANTIC_COLOR_GOOD = "Bon";
+const SEMANTIC_COLOR_NEUTRAL = "Neutre";
+const SEMANTIC_COLOR_ERROR = "Critique";
+const NUMERICCONTENT_DEVIATION_UP = "Ordre croissant";
+const NUMERICCONTENT_DEVIATION_DOWN = "Ordre décroissant";
+const ARIA_OBJ_STATUS_DESC = "Bouton de statut d''objet";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Statut d''objet";
+const INDICATION_COLOR = "Couleur d''indication";
+const EMPTY_VALUE = "Valeur vide";
+const SELECT_ALL = "Sélectionner tout";
+const DESELECT_ALL = "Désélectionner tout";
+const SHOW_FULL_TEXT = "Afficher tout le texte";
+const CLOSE_POPOVER = "Fermer la fenêtre pop-over";
+const FILTER_DIALOG_RESET_WARNING = "Vous êtes sur le point de réinitialiser toutes les modifications que vous avez apportées à vos options d''affichage et de revenir à la vue sélectionnée.";
+const MOVE_TO_TOP = "Déplacer à la première place{0}";
+const MOVE_UP = "Déplacer vers le haut{0}";
+const MOVE_DOWN = "Déplacer vers le bas{0}";
+const MOVE_TO_BOTTOM = "Déplacer à la dernière place{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Appuyez sur {0} et sur la flèche vers le haut ou le bas pour déplacer.";
+const DOWN_ARROW = "Flèche vers le bas";
+const UP_ARROW = "Flèche vers le haut";
+const NO_DATA_FILTERED = "Aucune donnée trouvée. Essayez d''ajuster les options de filtre.";
+const WITH_X_ITEMS = "avec {0} éléments";
+const ERROR_TYPE = "Type d''erreur";
+const WARNING_TYPE = "Type d''avertissement";
+const INFORMATION_TYPE = "Type d''information";
+const SUCCESS_TYPE = "Type de réussite";
+const MESSAGE_TYPES = "Types de messages";
+const NAVIGATE_BACK = "Naviguer en arrière";
+const MESSAGE_DETAILS = "Détails du message";
+const HAS_DETAILS = "A des détails";
+const COUNTER = "Compteur";
+const SELECTED_ITEMS = "Éléments sélectionnés {0}";
+const INCLUDES_X = "Comprend {0}";
+const messagebundle_fr = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_fr as default
+};

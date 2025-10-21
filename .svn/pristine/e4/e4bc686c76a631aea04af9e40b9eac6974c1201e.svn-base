@@ -1,0 +1,416 @@
+const TARGET = "Cieľ";
+const DEVIATION = "Odchýlka";
+const ABORT = "Prerušiť";
+const CANCEL = "Zrušiť";
+const CLOSE = "Zavrieť";
+const DELETE = "Odstrániť";
+const IGNORE = "Ignorovať";
+const NO = "Nie";
+const OK = "OK";
+const RETRY = "Znova";
+const YES = "Áno";
+const CLEAR_SORTING = "Vymazať triedenie";
+const SORT_ASCENDING = "Triediť vzostupne";
+const SORT_DESCENDING = "Triediť zostupne";
+const GROUP = "Zoskupiť";
+const GROUPED = "Zoskupené";
+const UNGROUP = "Zrušiť zoskupenie";
+const DRAG_TO_RESIZE = "Pre zmenu veľkosti potiahnite";
+const PLEASE_WAIT = "Čakajte";
+const CONFIRMATION = "Potvrdenie";
+const ERROR = "Chyba";
+const INFORMATION = "Informácia";
+const SUCCESS = "Úspech";
+const WARNING = "Upozornenie";
+const SHOW_LESS = "Zobraziť menej";
+const SHOW_MORE = "Zobraziť viac";
+const EXPAND_GROUP = "Rozbaliť skupinu";
+const COLLAPSE_GROUP = "Zbaliť skupinu";
+const SHOW_FILTER_BAR = "Zobraziť panel filtrov";
+const HIDE_FILTER_BAR = "Potlačiť panel filtrov";
+const CLEAR = "Vymazať";
+const RESTORE = "Obnoviť";
+const FILTERS = "Filtre";
+const ADAPT_FILTERS = "Úprava filtra";
+const GO = "Spustiť";
+const SAVE = "Uložiť";
+const SHOW_ON_FILTER_BAR = "Zobraziť na paneli filtrov";
+const BASIC = "Základné";
+const SEARCH_FOR_FILTERS = "Hľadať filtre";
+const FIELDS_BY_ATTRIBUTE = "Zobraziť filtre podľa atribútu";
+const VISIBLE = "Viditeľné";
+const ACTIVE = "Aktívne";
+const VISIBLE_AND_ACTIVE = "Viditeľné a aktívne";
+const MANDATORY = "Povinné";
+const LIST_VIEW = "Náhľad zoznamu";
+const GROUP_VIEW = "Náhľad skupiny";
+const SHOW_VALUES = "Zobraziť hodnoty";
+const HIDE_VALUES = "Skryť hodnoty";
+const FIELD = "Pole";
+const FILTER = "Filtrovať";
+const FILTER_IS_ACTIVE = "Filter je aktívny";
+const COLLAPSE_HEADER = "Zbaliť hlavičku";
+const EXPAND_HEADER = "Rozbaliť hlavičku";
+const PIN_HEADER = "Pripnúť hlavičku";
+const UNPIN_HEADER = "Zrušiť pripnutie hlavičky";
+const SEPARATOR = "Oddeľovač";
+const AVAILABLE_ACTIONS = "Dostupné akcie";
+const X_OF_Y = "Položka {0} z {1}";
+const MY_VIEWS = "Moje zobrazenia";
+const SAVE_VIEW = "Uložiť zobrazenie";
+const MANAGE_VIEWS = "Spravovať zobrazenia";
+const VIEW = "Zobrazenie";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Názov zobrazenia už existuje. Zadajte iný názov.";
+const SPECIFY_VIEW_NAME = "Zadajte názov zobrazenia.";
+const SET_AS_DEFAULT = "Nastaviť ako predvolené";
+const PUBLIC = "Verejné";
+const APPLY_AUTOMATICALLY = "Automaticky použiť";
+const SHARING = "Zdieľanie";
+const DEFAULT = "Štandardné";
+const CREATED_BY = "Založil";
+const MANAGE = "Spravovať";
+const PRIVATE = "Súkromné";
+const MARK_AS_STANDARD = "Použiť ako štandardné zobrazenie";
+const MARK_AS_FAVORITE = "Označiť ako obľúbené zobrazenie";
+const DELETE_VIEW = "Odstrániť zobrazenie";
+const SELECT_VIEW = "Vybrať zobrazenie";
+const SEARCH_VARIANT = "Variant vyhľadávania";
+const ALL = "Všetko";
+const SEARCH = "Hľadať";
+const SAVE_AS = "Uložiť ako";
+const RESET = "Resetovať";
+const SELECTED_AS_FAVORITE = "Vybraté ako obľúbené";
+const UNSELECTED_AS_FAVORITE = "Nevybraté ako obľúbené";
+const SELECT = "Vybrať";
+const SELECTED = "Vybrané";
+const PRESS_ARROW_KEYS_TO_MOVE = "Na presunutie stlačte príslušné klávesy so ŠÍPKOU";
+const LIST_NO_DATA = "Žiadne dáta";
+const EXPAND_NODE = "Rozbaliť uzol";
+const COLLAPSE_NODE = "Zbaliť uzol";
+const EXPAND_PRESS_SPACE = "Na rozbalenie riadka stlačte medzerník.";
+const COLLAPSE_PRESS_SPACE = "Na zbalenie riadka stlačte medzerník.";
+const ROW_EXPANDED = "Riadok rozbalený";
+const ROW_COLLAPSED = "Riadok zbalený";
+const ROW_X_EXPANDED = "Riadok {0} rozbalený";
+const ROW_X_COLLAPSED = "Riadok {0} zbalený";
+const SELECT_PRESS_SPACE = "Na výber riadka stlačte medzerník.";
+const UNSELECT_PRESS_SPACE = "Na zrušenie výberu riadka stlačte medzerník.";
+const SELECT_ALL_PRESS_SPACE = "Na výber všetkých riadkov stlačte medzerník.";
+const UNSELECT_ALL_PRESS_SPACE = "Na zrušenie výberu všetkých riadkov stlačte medzerník.";
+const INVALID_TABLE = "Neplatná tabuľka";
+const FILTERED = "Filtrované";
+const ARIA_DESC_CARD_HEADER = "Hlavička karty";
+const SEMANTIC_COLOR_CRITICAL = "Upozornenie";
+const SEMANTIC_COLOR_GOOD = "Dobrá";
+const SEMANTIC_COLOR_NEUTRAL = "Neutrálna";
+const SEMANTIC_COLOR_ERROR = "Kritická";
+const NUMERICCONTENT_DEVIATION_UP = "Vzostupne";
+const NUMERICCONTENT_DEVIATION_DOWN = "Zostupne";
+const ARIA_OBJ_STATUS_DESC = "Tlačidlo statusu objektu";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Status objektu";
+const INDICATION_COLOR = "Farba označenia";
+const EMPTY_VALUE = "Prázdna hodnota";
+const SELECT_ALL = "Vybrať všetko";
+const DESELECT_ALL = "Zrušiť výber všetkého";
+const SHOW_FULL_TEXT = "Zobraziť celý text";
+const CLOSE_POPOVER = "Zavrieť vyskakovacie okno";
+const FILTER_DIALOG_RESET_WARNING = "Chystáte sa zresetovať všetky vami vykonané zmeny svojich nastavení zobrazenia späť na vybraté zobrazenie.";
+const MOVE_TO_TOP = "Premiestniť celkom hore{0}";
+const MOVE_UP = "Premiestniť nahor{0}";
+const MOVE_DOWN = "Premiestniť nadol{0}";
+const MOVE_TO_BOTTOM = "Premiestniť celkom dole{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Pre pohyb stlačte {0} a kláves hore alebo dole.";
+const DOWN_ARROW = "Šípka dole";
+const UP_ARROW = "Šípka hore";
+const NO_DATA_FILTERED = "Nenašli sa žiadne dáta. Skúste upraviť nastavenia filtra.";
+const WITH_X_ITEMS = "s {0} položkami";
+const ERROR_TYPE = "Typ chyby";
+const WARNING_TYPE = "Typ upozornenia";
+const INFORMATION_TYPE = "Typ informácie";
+const SUCCESS_TYPE = "Typ úspechu";
+const MESSAGE_TYPES = "Typy správy";
+const NAVIGATE_BACK = "Prejsť späť";
+const MESSAGE_DETAILS = "Detaily správy";
+const HAS_DETAILS = "Má detaily";
+const COUNTER = "Čítač";
+const SELECTED_ITEMS = "Vybraté položky {0}";
+const INCLUDES_X = "Zahŕňa {0}";
+const messagebundle_sk = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_sk as default
+};

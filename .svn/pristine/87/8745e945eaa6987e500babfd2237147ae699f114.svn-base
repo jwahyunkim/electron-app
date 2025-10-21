@@ -1,0 +1,416 @@
+const TARGET = "Cél";
+const DEVIATION = "Eltérés";
+const ABORT = "Megszakítás";
+const CANCEL = "Mégse";
+const CLOSE = "Bezárás";
+const DELETE = "Törlés";
+const IGNORE = "Ignorálás";
+const NO = "Nem";
+const OK = "OK";
+const RETRY = "Újra";
+const YES = "Igen";
+const CLEAR_SORTING = "Rendezés törlése";
+const SORT_ASCENDING = "Növekvő rendezés";
+const SORT_DESCENDING = "Csökkenő rendezés";
+const GROUP = "Csoportosítás";
+const GROUPED = "Csoportosított";
+const UNGROUP = "Csoportosítás megszüntetése";
+const DRAG_TO_RESIZE = "Húzza az átméretezéshez";
+const PLEASE_WAIT = "Kis türelmet";
+const CONFIRMATION = "Megerősítés";
+const ERROR = "Hiba";
+const INFORMATION = "Információ";
+const SUCCESS = "Sikeres";
+const WARNING = "Figyelmeztetés";
+const SHOW_LESS = "Kevesebb";
+const SHOW_MORE = "Több";
+const EXPAND_GROUP = "Csoport kibontása";
+const COLLAPSE_GROUP = "Csoport visszazárása";
+const SHOW_FILTER_BAR = "Szűrősáv megjelenítése";
+const HIDE_FILTER_BAR = "Szűrősáv elrejtése";
+const CLEAR = "Törlés";
+const RESTORE = "Visszaállítás";
+const FILTERS = "Szűrők";
+const ADAPT_FILTERS = "Szűrők módosítása";
+const GO = "Indítás";
+const SAVE = "Mentés";
+const SHOW_ON_FILTER_BAR = "Megjelenítés a szűrősávon";
+const BASIC = "Alapszintű";
+const SEARCH_FOR_FILTERS = "Szűrők keresése";
+const FIELDS_BY_ATTRIBUTE = "Szűrők megjelenítése attribútum szerint";
+const VISIBLE = "Látható";
+const ACTIVE = "Aktív";
+const VISIBLE_AND_ACTIVE = "Látható és aktív";
+const MANDATORY = "Kötelező";
+const LIST_VIEW = "Listanézet";
+const GROUP_VIEW = "Csoportnézet";
+const SHOW_VALUES = "Értékek megjelenítése";
+const HIDE_VALUES = "Értékek elrejtése";
+const FIELD = "Mező";
+const FILTER = "Szűrés";
+const FILTER_IS_ACTIVE = "A szűrő aktív";
+const COLLAPSE_HEADER = "Fejléc visszazárása";
+const EXPAND_HEADER = "Fejléc kibontása";
+const PIN_HEADER = "Fejléc rögzítése";
+const UNPIN_HEADER = "Fejléc feloldása";
+const SEPARATOR = "Elválasztójel";
+const AVAILABLE_ACTIONS = "Elérhető műveletek";
+const X_OF_Y = "{0} / {1} elem";
+const MY_VIEWS = "Saját nézetek";
+const SAVE_VIEW = "Nézet mentése";
+const MANAGE_VIEWS = "Nézetek kezelése";
+const VIEW = "Nézet";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Már van ilyen nézetnév. Adjon meg más nevet.";
+const SPECIFY_VIEW_NAME = "Adjon meg nézetnevet.";
+const SET_AS_DEFAULT = "Beállítás alapértelmezettként";
+const PUBLIC = "Nyilvános";
+const APPLY_AUTOMATICALLY = "Automatikus végrehajtás";
+const SHARING = "Megosztás";
+const DEFAULT = "Alapértelmezett";
+const CREATED_BY = "Létrehozta";
+const MANAGE = "Kezelés";
+const PRIVATE = "Privát";
+const MARK_AS_STANDARD = "Használat standard nézetként";
+const MARK_AS_FAVORITE = "Megjelölés kedvenc nézetként";
+const DELETE_VIEW = "Nézet törlése";
+const SELECT_VIEW = "Nézet kiválasztása";
+const SEARCH_VARIANT = "Keresési változat";
+const ALL = "Összes";
+const SEARCH = "Keresés";
+const SAVE_AS = "Mentés másként";
+const RESET = "Alaphelyzetbe";
+const SELECTED_AS_FAVORITE = "Kedvencként megjelölve";
+const UNSELECTED_AS_FAVORITE = "Nincs kedvencként megjelölve";
+const SELECT = "Kiválasztás";
+const SELECTED = "Kiválasztva";
+const PRESS_ARROW_KEYS_TO_MOVE = "Áthelyezéshez nyomja meg a megfelelő nyílbillentyűt";
+const LIST_NO_DATA = "Nincs adat";
+const EXPAND_NODE = "Csomópont kibontása";
+const COLLAPSE_NODE = "Csomópont visszazárása";
+const EXPAND_PRESS_SPACE = "A sor kibontásához nyomja meg a Szóköz billentyűt.";
+const COLLAPSE_PRESS_SPACE = "A sor visszazárásához nyomja meg a Szóköz billentyűt.";
+const ROW_EXPANDED = "Sor kibontva";
+const ROW_COLLAPSED = "Sor visszazárva";
+const ROW_X_EXPANDED = "{0}. sor kibontva";
+const ROW_X_COLLAPSED = "{0}. sor visszazárva";
+const SELECT_PRESS_SPACE = "A sor kijelöléséhez nyomja meg a Szóköz billentyűt.";
+const UNSELECT_PRESS_SPACE = "A sor kijelölésének megszüntetéséhez nyomja meg a Szóköz billentyűt.";
+const SELECT_ALL_PRESS_SPACE = "Az összes sor kijelöléséhez nyomja meg a Szóköz billentyűt.";
+const UNSELECT_ALL_PRESS_SPACE = "Az összes sor kijelölésének megszüntetéséhez nyomja meg a Szóköz billentyűt.";
+const INVALID_TABLE = "Érvénytelen tábla";
+const FILTERED = "Szűrt";
+const ARIA_DESC_CARD_HEADER = "Kártyafejléc";
+const SEMANTIC_COLOR_CRITICAL = "Figyelmeztetés";
+const SEMANTIC_COLOR_GOOD = "Jó";
+const SEMANTIC_COLOR_NEUTRAL = "Semleges";
+const SEMANTIC_COLOR_ERROR = "Kritikus";
+const NUMERICCONTENT_DEVIATION_UP = "Növekvő";
+const NUMERICCONTENT_DEVIATION_DOWN = "Csökkenő";
+const ARIA_OBJ_STATUS_DESC = "Objektumstátus gomb";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Objektumstátus";
+const INDICATION_COLOR = "Jelzőszín";
+const EMPTY_VALUE = "Üres érték";
+const SELECT_ALL = "Mindet kijelöli";
+const DESELECT_ALL = "Kijelölés megszüntetése";
+const SHOW_FULL_TEXT = "A teljes szöveg megjelenítése";
+const CLOSE_POPOVER = "Előugró ablak bezárása";
+const FILTER_DIALOG_RESET_WARNING = "Ezzel a nézetbeállításokon elvégzett valamennyi módosítást visszaállítja, és visszatér a kiválasztott nézethez.";
+const MOVE_TO_TOP = "Legfelülre{0}";
+const MOVE_UP = "Feljebb{0}";
+const MOVE_DOWN = "Lejjebb{0}";
+const MOVE_TO_BOTTOM = "Legalulra{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Nyomja le a(z) {0} és a Fel vagy Le nyílbillentyű kombinációját az áthelyezéshez.";
+const DOWN_ARROW = "Le nyílbillentyű";
+const UP_ARROW = "Fel nyílbillentyű";
+const NO_DATA_FILTERED = "Nem található adat. Módosítsa a szűrőbeállításokat.";
+const WITH_X_ITEMS = "{0} elemmel";
+const ERROR_TYPE = "Hiba típusa";
+const WARNING_TYPE = "Figyelmeztetés típusa";
+const INFORMATION_TYPE = "Információ típusa";
+const SUCCESS_TYPE = "Siker típusa";
+const MESSAGE_TYPES = "Üzenettípusok";
+const NAVIGATE_BACK = "Visszalépés";
+const MESSAGE_DETAILS = "Üzenetrészletek";
+const HAS_DETAILS = "Vannak részletei";
+const COUNTER = "Számláló";
+const SELECTED_ITEMS = "{0} kiválasztott elem";
+const INCLUDES_X = "Tartalmazza ezt: {0}";
+const messagebundle_hu = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_hu as default
+};

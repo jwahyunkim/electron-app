@@ -1,0 +1,416 @@
+const TARGET = "Tavoite";
+const DEVIATION = "Poikkeama";
+const ABORT = "Keskeytä";
+const CANCEL = "Peruuta";
+const CLOSE = "Sulje";
+const DELETE = "Poista";
+const IGNORE = "Ohita";
+const NO = "Ei";
+const OK = "OK";
+const RETRY = "Yritä uudelleen";
+const YES = "Kyllä";
+const CLEAR_SORTING = "Tyhjennä lajittelu";
+const SORT_ASCENDING = "Lajittele nousevasti";
+const SORT_DESCENDING = "Lajittele laskevasti";
+const GROUP = "Ryhmittele";
+const GROUPED = "Ryhmitelty";
+const UNGROUP = "Kumoa ryhmittely";
+const DRAG_TO_RESIZE = "Muuta kokoa vetämällä";
+const PLEASE_WAIT = "Odota";
+const CONFIRMATION = "Vahvistus";
+const ERROR = "Virhe";
+const INFORMATION = "Informaatio";
+const SUCCESS = "Onnistuminen";
+const WARNING = "Varoitus";
+const SHOW_LESS = "Näytä vähemmän";
+const SHOW_MORE = "Näytä enemmän";
+const EXPAND_GROUP = "Laajenna ryhmä";
+const COLLAPSE_GROUP = "Tiivistä ryhmä";
+const SHOW_FILTER_BAR = "Näytä suodatinpalkki";
+const HIDE_FILTER_BAR = "Piilota suodatinpalkki";
+const CLEAR = "Tyhjennä";
+const RESTORE = "Palauta";
+const FILTERS = "Suodattimet";
+const ADAPT_FILTERS = "Mukauta suodattimet";
+const GO = "Aloita";
+const SAVE = "Tallenna";
+const SHOW_ON_FILTER_BAR = "Näytä suodatinpalkissa";
+const BASIC = "Perus";
+const SEARCH_FOR_FILTERS = "Hae suodattimia";
+const FIELDS_BY_ATTRIBUTE = "Näytä suodattimet määritteen mukaan";
+const VISIBLE = "Näkyvät";
+const ACTIVE = "Aktiiviset";
+const VISIBLE_AND_ACTIVE = "Näkyvät ja aktiiviset";
+const MANDATORY = "Pakolliset";
+const LIST_VIEW = "Luettelonäkymä";
+const GROUP_VIEW = "Ryhmänäkymä";
+const SHOW_VALUES = "Näytä arvot";
+const HIDE_VALUES = "Piilota arvot";
+const FIELD = "Kenttä";
+const FILTER = "Suodata";
+const FILTER_IS_ACTIVE = "Suodatin on aktiivinen";
+const COLLAPSE_HEADER = "Tiivistä otsikko";
+const EXPAND_HEADER = "Laajenna otsikko";
+const PIN_HEADER = "Kiinnitä otsikko";
+const UNPIN_HEADER = "Irrota otsikko";
+const SEPARATOR = "Erotin";
+const AVAILABLE_ACTIONS = "Käytettävissä olevat toimet";
+const X_OF_Y = "Rivi {0} / {1}";
+const MY_VIEWS = "Omat näkymät";
+const SAVE_VIEW = "Tallenna näkymä";
+const MANAGE_VIEWS = "Hallinnoi näkymiä";
+const VIEW = "Näkymä";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Tämänniminen näkymä on jo olemassa. Syötä erilainen nimi.";
+const SPECIFY_VIEW_NAME = "Anna näkymän nimi.";
+const SET_AS_DEFAULT = "Aseta oletusarvoksi";
+const PUBLIC = "Julkinen";
+const APPLY_AUTOMATICALLY = "Käytä automaattisesti";
+const SHARING = "Jakaminen";
+const DEFAULT = "Oletusarvo";
+const CREATED_BY = "Tekijä";
+const MANAGE = "Hallinnoi";
+const PRIVATE = "Yksityinen";
+const MARK_AS_STANDARD = "Käytä vakionäkymänä";
+const MARK_AS_FAVORITE = "Merkitse suosikkinäkymäksi";
+const DELETE_VIEW = "Poista näkymä";
+const SELECT_VIEW = "Valitse näkymä";
+const SEARCH_VARIANT = "Hakuvariantti";
+const ALL = "Kaikki";
+const SEARCH = "Hae";
+const SAVE_AS = "Tallenna nimellä";
+const RESET = "Palauta";
+const SELECTED_AS_FAVORITE = "Valittu suosikiksi";
+const UNSELECTED_AS_FAVORITE = "Poistettu suosikeista";
+const SELECT = "Valitse";
+const SELECTED = "Valittu";
+const PRESS_ARROW_KEYS_TO_MOVE = "Siirrä painamalla nuolinäppäimiä";
+const LIST_NO_DATA = "Ei tietoja";
+const EXPAND_NODE = "Laajenna solmu";
+const COLLAPSE_NODE = "Tiivistä solmu";
+const EXPAND_PRESS_SPACE = "Laajenna rivi painamalla välilyöntinäppäintä.";
+const COLLAPSE_PRESS_SPACE = "Tiivistä rivi painamalla välilyöntinäppäintä.";
+const ROW_EXPANDED = "Rivi laajennettu";
+const ROW_COLLAPSED = "Rivi tiivistetty";
+const ROW_X_EXPANDED = "Rivi {0} laajennettu";
+const ROW_X_COLLAPSED = "Rivi {0} tiivistetty";
+const SELECT_PRESS_SPACE = "Valitse rivi painamalla välilyöntinäppäintä.";
+const UNSELECT_PRESS_SPACE = "Poista rivin valinta painamalla välilyöntinäppäintä.";
+const SELECT_ALL_PRESS_SPACE = "Valitse kaikki rivit painamalla välilyöntinäppäintä.";
+const UNSELECT_ALL_PRESS_SPACE = "Poista kaikkien rivien valinta painamalla välilyöntinäppäintä.";
+const INVALID_TABLE = "Virheellinen taulukko";
+const FILTERED = "Suodatettu";
+const ARIA_DESC_CARD_HEADER = "Kortin otsikko";
+const SEMANTIC_COLOR_CRITICAL = "Varoitus";
+const SEMANTIC_COLOR_GOOD = "Hyvä";
+const SEMANTIC_COLOR_NEUTRAL = "Neutraali";
+const SEMANTIC_COLOR_ERROR = "Kriittinen";
+const NUMERICCONTENT_DEVIATION_UP = "Nousevasti";
+const NUMERICCONTENT_DEVIATION_DOWN = "Laskevasti";
+const ARIA_OBJ_STATUS_DESC = "Objektin tilan painike";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Objektin tila";
+const INDICATION_COLOR = "Merkinnän väri";
+const EMPTY_VALUE = "Tyhjä arvo";
+const SELECT_ALL = "Valitse kaikki";
+const DESELECT_ALL = "Poista kaikkien valinta";
+const SHOW_FULL_TEXT = "Näytä kokoteksti";
+const CLOSE_POPOVER = "Sulje kohoikkuna";
+const FILTER_DIALOG_RESET_WARNING = "Olet hylkäämässä kaikki näkymäasetuksiisi tekemäsi muutokset ja palaamassa valittuun näkymään.";
+const MOVE_TO_TOP = "Siirrä ylimmäksi{0}";
+const MOVE_UP = "Siirrä ylös{0}";
+const MOVE_DOWN = "Siirrä alas{0}";
+const MOVE_TO_BOTTOM = "Siirrä alimmaksi{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Siirrä painamalla {0}-painiketta ja ylä- tai alanuolta.";
+const DOWN_ARROW = "Alanuoli";
+const UP_ARROW = "Ylänuoli";
+const NO_DATA_FILTERED = "Tietoja ei löytynyt. Kokeile suodatinasetusten muuttamista.";
+const WITH_X_ITEMS = "{0} rivin kanssa";
+const ERROR_TYPE = "Virhelaji";
+const WARNING_TYPE = "Varoituslaji";
+const INFORMATION_TYPE = "Tietotyyppi";
+const SUCCESS_TYPE = "Onnistumislaji";
+const MESSAGE_TYPES = "Ilmoitustyypit";
+const NAVIGATE_BACK = "Navigoi takaisin";
+const MESSAGE_DETAILS = "Sanoman lisätiedot";
+const HAS_DETAILS = "Sisältää lisätietoja";
+const COUNTER = "Laskuri";
+const SELECTED_ITEMS = "Valitut elementit {0}";
+const INCLUDES_X = "Sisältää {0}";
+const messagebundle_fi = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_fi as default
+};

@@ -1,0 +1,416 @@
+const TARGET = "Tikslas";
+const DEVIATION = "Nuokrypis";
+const ABORT = "Nutraukti";
+const CANCEL = "Atšaukti";
+const CLOSE = "Uždaryti";
+const DELETE = "Naikinti";
+const IGNORE = "Nepaisyti";
+const NO = "Ne";
+const OK = "Gerai";
+const RETRY = "Bandyti iš naujo";
+const YES = "Taip";
+const CLEAR_SORTING = "Sudengti rūšiavimą";
+const SORT_ASCENDING = "Rūšiuoti didėjimo tvarka";
+const SORT_DESCENDING = "Rūšiuoti mažėjimo tvarka";
+const GROUP = "Grupuoti";
+const GROUPED = "Sugrupuota";
+const UNGROUP = "Panaikinti grupavimą";
+const DRAG_TO_RESIZE = "Vilkite, jei norite pakeisti dydį";
+const PLEASE_WAIT = "Palaukite";
+const CONFIRMATION = "Patvirtinimas";
+const ERROR = "Klaida";
+const INFORMATION = "Informacija";
+const SUCCESS = "Sėkmingai";
+const WARNING = "Įspėjimas";
+const SHOW_LESS = "Rodyti mažiau";
+const SHOW_MORE = "Rodyti daugiau";
+const EXPAND_GROUP = "Išplėsti grupę";
+const COLLAPSE_GROUP = "Sutraukti grupę";
+const SHOW_FILTER_BAR = "Rodyti filtro juostą";
+const HIDE_FILTER_BAR = "Slėpti filtro juostą";
+const CLEAR = "Valyti";
+const RESTORE = "Atkurti";
+const FILTERS = "Filtrai";
+const ADAPT_FILTERS = "Pritaikyti filtrus";
+const GO = "Vykdyti";
+const SAVE = "Įrašyti";
+const SHOW_ON_FILTER_BAR = "Rodyti filtro juostoje";
+const BASIC = "Pagrindinis";
+const SEARCH_FOR_FILTERS = "Ieškoti filtrų";
+const FIELDS_BY_ATTRIBUTE = "Rodyti filtrus pagal atributą";
+const VISIBLE = "Matomas";
+const ACTIVE = "Aktyvus";
+const VISIBLE_AND_ACTIVE = "Matomas ir aktyvus";
+const MANDATORY = "Privalomas";
+const LIST_VIEW = "Sąrašo rakursas";
+const GROUP_VIEW = "Grupės rakursas";
+const SHOW_VALUES = "Rodyti reikšmes";
+const HIDE_VALUES = "Slėpti reikšmes";
+const FIELD = "Laukas";
+const FILTER = "Filtruoti";
+const FILTER_IS_ACTIVE = "Filtras aktyvus";
+const COLLAPSE_HEADER = "Sutraukti antraštę";
+const EXPAND_HEADER = "Išplėsti antraštę";
+const PIN_HEADER = "Prisegti antraštę";
+const UNPIN_HEADER = "Atsegti antraštę";
+const SEPARATOR = "Skyriklis";
+const AVAILABLE_ACTIONS = "Galimi veiksmai";
+const X_OF_Y = "{0} elementas iš {1}";
+const MY_VIEWS = "Mano rakursai";
+const SAVE_VIEW = "Įrašyti rakursą";
+const MANAGE_VIEWS = "Valdyti rakursus";
+const VIEW = "Rakursas";
+const VARIANT_MANAGEMENT_ERROR_DUPLICATE = "Rakursas tokiu pavadinimu jau yra. Įveskite kitą pavadinimą.";
+const SPECIFY_VIEW_NAME = "Nurodykite rakurso pavadinimą.";
+const SET_AS_DEFAULT = "Nustatyti kaip numatytąjį";
+const PUBLIC = "Viešas";
+const APPLY_AUTOMATICALLY = "Taikyti automatiškai";
+const SHARING = "Bendras naudojimas";
+const DEFAULT = "Numatytasis";
+const CREATED_BY = "Autorius";
+const MANAGE = "Valdyti";
+const PRIVATE = "Asmeninis";
+const MARK_AS_STANDARD = "Naudoti kaip standartinį rodinį";
+const MARK_AS_FAVORITE = "Pažymėti kaip parankinį rodinį";
+const DELETE_VIEW = "Naikinti rakursą";
+const SELECT_VIEW = "Pasirinkti rakursą";
+const SEARCH_VARIANT = "Ieškoti varianto";
+const ALL = "Visi";
+const SEARCH = "Ieškoti";
+const SAVE_AS = "Įrašyti kaip";
+const RESET = "Nustatyti iš naujo";
+const SELECTED_AS_FAVORITE = "Pažymėtas kaip parankinis";
+const UNSELECTED_AS_FAVORITE = "Nepažymėta kaip parankinė";
+const SELECT = "Pasirinkti";
+const SELECTED = "Pasirinkta";
+const PRESS_ARROW_KEYS_TO_MOVE = "Norėdami pereiti, paspauskite RODYKLIŲ klavišus";
+const LIST_NO_DATA = "Nėra duomenų";
+const EXPAND_NODE = "Išplėsti mazgą";
+const COLLAPSE_NODE = "Sutraukti mazgą";
+const EXPAND_PRESS_SPACE = "Norėdami išplėsti eilutę, paspauskite tarpo klavišą.";
+const COLLAPSE_PRESS_SPACE = "Norėdami sutraukti eilutę, paspauskite tarpo klavišą.";
+const ROW_EXPANDED = "Eilutė išplėsta";
+const ROW_COLLAPSED = "Eilutė sutraukta";
+const ROW_X_EXPANDED = "Eilutė {0} išplėsta";
+const ROW_X_COLLAPSED = "Eilutė {0} sutraukta";
+const SELECT_PRESS_SPACE = "Norėdami pasirinkti eilutę, paspauskite tarpo klavišą.";
+const UNSELECT_PRESS_SPACE = "Norėdami atžymėti eilutę, paspauskite tarpo klavišą.";
+const SELECT_ALL_PRESS_SPACE = "Norėdami pasirinkti visas eilutes, paspauskite tarpo klavišą.";
+const UNSELECT_ALL_PRESS_SPACE = "Norėdami atsirinkti visas eilutes, paspauskite tarpo klavišą.";
+const INVALID_TABLE = "Netinkama lentelė";
+const FILTERED = "Filtruota";
+const ARIA_DESC_CARD_HEADER = "Kortelės antraštė";
+const SEMANTIC_COLOR_CRITICAL = "Įspėjimas";
+const SEMANTIC_COLOR_GOOD = "Gerai";
+const SEMANTIC_COLOR_NEUTRAL = "Neutraliai";
+const SEMANTIC_COLOR_ERROR = "Kritinis";
+const NUMERICCONTENT_DEVIATION_UP = "Didėjimo tvarka";
+const NUMERICCONTENT_DEVIATION_DOWN = "Mažėjimo tvarka";
+const ARIA_OBJ_STATUS_DESC = "Objekto būsenos mygtukas";
+const ARIA_OBJ_STATUS_DESC_INACTIVE = "Objekto būsena";
+const INDICATION_COLOR = "Nustatymo spalva";
+const EMPTY_VALUE = "Tuščia reikšmė";
+const SELECT_ALL = "Žymėti viską";
+const DESELECT_ALL = "Atžymėti viską";
+const SHOW_FULL_TEXT = "Rodyti visą tekstą";
+const CLOSE_POPOVER = "Uždaryti iškylantįjį langą";
+const FILTER_DIALOG_RESET_WARNING = "Netrukus atšauksite visus savo peržiūros nustatymų keitimus ir atkursite šiuo metu pasirinktą rakursą.";
+const MOVE_TO_TOP = "Perkelti į viršų{0}";
+const MOVE_UP = "Pereiti aukštyn{0}";
+const MOVE_DOWN = "Pereiti žemyn{0}";
+const MOVE_TO_BOTTOM = "Perkelti į apačią{0}";
+const FILTER_DIALOG_REORDER_FILTERS = "Norėdami perkelti, paspauskite {0} ir rodyklės aukštyn arba žemyn mygtuką.";
+const DOWN_ARROW = "Rodyklė žemyn";
+const UP_ARROW = "Rodyklė aukštyn";
+const NO_DATA_FILTERED = "Nėra duomenų. Keiskite filtrą.";
+const WITH_X_ITEMS = "su tik pozicijų ({0})";
+const ERROR_TYPE = "Klaidos tipas";
+const WARNING_TYPE = "Įspėjimo tipas";
+const INFORMATION_TYPE = "Informacijos tipas";
+const SUCCESS_TYPE = "Pavykusio veiksmo tipas";
+const MESSAGE_TYPES = "Pranešimų tipai";
+const NAVIGATE_BACK = "Grįžti atgal";
+const MESSAGE_DETAILS = "Pranešimo išsami informacija";
+const HAS_DETAILS = "Yra išsamios informacijos";
+const COUNTER = "Skaitiklis";
+const SELECTED_ITEMS = "Pasirinkti elementai {0}";
+const INCLUDES_X = "Įtraukta {0}";
+const messagebundle_lt = {
+  TARGET,
+  DEVIATION,
+  ABORT,
+  CANCEL,
+  CLOSE,
+  DELETE,
+  IGNORE,
+  NO,
+  OK,
+  RETRY,
+  YES,
+  CLEAR_SORTING,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  GROUP,
+  GROUPED,
+  UNGROUP,
+  DRAG_TO_RESIZE,
+  PLEASE_WAIT,
+  CONFIRMATION,
+  ERROR,
+  INFORMATION,
+  SUCCESS,
+  WARNING,
+  SHOW_LESS,
+  SHOW_MORE,
+  EXPAND_GROUP,
+  COLLAPSE_GROUP,
+  SHOW_FILTER_BAR,
+  HIDE_FILTER_BAR,
+  CLEAR,
+  RESTORE,
+  FILTERS,
+  ADAPT_FILTERS,
+  GO,
+  SAVE,
+  SHOW_ON_FILTER_BAR,
+  BASIC,
+  SEARCH_FOR_FILTERS,
+  FIELDS_BY_ATTRIBUTE,
+  VISIBLE,
+  ACTIVE,
+  VISIBLE_AND_ACTIVE,
+  MANDATORY,
+  LIST_VIEW,
+  GROUP_VIEW,
+  SHOW_VALUES,
+  HIDE_VALUES,
+  FIELD,
+  FILTER,
+  FILTER_IS_ACTIVE,
+  COLLAPSE_HEADER,
+  EXPAND_HEADER,
+  PIN_HEADER,
+  UNPIN_HEADER,
+  SEPARATOR,
+  AVAILABLE_ACTIONS,
+  X_OF_Y,
+  MY_VIEWS,
+  SAVE_VIEW,
+  MANAGE_VIEWS,
+  VIEW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  SPECIFY_VIEW_NAME,
+  SET_AS_DEFAULT,
+  PUBLIC,
+  APPLY_AUTOMATICALLY,
+  SHARING,
+  DEFAULT,
+  CREATED_BY,
+  MANAGE,
+  PRIVATE,
+  MARK_AS_STANDARD,
+  MARK_AS_FAVORITE,
+  DELETE_VIEW,
+  SELECT_VIEW,
+  SEARCH_VARIANT,
+  ALL,
+  SEARCH,
+  SAVE_AS,
+  RESET,
+  SELECTED_AS_FAVORITE,
+  UNSELECTED_AS_FAVORITE,
+  SELECT,
+  SELECTED,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  LIST_NO_DATA,
+  EXPAND_NODE,
+  COLLAPSE_NODE,
+  EXPAND_PRESS_SPACE,
+  COLLAPSE_PRESS_SPACE,
+  ROW_EXPANDED,
+  ROW_COLLAPSED,
+  ROW_X_EXPANDED,
+  ROW_X_COLLAPSED,
+  SELECT_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  SELECT_ALL_PRESS_SPACE,
+  UNSELECT_ALL_PRESS_SPACE,
+  INVALID_TABLE,
+  FILTERED,
+  ARIA_DESC_CARD_HEADER,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEMANTIC_COLOR_ERROR,
+  NUMERICCONTENT_DEVIATION_UP,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  INDICATION_COLOR,
+  EMPTY_VALUE,
+  SELECT_ALL,
+  DESELECT_ALL,
+  SHOW_FULL_TEXT,
+  CLOSE_POPOVER,
+  FILTER_DIALOG_RESET_WARNING,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  FILTER_DIALOG_REORDER_FILTERS,
+  DOWN_ARROW,
+  UP_ARROW,
+  NO_DATA_FILTERED,
+  WITH_X_ITEMS,
+  ERROR_TYPE,
+  WARNING_TYPE,
+  INFORMATION_TYPE,
+  SUCCESS_TYPE,
+  MESSAGE_TYPES,
+  NAVIGATE_BACK,
+  MESSAGE_DETAILS,
+  HAS_DETAILS,
+  COUNTER,
+  SELECTED_ITEMS,
+  INCLUDES_X
+};
+export {
+  ABORT,
+  ACTIVE,
+  ADAPT_FILTERS,
+  ALL,
+  APPLY_AUTOMATICALLY,
+  ARIA_DESC_CARD_HEADER,
+  ARIA_OBJ_STATUS_DESC,
+  ARIA_OBJ_STATUS_DESC_INACTIVE,
+  AVAILABLE_ACTIONS,
+  BASIC,
+  CANCEL,
+  CLEAR,
+  CLEAR_SORTING,
+  CLOSE,
+  CLOSE_POPOVER,
+  COLLAPSE_GROUP,
+  COLLAPSE_HEADER,
+  COLLAPSE_NODE,
+  COLLAPSE_PRESS_SPACE,
+  CONFIRMATION,
+  COUNTER,
+  CREATED_BY,
+  DEFAULT,
+  DELETE,
+  DELETE_VIEW,
+  DESELECT_ALL,
+  DEVIATION,
+  DOWN_ARROW,
+  DRAG_TO_RESIZE,
+  EMPTY_VALUE,
+  ERROR,
+  ERROR_TYPE,
+  EXPAND_GROUP,
+  EXPAND_HEADER,
+  EXPAND_NODE,
+  EXPAND_PRESS_SPACE,
+  FIELD,
+  FIELDS_BY_ATTRIBUTE,
+  FILTER,
+  FILTERED,
+  FILTERS,
+  FILTER_DIALOG_REORDER_FILTERS,
+  FILTER_DIALOG_RESET_WARNING,
+  FILTER_IS_ACTIVE,
+  GO,
+  GROUP,
+  GROUPED,
+  GROUP_VIEW,
+  HAS_DETAILS,
+  HIDE_FILTER_BAR,
+  HIDE_VALUES,
+  IGNORE,
+  INCLUDES_X,
+  INDICATION_COLOR,
+  INFORMATION,
+  INFORMATION_TYPE,
+  INVALID_TABLE,
+  LIST_NO_DATA,
+  LIST_VIEW,
+  MANAGE,
+  MANAGE_VIEWS,
+  MANDATORY,
+  MARK_AS_FAVORITE,
+  MARK_AS_STANDARD,
+  MESSAGE_DETAILS,
+  MESSAGE_TYPES,
+  MOVE_DOWN,
+  MOVE_TO_BOTTOM,
+  MOVE_TO_TOP,
+  MOVE_UP,
+  MY_VIEWS,
+  NAVIGATE_BACK,
+  NO,
+  NO_DATA_FILTERED,
+  NUMERICCONTENT_DEVIATION_DOWN,
+  NUMERICCONTENT_DEVIATION_UP,
+  OK,
+  PIN_HEADER,
+  PLEASE_WAIT,
+  PRESS_ARROW_KEYS_TO_MOVE,
+  PRIVATE,
+  PUBLIC,
+  RESET,
+  RESTORE,
+  RETRY,
+  ROW_COLLAPSED,
+  ROW_EXPANDED,
+  ROW_X_COLLAPSED,
+  ROW_X_EXPANDED,
+  SAVE,
+  SAVE_AS,
+  SAVE_VIEW,
+  SEARCH,
+  SEARCH_FOR_FILTERS,
+  SEARCH_VARIANT,
+  SELECT,
+  SELECTED,
+  SELECTED_AS_FAVORITE,
+  SELECTED_ITEMS,
+  SELECT_ALL,
+  SELECT_ALL_PRESS_SPACE,
+  SELECT_PRESS_SPACE,
+  SELECT_VIEW,
+  SEMANTIC_COLOR_CRITICAL,
+  SEMANTIC_COLOR_ERROR,
+  SEMANTIC_COLOR_GOOD,
+  SEMANTIC_COLOR_NEUTRAL,
+  SEPARATOR,
+  SET_AS_DEFAULT,
+  SHARING,
+  SHOW_FILTER_BAR,
+  SHOW_FULL_TEXT,
+  SHOW_LESS,
+  SHOW_MORE,
+  SHOW_ON_FILTER_BAR,
+  SHOW_VALUES,
+  SORT_ASCENDING,
+  SORT_DESCENDING,
+  SPECIFY_VIEW_NAME,
+  SUCCESS,
+  SUCCESS_TYPE,
+  TARGET,
+  UNGROUP,
+  UNPIN_HEADER,
+  UNSELECTED_AS_FAVORITE,
+  UNSELECT_ALL_PRESS_SPACE,
+  UNSELECT_PRESS_SPACE,
+  UP_ARROW,
+  VARIANT_MANAGEMENT_ERROR_DUPLICATE,
+  VIEW,
+  VISIBLE,
+  VISIBLE_AND_ACTIVE,
+  WARNING,
+  WARNING_TYPE,
+  WITH_X_ITEMS,
+  X_OF_Y,
+  YES,
+  messagebundle_lt as default
+};
